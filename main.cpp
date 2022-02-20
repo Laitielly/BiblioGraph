@@ -1,0 +1,15 @@
+#include "graph.h"
+
+int main() {
+//    const Graph <std::string> a({"a","b","c"},{{"a","c"},{"a","b"}, {"b","a"}, {"a","a"}});
+//    a.PrintSets().PrintAdjacencyList().PrintIncidenceMatrix().PrintAdjacencyMatrix();
+//    std::cout << std::boolalpha<<" " <<a.IsUndirected() <<" "<<a.CheckLoops() <<" " <<a.EdgesNumber() <<std::endl;
+//    std::cout << a.PrintAdjacencyMatrix();
+//    std::cout << a.PrintAdjacencyList()<< a.PrintIncidenceMatrix() << a.PrintAdjacencyMatrix() << a.PrintSets();
+    const Graph<std::string> b(MatrixType::INCIDENCE, {
+            {1,2,1},
+            {1,0,0},
+            {0,0,-1}
+    }, {"a","b","c"});
+    return 0;
+}

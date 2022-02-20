@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/a222i/CLionProjects/Graph/algorithms.inl
+graph.h
+C:/Users/a222i/CLionProjects/Graph/graph.h
+
+C:/Users/a222i/CLionProjects/Graph/graph.h
+vector
+-
+stdexcept
+-
+iostream
+-
+map
+-
+graph.inl
+C:/Users/a222i/CLionProjects/Graph/graph.inl
+algorithms.inl
+C:/Users/a222i/CLionProjects/Graph/algorithms.inl
+
+C:/Users/a222i/CLionProjects/Graph/graph.inl
+graph.h
+C:/Users/a222i/CLionProjects/Graph/graph.h
+
+C:/Users/a222i/CLionProjects/Graph/main.cpp
+graph.h
+C:/Users/a222i/CLionProjects/Graph/graph.h
+
