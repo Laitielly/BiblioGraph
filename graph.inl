@@ -222,6 +222,7 @@ std::string Graph<Type>::Graph::PrintAdjacencyMatrix() const{
 
     for (int i=0; i<size; ++i){
         for(int j=0; j<size; ++j){
+            output += " ";
             output += std::to_string(m_adjacency_matrix[i][j]);
             output += " ";
         }
@@ -239,11 +240,31 @@ std::string Graph<Type>::Graph::PrintIncidenceMatrix() const{
     output+="\n";
     for (int i=0; i<size; ++i){
         for(int j=0; j<size; ++j){
-            for (int k=j+1; k<size; ++k){
-                if (m_adjacency_matrix[j][k] == 1 && (i == j or i == k)){
-                    output+="1 ";
-                }else if (m_adjacency_matrix[j][k] == 1){
-                    output+="0 ";
+            for (int k=j; k<size; ++k){
+                if(m_adjacency_matrix[j][k] || m_adjacency_matrix[k][j]){
+                    if (k==j && k==i){
+                        output += " 2 ";
+                    }
+                    else if(m_adjacency_matrix[j][k] && m_adjacency_matrix[k][j] && (k==i || j==i)){
+                        output += " 1 ";
+                    } else if(k==i || j==i){
+                        if(k==i){
+                            if (!m_adjacency_matrix[k][j]){
+                                output += "-1 ";
+                            } else{
+                                output += " 1 ";
+                            }
+                        }else{
+                            if (!m_adjacency_matrix[k][j]){
+                                output += " 1 ";
+                            } else{
+                                output += "-1 ";
+                            }
+                        }
+                    }
+                    else{
+                        output += " 0 ";
+                    }
                 }
             }
         }
@@ -281,20 +302,20 @@ std::string Graph<Type>::Graph::PrintSets() const{
     output+="};\nE = {";
     for(int i=0; i<edgesCounter; ++i){
         if (i==edgesCounter-1) {
-            output+="(";
+            output+="{";
             output+=m_to_names.at(m_edges[i].first);
             output+=", ";
             output+=m_to_names.at(m_edges[i].second);
-            output+=")";
+            output+="}";
         }else{
-            output+="(";
+            output+="{";
             output+=m_to_names.at(m_edges[i].first);
             output+=", ";
             output+=m_to_names.at(m_edges[i].second);
-            output+="), ";
+            output+="}, ";
         }
     }
-    output += "};";
+    output += "};\n";
     return output;
 }
 
