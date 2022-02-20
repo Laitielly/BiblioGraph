@@ -6,6 +6,7 @@
 #include <iostream>
 #include <map>
 
+
 enum class MatrixType {
     INCIDENCE,
     ADJACENCY

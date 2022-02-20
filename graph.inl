@@ -55,7 +55,48 @@ Graph<Type>::Graph(const MatrixType &type, const std::vector<std::vector<int>> &
             m_adjacency_matrix[i].resize(verticesCounter);
         }
         for(int j=0; j < edgesCounter; ++j){
-
+            int counterMinus1=0,counter1=0, counter2=0;
+            std::pair<int,int> index;
+            bool find=false;
+            for (int i=0; i < verticesCounter; ++i){
+                if (matrix[i][j]==1){
+                    ++counter1;
+                    if (!find){
+                        index.first=i;
+                        find = true;
+                    }else {
+                        index.second=i;
+                    }
+                }
+                if (matrix[i][j]==-1){
+                    ++counterMinus1;
+                    index.second=i;
+                }
+                if (matrix[i][j]==2){
+                    ++counter2;
+                    index.first=i;
+                    index.second=i;
+                }
+            }
+            bool loop = (counter2==1) && (!counterMinus1) && (!counter1);
+            bool oriented = (!counter2) && (counter1==1) && (counterMinus1==1);
+            bool undirected = (!counter2) && (!counterMinus1) && (counter1==2);
+            if (loop && !oriented && !undirected){
+                m_adjacency_matrix[index.first][index.first]=1;
+            }else if(!loop && oriented && !undirected){
+                if (m_adjacency_matrix[index.first][index.second] || m_adjacency_matrix[index.second][index.first]){
+                    throw std::runtime_error("A double edge assignment in the incidence matrix is found.");
+                }
+                m_adjacency_matrix[index.first][index.second]=1;
+            }else if(!loop && !oriented && undirected){
+                if (m_adjacency_matrix[index.first][index.second] || m_adjacency_matrix[index.second][index.first]){
+                    throw std::runtime_error("A double edge assignment in the incidence matrix is found.");
+                }
+                m_adjacency_matrix[index.first][index.second]=1;
+                m_adjacency_matrix[index.second][index.first]=1;
+            }else{
+                throw std::runtime_error("The incidence matrix is incorrectly set.");
+            }
         }
     }
     MakeSetRepresentation();
