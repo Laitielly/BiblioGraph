@@ -10,7 +10,7 @@ Graph<Type>::Graph(const MatrixType &type, const std::vector<std::vector<int>> &
     }
     for(int i=0; i<verticesCounter; ++i){
         for(int j=0; j<verticesCounter; ++j){
-            if (i!=j && vertices[i]==vertices[j]){
+            if (i!=j and vertices[i]==vertices[j]){
                 throw std::runtime_error("Some vertex is duplicated!");
             }
         }
@@ -31,7 +31,7 @@ Graph<Type>::Graph(const MatrixType &type, const std::vector<std::vector<int>> &
                 throw std::runtime_error("The adjacency matrix must be square!");
             }
             for(int j=0; j < verticesCounter; ++j){
-                if (!(matrix[i][j] == 0 || matrix[i][j] == 1)){
+                if (!(matrix[i][j] == 0 or matrix[i][j] == 1)){
                     throw std::runtime_error("The adjacency matrix must only contain 0 or 1.");
                 }
             }
@@ -45,7 +45,7 @@ Graph<Type>::Graph(const MatrixType &type, const std::vector<std::vector<int>> &
                 throw std::runtime_error("The incidence matrix must be rectangular!");
             }
             for(int j=0; j < edgesCounter; ++j){
-                if (!(matrix[i][j] == 0 || matrix[i][j] == 1 || matrix[i][j] == -1 || matrix[i][j]==2)){
+                if (!(matrix[i][j] == 0 or matrix[i][j] == 1 or matrix[i][j] == -1 or matrix[i][j]==2)){
                     throw std::runtime_error("The incidence matrix must only contain -1, 1, 0 or 2.");
                 }
             }
@@ -78,18 +78,18 @@ Graph<Type>::Graph(const MatrixType &type, const std::vector<std::vector<int>> &
                     index.second=i;
                 }
             }
-            bool loop = (counter2==1) && (!counterMinus1) && (!counter1);
-            bool oriented = (!counter2) && (counter1==1) && (counterMinus1==1);
-            bool undirected = (!counter2) && (!counterMinus1) && (counter1==2);
-            if (loop && !oriented && !undirected){
+            bool loop = (counter2==1) and (!counterMinus1) and (!counter1);
+            bool oriented = (!counter2) and (counter1==1) and (counterMinus1==1);
+            bool undirected = (!counter2) and (!counterMinus1) and (counter1==2);
+            if (loop and !oriented and !undirected){
                 m_adjacency_matrix[index.first][index.first]=1;
-            }else if(!loop && oriented && !undirected){
-                if (m_adjacency_matrix[index.first][index.second] || m_adjacency_matrix[index.second][index.first]){
+            }else if(!loop and oriented and !undirected){
+                if (m_adjacency_matrix[index.first][index.second] or m_adjacency_matrix[index.second][index.first]){
                     throw std::runtime_error("A double edge assignment in the incidence matrix is found.");
                 }
                 m_adjacency_matrix[index.first][index.second]=1;
-            }else if(!loop && !oriented && undirected){
-                if (m_adjacency_matrix[index.first][index.second] || m_adjacency_matrix[index.second][index.first]){
+            }else if(!loop and !oriented and undirected){
+                if (m_adjacency_matrix[index.first][index.second] or m_adjacency_matrix[index.second][index.first]){
                     throw std::runtime_error("A double edge assignment in the incidence matrix is found.");
                 }
                 m_adjacency_matrix[index.first][index.second]=1;
@@ -109,7 +109,7 @@ Graph<Type>::Graph(const std::vector<Type> &vertices, const std::vector<std::pai
 
     for(int i=0; i<verticesCounter; ++i){
         for(int j=0; j<verticesCounter; ++j){
-            if (i!=j && vertices[i]==vertices[j]){
+            if (i!=j and vertices[i]==vertices[j]){
                 throw std::runtime_error("Some vertex is duplicated!");
             }
         }
@@ -125,11 +125,11 @@ Graph<Type>::Graph(const std::vector<Type> &vertices, const std::vector<std::pai
                 check.second=true;
             }
         }
-        if(!check.first || !check.second){
+        if(!check.first or !check.second){
             throw std::runtime_error("Some edge contains a non-existent vertex!");
         }
         for(int j=0; j<edgesCounter; ++j){
-            if (i!=j && edges[i]==edges[j]){
+            if (i!=j and edges[i]==edges[j]){
                 throw std::runtime_error("Some edge is duplicated!");
             }
         }
@@ -167,7 +167,7 @@ Graph<Type>::Graph(const AdjacencyList &type, const std::vector<std::pair<Type,s
         m_to_numbers[adjacencyList[i].first]=i;
         m_vertices.push_back(i);
         for(int j=0; j<verticesCounter; ++j){
-            if (i!=j && adjacencyList[i].first==adjacencyList[j].first){
+            if (i!=j and adjacencyList[i].first==adjacencyList[j].first){
                 throw std::runtime_error("Some vertex is duplicated!");
             }
         }
@@ -187,7 +187,7 @@ Graph<Type>::Graph(const AdjacencyList &type, const std::vector<std::pair<Type,s
         }
         for(int j=0; j<adjacentVertices; ++j){
             for(int k=0; k<adjacentVertices; ++k){
-                if(j!=k && adjacencyList[i].second[j]==adjacencyList[i].second[k]){
+                if(j!=k and adjacencyList[i].second[j]==adjacencyList[i].second[k]){
                     throw std::runtime_error("Adjacent vertices are duplicated!");
                 }
             }
@@ -236,13 +236,13 @@ std::string Graph<Type>::Graph::PrintIncidenceMatrix() const{
     for (int i=0; i<size; ++i){
         for(int j=0; j<size; ++j){
             for (int k=j; k<size; ++k){
-                if(m_adjacency_matrix[j][k] || m_adjacency_matrix[k][j]){
-                    if (k==j && k==i){
+                if(m_adjacency_matrix[j][k] or m_adjacency_matrix[k][j]){
+                    if (k==j and k==i){
                         buffer << " 2 ";
                     }
-                    else if(m_adjacency_matrix[j][k] && m_adjacency_matrix[k][j] && (k==i || j==i)){
+                    else if(m_adjacency_matrix[j][k] and m_adjacency_matrix[k][j] and (k==i or j==i)){
                         buffer << " 1 ";
-                    } else if(k==i || j==i){
+                    } else if(k==i or j==i){
                         if(k==i){
                             if (!m_adjacency_matrix[k][j]){
                                 buffer << "-1 ";
