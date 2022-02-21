@@ -216,61 +216,56 @@ Graph<Type>::Graph(const AdjacencyList &type, const std::vector<std::pair<Type,s
 
 template<typename Type>
 std::string Graph<Type>::Graph::PrintAdjacencyMatrix() const{
+    std::stringstream buffer;
     int size = m_adjacency_matrix.size();
-    std::string output="";
-    output += "Graph adjacency matrix:\n";
-
+    buffer << "Graph adjacency matrix:"<<std::endl;
     for (int i=0; i<size; ++i){
         for(int j=0; j<size; ++j){
-            output += " ";
-            output += std::to_string(m_adjacency_matrix[i][j]);
-            output += " ";
+            buffer <<" "<<m_adjacency_matrix[i][j] << " ";
         }
-            output += "\n";
-
+        buffer<<std::endl;
     }
-    return output;
+    return buffer.str();
 }
 
 template<typename Type>
 std::string Graph<Type>::Graph::PrintIncidenceMatrix() const{
+    std::stringstream buffer;
     int size = m_adjacency_matrix.size();
-    std::string output="";
-    output+="Graph incidence matrix:";
-    output+="\n";
+    buffer << "Graph incidence matrix:" << std::endl;
     for (int i=0; i<size; ++i){
         for(int j=0; j<size; ++j){
             for (int k=j; k<size; ++k){
                 if(m_adjacency_matrix[j][k] || m_adjacency_matrix[k][j]){
                     if (k==j && k==i){
-                        output += " 2 ";
+                        buffer << " 2 ";
                     }
                     else if(m_adjacency_matrix[j][k] && m_adjacency_matrix[k][j] && (k==i || j==i)){
-                        output += " 1 ";
+                        buffer << " 1 ";
                     } else if(k==i || j==i){
                         if(k==i){
                             if (!m_adjacency_matrix[k][j]){
-                                output += "-1 ";
+                                buffer << "-1 ";
                             } else{
-                                output += " 1 ";
+                                buffer << " 1 ";
                             }
                         }else{
                             if (!m_adjacency_matrix[k][j]){
-                                output += " 1 ";
+                                buffer << " 1 ";
                             } else{
-                                output += "-1 ";
+                                buffer << "-1 ";
                             }
                         }
                     }
                     else{
-                        output += " 0 ";
+                        buffer << " 0 ";
                     }
                 }
             }
         }
-            output += "\n";
+        buffer << std::endl;
     }
-    return output;
+    return buffer.str();
 }
 
 template<typename Type>
@@ -287,36 +282,27 @@ void Graph<Type>::Graph::MakeSetRepresentation() {
 
 template<typename Type>
 std::string Graph<Type>::Graph::PrintSets() const{
+    std::stringstream buffer;
     int verticesCounter = m_vertices.size(), edgesCounter = m_edges.size();
-    std::string output;
-    output = "Graph set of " + std::to_string(verticesCounter)+" vertices and " +
-            std::to_string(edgesCounter)+" edges:\n"+"V = {";
+    buffer << "Graph set of "<<verticesCounter <<" vertices and " << edgesCounter <<" edges: "<< std::endl;
+    buffer << "V = {";
     for(int i=0; i<verticesCounter; ++i){
         if (i==verticesCounter-1) {
-            output+=m_to_names.at(m_vertices[i]);
+            buffer << m_to_names.at(m_vertices[i]);
         }else{
-            output += m_to_names.at(m_vertices[i]);
-            output += ", ";
+            buffer << m_to_names.at(m_vertices[i]) << ", ";
         }
     }
-    output+="};\nE = {";
+    buffer<<"};"<<std::endl<<"E = {";
     for(int i=0; i<edgesCounter; ++i){
         if (i==edgesCounter-1) {
-            output+="{";
-            output+=m_to_names.at(m_edges[i].first);
-            output+=", ";
-            output+=m_to_names.at(m_edges[i].second);
-            output+="}";
+            buffer << "{" << m_to_names.at(m_edges[i].first) << ", " << m_to_names.at(m_edges[i].second) << "}";
         }else{
-            output+="{";
-            output+=m_to_names.at(m_edges[i].first);
-            output+=", ";
-            output+=m_to_names.at(m_edges[i].second);
-            output+="}, ";
+            buffer << "{" << m_to_names.at(m_edges[i].first) << ", " << m_to_names.at(m_edges[i].second) << "}, ";
         }
     }
-    output += "};\n";
-    return output;
+    buffer<<"};"<<std::endl;
+    return buffer.str();
 }
 
 
@@ -336,23 +322,22 @@ void Graph<Type>::Graph::MakeListRepresentation() {
 
 template<typename Type>
 std::string Graph<Type>::Graph::PrintAdjacencyList() const{
-    std::string output="Graph adjacency list:\n";
+    std::stringstream buffer;
+    buffer<<"Graph adjacency list: "<<std::endl;
     int verticesCounter = m_adjacency_matrix.size();
     for(int i=0; i<verticesCounter; ++i){
-        output+=m_to_names.at(i);
-        output+=": ";
+        buffer << m_to_names.at(i) << ": ";
         int adjacentVertices = m_adjacency_list[i].size();
         for(int j=0; j<adjacentVertices; ++j){
             if (j==adjacentVertices-1){
-                output+=m_to_names.at(m_adjacency_list[i][j]);
+                buffer << m_to_names.at(m_adjacency_list[i][j]);
             }else {
-                output+=m_to_names.at(m_adjacency_list[i][j]);
-                output+=", ";
+                buffer << m_to_names.at(m_adjacency_list[i][j]) << ", ";
             }
         }
-        output+="\n";
+        buffer << std::endl;
     }
-    return output;
+    return buffer.str();
 }
 
 template<typename Type>

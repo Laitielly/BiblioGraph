@@ -32,7 +32,12 @@ bool operator== (const Point &p1, const Point &p2)
 }
 
 int main() {
-    Graph<Point>a({Point(1,2),Point(3,4)},{{Point(1,2),Point(3,4)}});
-    std::cout << a.PrintAdjacencyList();
+    Graph<Point>a(MatrixType::ADJACENCY, {
+                  {1,0,1},
+                  {0,0,0},
+                  {1,1,1}
+    }, {Point(1,2),Point(3,4),Point(5,6)});
+    a.Complement();
+    std::cout << a.PrintSets() << a.PrintAdjacencyList() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
     return 0;
 }
