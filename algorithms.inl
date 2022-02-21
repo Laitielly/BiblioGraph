@@ -31,4 +31,26 @@ int Graph<Type>::EdgesNumber() const {
     return m_edges.size();
 }
 
+template<typename Type>
+const Graph<Type> &Graph<Type>::Complement() {
+    int size = m_adjacency_matrix.size();
+    for(int i=0; i<size; ++i){
+        for(int j=0; j<size; ++j){
+            if(i!=j) {
+                if (m_adjacency_matrix[i][j]) {
+                    m_adjacency_matrix[i][j] = 0;
+                } else {
+                    m_adjacency_matrix[i][j] = 1;
+                }
+            }
+        }
+    }
+    m_adjacency_list.clear();
+    m_edges.clear();
+    MakeSetRepresentation();
+    MakeListRepresentation();
+    return *this;
+}
+
+
 #endif //GRAPH_ALGORITHMS_INL

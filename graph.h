@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <map>
+#include <sstream>
 
 
 enum class MatrixType {
@@ -39,6 +40,7 @@ public:
     bool IsUndirected() const;
     bool CheckLoops() const;
     int EdgesNumber() const;
+    const Graph& Complement();
 
 };
 
