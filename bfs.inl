@@ -68,4 +68,55 @@ std::string Graph<Type>::Distance(const Type &start, const Type &end) const {
     return buffer.str();
 }
 
+template<typename Type>
+std::vector<std::vector<int>> Graph<Type>::ConnectivityComponents_() const{
+    std::vector<std::vector<int>> components;
+    int size = m_adjacency_list.size();
+    std::vector<int> used(m_adjacency_list.size(),-1);
+    int counter = 0;
+    for(int j=0; j<size; ++j) {
+        if (used[j]==-1) {
+            components.push_back({j});
+            std::queue<int> queue;
+            queue.push(j);
+            used[j] = counter;
+            while (!queue.empty()) {
+                int current = queue.front(), neighbors = m_adjacency_list[current].size();
+                queue.pop();
+                for (int i = 0; i < neighbors; ++i) {
+                    int currentNeighbour = m_adjacency_list[current][i];
+                    if (used[currentNeighbour] == -1) {
+                        queue.push(currentNeighbour);
+                        used[currentNeighbour] = counter;
+                        components[counter].push_back(currentNeighbour);
+                    }
+                }
+            }
+            ++counter;
+        }
+    }
+    return components;
+}
+
+template<typename Type>
+std::string Graph<Type>::ConnectivityComponents() const{
+    std::stringstream buffer;
+    std::vector<std::vector<int>> components = ConnectivityComponents_();
+    int componentsCounter = components.size();
+    buffer << "The graph has " << componentsCounter <<" connectivity components:"<< std::endl;
+    for(int i=0; i<componentsCounter; ++i){
+        int CurrentComponentCounter = components[i].size();
+        buffer << i+1 <<": ";
+        for(int j=0; j<CurrentComponentCounter; ++j){
+            if(j!=CurrentComponentCounter-1) {
+                buffer << m_to_names.at(components[i][j]) << ", ";
+            }else{
+                buffer << m_to_names.at(components[i][j]);
+            }
+        }
+        buffer << std::endl;
+    }
+    return buffer.str();
+}
+
 #endif //GRAPH_BFS_INL
