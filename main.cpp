@@ -1,14 +1,14 @@
 #include "graph.h"
 #include <iostream>
 int main() {
-    Graph<char>a(AdjacencyList::LIST,{
-            {'a',{'b','a'}},
-            {'b',{'a'}},
-            {'d',{'a'}},
-            {'e',{'d'}}
+    Graph<char>a(AdjacencyList::LIST, {
+            {'a', {'b'}},
+            {'b',{'c'}},
+            {'c',{'e'}},
+            {'e',{'f'}},
+            {'f',{'g'}},
+            {'g',{}}
     });
-    a.Rename('a','c');
-    a.Complement();
-    std::cout << a.PrintAdjacencyList() << a.PrintVertexDegree('c');
+    std::cout << a.Distance('a','g');
     return 0;
 }

@@ -6,6 +6,8 @@
 #include <iostream>
 #include <map>
 #include <sstream>
+#include <queue>
+#include <list>
 
 
 enum class MatrixType {
@@ -31,6 +33,7 @@ private:
     bool IsUndirected_() const;
     bool CheckLoops_() const;
     int PrintVertexDegree_(const Type& name) const;
+    std::list<int> Distance_(int start, int end) const;
 public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
@@ -46,9 +49,10 @@ public:
     std::string VerticesNumber() const;
     const Graph& Complement();
     std::string PrintVertexDegree(const Type& name) const;
-
+    std::string Distance(const Type& start, const Type& end) const;
 };
 
 #include "graph.inl"
 #include "algorithms.inl"
+#include "bfs.inl"
 #endif //GRAPH_GRAPH_H

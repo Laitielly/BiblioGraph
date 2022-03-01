@@ -10,6 +10,10 @@ C:/Users/a222i/CLionProjects/Graph/algorithms.inl
 graph.h
 C:/Users/a222i/CLionProjects/Graph/graph.h
 
+C:/Users/a222i/CLionProjects/Graph/bfs.inl
+graph.h
+C:/Users/a222i/CLionProjects/Graph/graph.h
+
 C:/Users/a222i/CLionProjects/Graph/graph.h
 vector
 -
@@ -21,10 +25,16 @@ map
 -
 sstream
 -
+queue
+-
+list
+-
 graph.inl
 C:/Users/a222i/CLionProjects/Graph/graph.inl
 algorithms.inl
 C:/Users/a222i/CLionProjects/Graph/algorithms.inl
+bfs.inl
+C:/Users/a222i/CLionProjects/Graph/bfs.inl
 
 C:/Users/a222i/CLionProjects/Graph/graph.inl
 graph.h

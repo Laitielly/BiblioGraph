@@ -83,6 +83,9 @@
 		<Unit filename="C:/Users/a222i/CLionProjects/Graph/algorithms.inl">
 			<Option target="Graph"/>
 		</Unit>
+		<Unit filename="C:/Users/a222i/CLionProjects/Graph/bfs.inl">
+			<Option target="Graph"/>
+		</Unit>
 		<Unit filename="C:/Users/a222i/CLionProjects/Graph/graph.h">
 			<Option target="Graph"/>
 		</Unit>

@@ -106,4 +106,5 @@ std::string Graph<Type>::VerticesNumber() const {
     return buffer.str();
 }
 
+
 #endif //GRAPH_ALGORITHMS_INL
