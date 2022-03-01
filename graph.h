@@ -28,6 +28,9 @@ private:
     std::map<int, Type> m_to_names;
     void MakeSetRepresentation();
     void MakeListRepresentation();
+    bool IsUndirected_() const;
+    bool CheckLoops_() const;
+    int PrintVertexDegree_(const Type& name) const;
 public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
@@ -37,10 +40,12 @@ public:
     std::string PrintSets() const;
     std::string PrintAdjacencyList() const;
     const Graph& Rename(const Type &name, const Type &rename);
-    bool IsUndirected() const;
-    bool CheckLoops() const;
-    int EdgesNumber() const;
+    std::string IsUndirected() const;
+    std::string CheckLoops() const;
+    std::string EdgesNumber() const;
+    std::string VerticesNumber() const;
     const Graph& Complement();
+    std::string PrintVertexDegree(const Type& name) const;
 
 };
 
