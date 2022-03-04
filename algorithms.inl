@@ -53,7 +53,26 @@ std::string Graph<Type>::CheckLoops() const {
 template<typename Type>
 std::string Graph<Type>::EdgesNumber() const {
     std::stringstream buffer;
-    buffer << "The graph has " << m_edges.size() <<" edges."<<std::endl;
+    int vertices = 0, directed=0, undirected=0, loop=0;
+    vertices=m_adjacency_matrix.size();
+    for(int i=0; i<vertices; ++i){
+        for(int j=i; j<vertices; ++j){
+            if(i==j){
+                if(m_adjacency_matrix[i][j]==1){
+                    ++loop;
+                }
+            }else{
+                if(m_adjacency_matrix[i][j]==1 and m_adjacency_matrix[j][i]==1){
+                    ++undirected;
+                }
+                if(m_adjacency_matrix[i][j]!=m_adjacency_matrix[j][i] and
+                    (m_adjacency_matrix[i][j]==1 or m_adjacency_matrix[j][i]==1)){
+                        ++directed;
+                }
+            }
+        }
+    }
+    buffer << "The graph has "<<directed<<" directed edges, "<< undirected <<" undirected edges and "<<loop<<" loops."<<std::endl;
     return buffer.str();
 }
 

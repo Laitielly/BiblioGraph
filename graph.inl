@@ -359,4 +359,5 @@ const Graph<Type> &Graph<Type>::Graph::Rename(const Type &name, const Type &rena
     return *this;
 }
 
+
 #endif //GRAPH_GRAPH_INL

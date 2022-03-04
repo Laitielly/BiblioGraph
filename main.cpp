@@ -1,5 +1,6 @@
 #include "graph.h"
 #include <iostream>
+
 int main() {
     const Graph<char>a(AdjacencyList::LIST, {
             {'a', {'b','c'}},
@@ -13,7 +14,7 @@ int main() {
             {'m',{'n'}},
             {'n',{'m'}}
     });
-    std::cout << a.ConnectivityComponents() << a.Distance('a','n');
+    std::cout << a.ConnectivityComponents() << a.Distance('a','n') << a.EdgesNumber() << a.IsUndirected();
 
     return 0;
 }

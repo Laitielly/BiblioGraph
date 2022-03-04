@@ -9,14 +9,13 @@
 #include <queue>
 #include <list>
 
-
 enum class MatrixType {
     INCIDENCE,
-    ADJACENCY
+    ADJACENCY,
 };
 
 enum class AdjacencyList {
-    LIST
+    LIST,
 };
 
 template <typename Type>
