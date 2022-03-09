@@ -78,5 +78,5 @@ Graph<std::string>a(AdjacencyList::LIST,
 - `EdgesNumber` - выводит информацию о количество ребер
 - `PrintVertexDegree` - выводит степень передаваемой вершины
 - `Distance` - находит минимальное реберное расстояние от вершины, передаваемой первым параметром, до вершины, передаваемой вторым параметром
-- `WeakConnectivityComponents` - выводит компоненты слабой связности
-- `StrongConnectivityComponents` - выводит компоненты сильной связности
+- `WeakConnectivityComponents` - выводит компоненты слабой связности графа
+- `StrongConnectivityComponents` - выводит компоненты сильной связности графа
