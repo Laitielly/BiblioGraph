@@ -4,17 +4,18 @@
 int main() {
     const Graph<char>a(AdjacencyList::LIST, {
             {'a', {'b','c'}},
-            {'b',{'e'}},
-            {'c',{}},
-            {'e',{'f','g'}},
-            {'f',{'e'}},
-            {'g',{'e','m'}},
-            {'k',{}},
-            {'l',{}},
-            {'m',{'n'}},
-            {'n',{'m'}}
+            {'b',{'e','f','c'}},
+            {'c',{'d','g'}},
+            {'d',{'c','h'}},
+            {'e',{'a','f'}},
+            {'f',{'g'}},
+            {'g',{'f'}},
+            {'h',{'g','d'}}
     });
-    std::cout << a.ConnectivityComponents() << a.Distance('a','n') << a.EdgesNumber() << a.IsUndirected();
+    std::cout << a.IsUndirected() << a.EdgesNumber() << a.PrintSets() << a.Distance('a','h');
+    std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
+    std::cout << a.PrintAdjacencyList() << a.PrintVertexDegree('b');
+    std::cout << a.StrongConnectivityComponents() << a.WeakConnectivityComponents();
 
     return 0;
 }

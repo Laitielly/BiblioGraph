@@ -69,7 +69,7 @@ std::string Graph<Type>::Distance(const Type &start, const Type &end) const {
 }
 
 template<typename Type>
-std::vector<std::vector<int>> Graph<Type>::ConnectivityComponents_() const{
+std::vector<std::vector<int>> Graph<Type>::WeakConnectivityComponents_() const{
     std::vector<std::vector<int>> components;
     int size = m_adjacency_list.size();
     std::vector<int> used(m_adjacency_list.size(),-1);
@@ -99,11 +99,11 @@ std::vector<std::vector<int>> Graph<Type>::ConnectivityComponents_() const{
 }
 
 template<typename Type>
-std::string Graph<Type>::ConnectivityComponents() const{
+std::string Graph<Type>::WeakConnectivityComponents() const{
     std::stringstream buffer;
-    std::vector<std::vector<int>> components = ConnectivityComponents_();
+    std::vector<std::vector<int>> components = WeakConnectivityComponents_();
     int componentsCounter = components.size();
-    buffer << "The graph has " << componentsCounter <<" connectivity components:"<< std::endl;
+    buffer << "The graph has " << componentsCounter <<" weak connectivity components:"<< std::endl;
     for(int i=0; i<componentsCounter; ++i){
         int CurrentComponentCounter = components[i].size();
         buffer << i+1 <<": ";

@@ -33,7 +33,8 @@ private:
     bool CheckLoops_() const;
     int PrintVertexDegree_(const Type& name) const;
     std::list<int> Distance_(int start, int end) const;
-    std::vector<std::vector<int>>ConnectivityComponents_() const;
+    std::vector<std::vector<int>>WeakConnectivityComponents_() const;
+    std::vector<std::vector<int>>StrongConnectivityComponents_() const;
 public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
@@ -50,10 +51,13 @@ public:
     const Graph& Complement();
     std::string PrintVertexDegree(const Type& name) const;
     std::string Distance(const Type& start, const Type& end) const;
-    std::string ConnectivityComponents() const;
+    std::string WeakConnectivityComponents() const;
+    std::string StrongConnectivityComponents() const;
+
 };
 
 #include "graph.inl"
 #include "algorithms.inl"
 #include "bfs.inl"
+#include "dfs.inl"
 #endif //GRAPH_GRAPH_H

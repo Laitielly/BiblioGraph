@@ -4,6 +4,7 @@
 CMakeFiles/Graph.dir/main.cpp.obj: \
  ../algorithms.inl \
  ../bfs.inl \
+ ../dfs.inl \
  ../graph.h \
  ../graph.inl \
  ../main.cpp
