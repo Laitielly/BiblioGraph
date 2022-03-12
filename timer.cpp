@@ -9,7 +9,7 @@ double Timer::elapsed() const
 
 bool Timer::check() const
 {
-    if (this->elapsed() - (TimeLimit*1000) > eps)
+    if (this->elapsed() - (TimeLimit*100) > eps)
     {
         return true;
     }

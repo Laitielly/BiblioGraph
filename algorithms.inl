@@ -159,13 +159,11 @@ std::string Graph<Type>::SizeClique(int size) const {
     CliqueControl result = clique.Start(CliqueMethod::CliqueWithKey,size);
     if(result == CliqueControl::IsFind){
         std::vector<std::vector<int>> sizeClique = clique.TakeSizeClique();
-        int size_ = sizeClique.size();
-        buffer << "Maximum clique has size is equal to " << size_ <<"."<<std::endl;
-        buffer << "MaxClique = {";
-        int j=0;
         for(auto it: sizeClique) {
+            buffer << "Clique = {";
+            int j=0;
             for (auto iter: it) {
-                if (j != size_ - 1) {
+                if (j != size - 1) {
                     buffer << m_to_names.at(iter) << ", ";
                 } else {
                     buffer << m_to_names.at(iter) << "}.";
