@@ -8,6 +8,7 @@
 #include <sstream>
 #include <queue>
 #include <list>
+#include "clique.h"
 
 enum class MatrixType {
     INCIDENCE,
@@ -53,6 +54,8 @@ public:
     std::string Distance(const Type& start, const Type& end) const;
     std::string WeakConnectivityComponents() const;
     std::string StrongConnectivityComponents() const;
+    std::string MaxClique() const;
+    std::string SizeClique(int size) const;
 
 };
 

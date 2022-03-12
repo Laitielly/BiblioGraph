@@ -125,5 +125,61 @@ std::string Graph<Type>::VerticesNumber() const {
     return buffer.str();
 }
 
+template<typename Type>
+std::string Graph<Type>::MaxClique() const {
+    std::stringstream buffer;
+    GreedMaxClique clique(m_adjacency_matrix, m_edges);
+    CliqueControl result = clique.Start(CliqueMethod::MaxClique,0);
+    if(result == CliqueControl::IsFind){
+        std::list<int> maxClique = clique.TakeMaxClique();
+        int size = maxClique.size();
+        buffer << "Maximum clique has size is equal to " << size <<"."<<std::endl;
+        buffer << "MaxClique = {";
+        int j=0;
+        for (auto iter : maxClique)
+        {
+            if (j!=size - 1){
+                buffer << m_to_names.at(iter) << ", ";
+            } else {
+                buffer << m_to_names.at(iter) << "}.";
+            }
+            ++j;
+        }
+       buffer << std::endl;
+    }else if(result == CliqueControl::TimeLimit){
+        buffer << "it is impossible to find the maximum clique! Time limit!" << std::endl;
+    }
+    return buffer.str();
+}
+
+template<typename Type>
+std::string Graph<Type>::SizeClique(int size) const {
+    std::stringstream buffer;
+    GreedMaxClique clique(m_adjacency_matrix, m_edges);
+    CliqueControl result = clique.Start(CliqueMethod::CliqueWithKey,size);
+    if(result == CliqueControl::IsFind){
+        std::vector<std::vector<int>> sizeClique = clique.TakeSizeClique();
+        int size_ = sizeClique.size();
+        buffer << "Maximum clique has size is equal to " << size_ <<"."<<std::endl;
+        buffer << "MaxClique = {";
+        int j=0;
+        for(auto it: sizeClique) {
+            for (auto iter: it) {
+                if (j != size_ - 1) {
+                    buffer << m_to_names.at(iter) << ", ";
+                } else {
+                    buffer << m_to_names.at(iter) << "}.";
+                }
+                ++j;
+            }
+            buffer << std::endl;
+        }
+    }else if(result == CliqueControl::TimeLimit){
+        buffer << "it is impossible to find the maximum clique! Time limit!" << std::endl;
+    } else if(result == CliqueControl::CannotFind){
+        buffer << "Clique to size " << size << " doesn't exist!" << std::endl;
+    }
+    return buffer.str();
+}
 
 #endif //GRAPH_ALGORITHMS_INL
