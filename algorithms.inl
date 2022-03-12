@@ -160,16 +160,17 @@ std::string Graph<Type>::SizeClique(int size) const {
         CliqueControl result = clique.Start(CliqueMethod::CliqueWithKey, size);
         if (result == CliqueControl::IsFind) {
             std::vector<std::vector<int>> sizeClique = clique.TakeSizeClique();
-            for (auto it: sizeClique) {
-                buffer << "Clique = {";
-                int j = 0;
-                for (auto iter: it) {
-                    if (j != size - 1) {
-                        buffer << m_to_names.at(iter) << ", ";
+            int sizeClique_size = sizeClique.size();
+            buffer << "Cliques with size " << size << ":" <<std::endl;
+            for (int i=0; i<sizeClique_size; ++i) {
+                buffer << "Clique_"<< i+1 <<" = {";
+                int cur = sizeClique[i].size();
+                for (int j=0; j<cur; ++j) {
+                    if (j != cur-1) {
+                        buffer << m_to_names.at(sizeClique[i][j]) << ", ";
                     } else {
-                        buffer << m_to_names.at(iter) << "}.";
+                        buffer << m_to_names.at(sizeClique[i][j]) << "}.";
                     }
-                    ++j;
                 }
                 buffer << std::endl;
             }

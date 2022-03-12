@@ -3,10 +3,10 @@
 
 int main() {
         Graph<char> a(MatrixType::ADJACENCY,{
-            {0,0,0,0},
-            {0,0,0,1},
-            {0,0,1,0},
-            {0,0,0,0}
+            {1,1,1,1},
+            {1,1,1,1},
+            {1,1,1,1},
+            {1,1,1,1}
         },{'a','b','c','d'});
 //    std::cout << a.IsUndirected() << a.EdgesNumber() << a.PrintSets() << a.Distance('a','g');
 //    std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
