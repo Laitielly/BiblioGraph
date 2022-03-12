@@ -79,13 +79,16 @@ CliqueControl GreedMaxClique::CliqueWithSize(int k)
     std::vector<std::vector<int>> cliques;
 
     Timer time;
-    auto position = FindCliques2(-1, 1, k, sizemat, cliques, time);
+    auto position = FindCliques2(-1, 1, k, sizemat - 1, cliques, time);
 
     if (position == CliqueControl::IsFind && !cliques.empty())
     {
         cliquesizek = cliques;
     }
-
+    if (cliques.empty())
+    {
+        position = CliqueControl::CannotFind;
+    }
     return position;
 }
 

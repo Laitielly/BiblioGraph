@@ -154,6 +154,7 @@ std::string Graph<Type>::MaxClique() const {
 
 template<typename Type>
 std::string Graph<Type>::SizeClique(int size) const {
+
     std::stringstream buffer;
     GreedMaxClique clique(m_adjacency_matrix, m_edges);
     CliqueControl result = clique.Start(CliqueMethod::CliqueWithKey,size);
