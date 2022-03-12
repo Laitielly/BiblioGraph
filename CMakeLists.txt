@@ -3,4 +3,5 @@ project(Graph)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Graph main.cpp graph.h graph.inl algorithms.inl bfs.inl dfs.inl)
+add_executable(Graph main.cpp graph.h graph.inl algorithms.inl bfs.inl dfs.inl
+        clique.cpp clique.h cliquepar.cpp timer.cpp timer.h)
