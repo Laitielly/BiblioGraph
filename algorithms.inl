@@ -154,29 +154,32 @@ std::string Graph<Type>::MaxClique() const {
 
 template<typename Type>
 std::string Graph<Type>::SizeClique(int size) const {
-
     std::stringstream buffer;
-    GreedMaxClique clique(m_adjacency_matrix, m_edges);
-    CliqueControl result = clique.Start(CliqueMethod::CliqueWithKey,size);
-    if(result == CliqueControl::IsFind){
-        std::vector<std::vector<int>> sizeClique = clique.TakeSizeClique();
-        for(auto it: sizeClique) {
-            buffer << "Clique = {";
-            int j=0;
-            for (auto iter: it) {
-                if (j != size - 1) {
-                    buffer << m_to_names.at(iter) << ", ";
-                } else {
-                    buffer << m_to_names.at(iter) << "}.";
+    if (size >=1 && size <= m_vertices.size()) {
+        GreedMaxClique clique(m_adjacency_matrix, m_edges);
+        CliqueControl result = clique.Start(CliqueMethod::CliqueWithKey, size);
+        if (result == CliqueControl::IsFind) {
+            std::vector<std::vector<int>> sizeClique = clique.TakeSizeClique();
+            for (auto it: sizeClique) {
+                buffer << "Clique = {";
+                int j = 0;
+                for (auto iter: it) {
+                    if (j != size - 1) {
+                        buffer << m_to_names.at(iter) << ", ";
+                    } else {
+                        buffer << m_to_names.at(iter) << "}.";
+                    }
+                    ++j;
                 }
-                ++j;
+                buffer << std::endl;
             }
-            buffer << std::endl;
+        } else if (result == CliqueControl::TimeLimit) {
+            buffer << "it is impossible to find the maximum clique! Time limit!" << std::endl;
+        } else if (result == CliqueControl::CannotFind) {
+            buffer << "Clique to size " << size << " doesn't exist!" << std::endl;
         }
-    }else if(result == CliqueControl::TimeLimit){
-        buffer << "it is impossible to find the maximum clique! Time limit!" << std::endl;
-    } else if(result == CliqueControl::CannotFind){
-        buffer << "Clique to size " << size << " doesn't exist!" << std::endl;
+    } else{
+        buffer << "Clique with size " << size << " it cannot be in a graph with " << m_vertices.size() << " vertices!" << std::endl;
     }
     return buffer.str();
 }
