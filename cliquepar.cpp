@@ -62,6 +62,11 @@ CliqueControl GreedMaxClique::FindCliques2(const int i, const int l, const int s
         }
     }
 
+    if (cliques.empty())
+    {
+        return CliqueControl::CannotFind;
+    }
+
     return CliqueControl::IsFind;
 }
 
@@ -81,14 +86,11 @@ CliqueControl GreedMaxClique::CliqueWithSize(int k)
     Timer time;
     auto position = FindCliques2(-1, 1, k, sizemat - 1, cliques, time);
 
-    if (position == CliqueControl::IsFind && !cliques.empty())
+    if (position == CliqueControl::IsFind)
     {
         cliquesizek = cliques;
     }
-    if (cliques.empty() and position!=CliqueControl::TimeLimit)
-    {
-        position = CliqueControl::CannotFind;
-    }
+
     return position;
 }
 
