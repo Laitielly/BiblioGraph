@@ -85,7 +85,7 @@ CliqueControl GreedMaxClique::CliqueWithSize(int k)
     {
         cliquesizek = cliques;
     }
-    if (cliques.empty())
+    if (cliques.empty() and position!=CliqueControl::TimeLimit)
     {
         position = CliqueControl::CannotFind;
     }
