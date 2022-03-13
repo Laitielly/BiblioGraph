@@ -107,23 +107,10 @@ CliqueControl GreedMaxClique::Start(const CliqueMethod method, const int k)
 
 }
 
-void GreedMaxClique::Print()
-{
-
-    std::cout << std:: endl << "Cliques size k: " << cliquesizek.size() << std::endl;
-    for(int i = 0; i < cliquesizek.size(); ++i)
-    {
-        for(int j = 0; j < cliquesizek[i].size(); ++j)
-        {
-            std::cout<<cliquesizek[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-}
-
-GreedMaxClique::GreedMaxClique(std::vector<std::vector<int>> adjacency_matrix, std::vector<std::pair<int, int>> edg) {
+GreedMaxClique::GreedMaxClique(std::vector<std::vector<int>> adjacency_matrix, std::vector<std::pair<int, int>> edg, std::vector<std::vector<int>> adjacency_list) {
     m_adjacency_matrix = adjacency_matrix;
     edges=edg;
+    m_adjacency_list  = adjacency_list;
 }
 
 std::list<int> GreedMaxClique::TakeMaxClique() {

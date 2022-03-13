@@ -6,7 +6,7 @@
 #include <iostream>
 #include <chrono>
 #include <cmath>
-#include "Timer.h"
+#include "timer.h"
 
 enum class CliqueControl {
     TimeLimit,
@@ -14,16 +14,21 @@ enum class CliqueControl {
     IsFind
 };
 
-
 enum class CliqueMethod {
     MaxClique,
     CliqueWithKey
+};
+
+enum class CyclicityResult {
+    HasCycle,
+    NoneCycle
 };
 
 class GreedMaxClique {
 private:
     std::vector<std::vector<int>> m_adjacency_matrix;
     std::vector<std::pair<int,int>> edges;
+    std::vector<std::vector<int>> m_adjacency_list;
 
     std::vector<int> degree;
     std::vector<int> store;
@@ -32,7 +37,7 @@ private:
     std::vector<std::vector<int>> cliquesizek;
 
 public:
-    GreedMaxClique(std::vector<std::vector<int>> adjacency_matrix, std::vector<std::pair<int,int>> edg);
+    GreedMaxClique(std::vector<std::vector<int>> adjacency_matrix, std::vector<std::pair<int,int>> edg, std::vector<std::vector<int>> adjacency_list);
     friend class Timer;
 
     CliqueControl Start(const CliqueMethod method, const int k);
@@ -49,12 +54,13 @@ public:
 
     CliqueControl FindCliques2(const int i, const int l, const int s, size_t size, std::vector<std::vector<int>> &cliques, Timer &time);
 
-    void Print();
-
-    void ConvertNumbersToVerticles();
-
     std::list<int> TakeMaxClique();
+
     std::vector<std::vector<int>> TakeSizeClique();
+
+    CyclicityResult Cyclicity();
+
+    CyclicityResult dfs(int vertex, bool *used, int parent);
 
 };
 

@@ -128,7 +128,7 @@ std::string Graph<Type>::VerticesNumber() const {
 template<typename Type>
 std::string Graph<Type>::MaxClique() const {
     std::stringstream buffer;
-    GreedMaxClique clique(m_adjacency_matrix, m_edges);
+    GreedMaxClique clique(m_adjacency_matrix, m_edges, m_adjacency_list);
     CliqueControl result = clique.Start(CliqueMethod::MaxClique,0);
     if(result == CliqueControl::IsFind){
         std::list<int> maxClique = clique.TakeMaxClique();
@@ -156,7 +156,7 @@ template<typename Type>
 std::string Graph<Type>::SizeClique(int size) const {
     std::stringstream buffer;
     if (size >=1 && size <= m_vertices.size()) {
-        GreedMaxClique clique(m_adjacency_matrix, m_edges);
+        GreedMaxClique clique(m_adjacency_matrix, m_edges, m_adjacency_list);
         CliqueControl result = clique.Start(CliqueMethod::CliqueWithKey, size);
         if (result == CliqueControl::IsFind) {
             std::vector<std::vector<int>> sizeClique = clique.TakeSizeClique();
@@ -181,6 +181,19 @@ std::string Graph<Type>::SizeClique(int size) const {
         }
     } else{
         buffer << "Clique with size " << size << " it cannot be in a graph with " << m_vertices.size() << " vertices!" << std::endl;
+    }
+    return buffer.str();
+}
+
+template<typename Type>
+std::string Graph<Type>::Cyclicity() const {
+    std::stringstream buffer;
+    GreedMaxClique clique(m_adjacency_matrix, m_edges, m_adjacency_list);
+    CyclicityResult result = clique.Cyclicity();
+    if(result == CyclicityResult::HasCycle){
+        buffer << "This graph has cycle" <<std::endl;
+    }else if(result == CyclicityResult::NoneCycle){
+        buffer << "This graph hasn't cycle" << std::endl;
     }
     return buffer.str();
 }

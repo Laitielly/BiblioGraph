@@ -56,6 +56,7 @@ public:
     std::string StrongConnectivityComponents() const;
     std::string MaxClique() const;
     std::string SizeClique(int size) const;
+    std::string Cyclicity() const;
 
 };
 
