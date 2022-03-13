@@ -1,5 +1,5 @@
 #include "clique.h"
-#include "Timer.h"
+#include "timer.h"
 
 CliqueControl GreedMaxClique::FindClique(std::list<int> &clique)
 {

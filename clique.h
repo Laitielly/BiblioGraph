@@ -36,8 +36,11 @@ private:
     std::list<int> maxclique;
     std::vector<std::vector<int>> cliquesizek;
 
+    std::vector<std::vector<int>> cycleparam;
+
 public:
     GreedMaxClique(std::vector<std::vector<int>> adjacency_matrix, std::vector<std::pair<int,int>> edg, std::vector<std::vector<int>> adjacency_list);
+
     friend class Timer;
 
     CliqueControl Start(const CliqueMethod method, const int k);
@@ -60,7 +63,19 @@ public:
 
     CyclicityResult Cyclicity();
 
-    CyclicityResult dfs(int vertex, bool *used, int parent);
+    CyclicityResult dfs(const int vertex, bool *used, const int parent);
+
+    CyclicityResult CyclicitySize(const int n);
+
+    void countCycles(const int n);
+
+    void DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap);
+
+    void Check(std::vector<int> gap);
+
+    bool Compare(const std::vector<int>& cycle, const std::vector<int>& gap);
+
+    std::vector<std::vector<int>> TakeSizeCycle();
 
 };
 

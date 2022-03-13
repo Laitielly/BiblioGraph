@@ -188,12 +188,40 @@ std::string Graph<Type>::SizeClique(int size) const {
 template<typename Type>
 std::string Graph<Type>::Cyclicity() const {
     std::stringstream buffer;
-    GreedMaxClique clique(m_adjacency_matrix, m_edges, m_adjacency_list);
-    CyclicityResult result = clique.Cyclicity();
+    GreedMaxClique cycle(m_adjacency_matrix, m_edges, m_adjacency_list);
+    CyclicityResult result = cycle.Cyclicity();
     if(result == CyclicityResult::HasCycle){
         buffer << "This graph has cycle" <<std::endl;
     }else if(result == CyclicityResult::NoneCycle){
-        buffer << "This graph hasn't cycle" << std::endl;
+        buffer << "This graph hasn't cycling" << std::endl;
+    }
+    return buffer.str();
+}
+
+template<typename Type>
+std::string Graph<Type>::CyclicityParameter(const int n) const {
+    std::stringstream buffer;
+    GreedMaxClique cycle(m_adjacency_matrix, m_edges, m_adjacency_list);
+    CyclicityResult result = cycle.CyclicitySize(n);
+    if(result == CyclicityResult::HasCycle){
+        buffer << "This graph has cycle of size " << n << std::endl;
+        std::vector<std::vector<int>> cycles = cycle.TakeSizeCycle();
+        int sizeCycle_size = cycles.size();
+
+        for (int i=0; i<sizeCycle_size; ++i) {
+            buffer << "Cycle "<< i+1 <<" = {";
+            int cur = cycles[i].size();
+            for (int j=0; j<cur; ++j) {
+                if (j != cur-1) {
+                    buffer << m_to_names.at(cycles[i][j]) << ", ";
+                } else {
+                    buffer << m_to_names.at(cycles[i][j]) << "}.";
+                }
+            }
+            buffer << std::endl;
+        }
+    }else if(result == CyclicityResult::NoneCycle){
+        buffer << "This graph has no cycles of size " << n << std::endl;
     }
     return buffer.str();
 }

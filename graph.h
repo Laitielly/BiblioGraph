@@ -57,6 +57,7 @@ public:
     std::string MaxClique() const;
     std::string SizeClique(int size) const;
     std::string Cyclicity() const;
+    std::string CyclicityParameter(const int n) const;
 
 };
 
