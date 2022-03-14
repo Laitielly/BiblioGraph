@@ -26,7 +26,7 @@ int main() {
 //    std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
 //    std::cout << a.PrintAdjacencyList() << a.PrintVertexDegree(4);
 //    std::cout << a.StrongConnectivityComponents() << a.WeakConnectivityComponents();
-//    std::cout << a.SizeClique(13);
-    std::cout << a.CyclicityParameter(5);
+//    std::cout << a.MaxClique();
+      std::cout << a.CyclicityParameter(5);
     return 0;
 }

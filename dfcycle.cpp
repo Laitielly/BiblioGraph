@@ -54,10 +54,15 @@ void GreedMaxClique::Check(std::vector<int> gap)
     cycleparam.push_back(gap);
 }
 
-void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap)
+void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap, const class Timer &time)
 {
     marked[vert] = true;
     gap.push_back(vert);
+
+    if (time.check())
+    {
+        return;
+    }
 
     if (n == 0)
     {
@@ -78,41 +83,53 @@ void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int s
     {
         if (!marked[i] && m_adjacency_matrix[vert][i])
         {
-            DFS(marked, n - 1, i, start, gap);
+            DFS(marked, n - 1, i, start, gap, time);
+        }
+
+        if (time.check())
+        {
+            return;
         }
     }
 
     marked[vert] = false;
     gap.erase(gap.end()-1);
+
+    if (time.check())
+    {
+        return;
+    }
 }
 
-void GreedMaxClique::countCycles(const int n)
+CyclicityResult GreedMaxClique::CyclicitySize(const int n)
 {
+    Timer time;
+
     size_t size = m_adjacency_matrix.size();
     bool marked[size];
     memset(marked, 0, sizeof(marked));
     std::vector<int> gap;
 
     for (int i = 0; i < size - (n - 1); i++) {
-        DFS(marked, n - 1, i, i, gap);
+        DFS(marked, n - 1, i, i, gap, time);
         marked[i] = true;
         gap.clear();
-    }
-}
 
-CyclicityResult GreedMaxClique::CyclicitySize(const int n)
-{
-    countCycles(n);
+        if (time.check())
+        {
+            return CyclicityResult::TimeLimit;
+        }
+    }
 
     if (cycleparam.empty())
     {
         return CyclicityResult::NoneCycle;
     }
-
     return CyclicityResult::HasCycle;
 }
 
-std::vector<std::vector<int>> GreedMaxClique::TakeSizeCycle() {
+std::vector<std::vector<int>> GreedMaxClique::TakeSizeCycle()
+{
     return cycleparam;
 }
 

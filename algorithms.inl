@@ -220,8 +220,10 @@ std::string Graph<Type>::CyclicityParameter(const int n) const {
             }
             buffer << std::endl;
         }
-    }else if(result == CyclicityResult::NoneCycle){
+    } else if(result == CyclicityResult::NoneCycle){
         buffer << "This graph has no cycles of size " << n << std::endl;
+    } else if (result == CyclicityResult::TimeLimit) {
+        buffer << "Sorry, it takes a lot of time to find the cycles of size " << n << std::endl;
     }
     return buffer.str();
 }

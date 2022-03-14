@@ -21,7 +21,8 @@ enum class CliqueMethod {
 
 enum class CyclicityResult {
     HasCycle,
-    NoneCycle
+    NoneCycle,
+    TimeLimit
 };
 
 class GreedMaxClique {
@@ -67,9 +68,7 @@ public:
 
     CyclicityResult CyclicitySize(const int n);
 
-    void countCycles(const int n);
-
-    void DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap);
+    void DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap, const class Timer &time);
 
     void Check(std::vector<int> gap);
 

@@ -12,7 +12,7 @@ private:
     using second_t = std::chrono::duration<double, std::ratio<1> >;
 
     std::chrono::time_point<clock_t> m_beg;
-    double TimeLimit = 0.1;
+    double TimeLimit = 10;
     double eps = 0.0001;
 
 public:
