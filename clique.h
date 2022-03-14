@@ -7,6 +7,7 @@
 #include <chrono>
 #include <cmath>
 #include <algorithm>
+#include <cstring>
 #include "timer.h"
 
 enum class CliqueControl {
