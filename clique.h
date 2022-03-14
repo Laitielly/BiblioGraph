@@ -6,6 +6,7 @@
 #include <iostream>
 #include <chrono>
 #include <cmath>
+#include <algorithm>
 #include "timer.h"
 
 enum class CliqueControl {
@@ -72,7 +73,7 @@ public:
 
     void Check(std::vector<int> gap);
 
-    bool Compare(const std::vector<int>& cycle, const std::vector<int>& gap);
+    static bool Compare(const std::vector<int>& cycle, const std::vector<int>& gap);
 
     std::vector<std::vector<int>> TakeSizeCycle();
 
