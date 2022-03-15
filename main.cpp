@@ -17,6 +17,6 @@ int main() {
     std::cout << a.StrongConnectivityComponents() << a.WeakConnectivityComponents();
     std::cout << a.MaxClique() << a.SizeClique(3);
     std::cout << a.FindCycles() << a.FindCyclesSize(3);
-
+    
     return 0;
 }

@@ -213,12 +213,9 @@ std::string Graph<Type>::FindCyclesSize(const int n) const {
                 buffer << i + 1 << ": ";
                 int cur = cycles[i].size();
                 for (int j = 0; j < cur; ++j) {
-                    if (j != cur - 1) {
-                        buffer << m_to_names.at(cycles[i][j]) << ", ";
-                    } else {
-                        buffer << m_to_names.at(cycles[i][j]) ;
-                    }
+                        buffer << m_to_names.at(cycles[i][j]) << " -> ";
                 }
+                buffer << m_to_names.at(cycles[i][0]);
                 buffer << std::endl;
             }
         } else if (result == CyclicityResult::NoneCycle) {
