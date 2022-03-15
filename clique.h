@@ -70,9 +70,9 @@ public:
 
     CyclicityResult CyclicitySize(const int n);
 
-    void DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap, const class Timer &time);
+    void DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap, const class Timer &time, std::vector<std::vector<int>> &copymain);
 
-    void Check(std::vector<int> gap);
+    void Check(const std::vector<int> &gap, std::vector<std::vector<int>> &copymain);
 
     static bool Compare(const std::vector<int>& cycle, const std::vector<int>& gap);
 

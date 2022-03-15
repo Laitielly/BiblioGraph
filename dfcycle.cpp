@@ -38,23 +38,25 @@ bool GreedMaxClique::Compare(const std::vector<int>& cycle, const std::vector<in
     return true;
 }
 
-void GreedMaxClique::Check(std::vector<int> gap)
+void GreedMaxClique::Check(const std::vector<int> &gap, std::vector<std::vector<int>> &copymain)
 {
-    std::sort(gap.begin(), gap.end());
+    std::vector<int> copygap = gap;
+    std::sort(copygap.begin(), copygap.end());
     size_t size = cycleparam.size();
 
     for(int i = 0; i < size; ++i)
     {
-        if (Compare(cycleparam[i],gap))
+        if (Compare(copymain[i],copygap))
         {
             return;
         }
     }
 
+    copymain.push_back(copygap);
     cycleparam.push_back(gap);
 }
 
-void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap, const class Timer &time)
+void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap, const class Timer &time, std::vector<std::vector<int>> &copymain)
 {
     marked[vert] = true;
     gap.push_back(vert);
@@ -69,7 +71,7 @@ void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int s
         marked[vert] = false;
         if (m_adjacency_matrix[vert][start])
         {
-            Check(gap);
+            Check(gap, copymain);
             gap.erase(gap.end() - 1);
             return;
         } else {
@@ -83,7 +85,7 @@ void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int s
     {
         if (!marked[i] && m_adjacency_matrix[vert][i])
         {
-            DFS(marked, n - 1, i, start, gap, time);
+            DFS(marked, n - 1, i, start, gap, time, copymain);
         }
 
         if (time.check())
@@ -109,9 +111,10 @@ CyclicityResult GreedMaxClique::CyclicitySize(const int n)
     bool marked[size];
     memset(marked, 0, sizeof(marked));
     std::vector<int> gap;
+    std::vector<std::vector<int>> copymain;
 
     for (int i = 0; i < size - (n - 1); i++) {
-        DFS(marked, n - 1, i, i, gap, time);
+        DFS(marked, n - 1, i, i, gap, time, copymain);
         marked[i] = true;
         gap.clear();
 
