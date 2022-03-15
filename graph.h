@@ -55,9 +55,9 @@ public:
     std::string WeakConnectivityComponents() const;
     std::string StrongConnectivityComponents() const;
     std::string MaxClique() const;
-    std::string SizeClique(int size) const;
-    std::string Cyclicity() const;
-    std::string CyclicityParameter(const int n) const;
+    std::string SizeClique(const int size) const;
+    std::string FindCycles() const;
+    std::string FindCyclesSize (const int n) const;
 
 };
 

@@ -153,7 +153,7 @@ std::string Graph<Type>::MaxClique() const {
 }
 
 template<typename Type>
-std::string Graph<Type>::SizeClique(int size) const {
+std::string Graph<Type>::SizeClique(const int size) const {
     std::stringstream buffer;
     if (size >=1 && size <= m_vertices.size()) {
         GreedMaxClique clique(m_adjacency_matrix, m_edges, m_adjacency_list);
@@ -163,13 +163,13 @@ std::string Graph<Type>::SizeClique(int size) const {
             int sizeClique_size = sizeClique.size();
             buffer << "Cliques with size " << size << ":" <<std::endl;
             for (int i=0; i<sizeClique_size; ++i) {
-                buffer << "Clique_"<< i+1 <<" = {";
+                buffer << i+1 <<": ";
                 int cur = sizeClique[i].size();
                 for (int j=0; j<cur; ++j) {
                     if (j != cur-1) {
                         buffer << m_to_names.at(sizeClique[i][j]) << ", ";
                     } else {
-                        buffer << m_to_names.at(sizeClique[i][j]) << "}.";
+                        buffer << m_to_names.at(sizeClique[i][j]) ;
                     }
                 }
                 buffer << std::endl;
@@ -186,44 +186,55 @@ std::string Graph<Type>::SizeClique(int size) const {
 }
 
 template<typename Type>
-std::string Graph<Type>::Cyclicity() const {
+std::string Graph<Type>::FindCycles() const {
     std::stringstream buffer;
     GreedMaxClique cycle(m_adjacency_matrix, m_edges, m_adjacency_list);
     CyclicityResult result = cycle.Cyclicity();
     if(result == CyclicityResult::HasCycle){
-        buffer << "This graph has cycle" <<std::endl;
+        buffer << "This graph has cycles." <<std::endl;
     }else if(result == CyclicityResult::NoneCycle){
-        buffer << "This graph hasn't cycling" << std::endl;
+        buffer << "This graph hasn't cycles!" << std::endl;
     }
     return buffer.str();
 }
 
 template<typename Type>
-std::string Graph<Type>::CyclicityParameter(const int n) const {
+std::string Graph<Type>::FindCyclesSize(const int n) const {
     std::stringstream buffer;
-    GreedMaxClique cycle(m_adjacency_matrix, m_edges, m_adjacency_list);
-    CyclicityResult result = cycle.CyclicitySize(n);
-    if(result == CyclicityResult::HasCycle){
-        buffer << "This graph has cycle of size " << n << std::endl;
-        std::vector<std::vector<int>> cycles = cycle.TakeSizeCycle();
-        int sizeCycle_size = cycles.size();
+    if (n >=3 && n <= m_vertices.size()) {
+        GreedMaxClique cycle(m_adjacency_matrix, m_edges, m_adjacency_list);
+        CyclicityResult result = cycle.CyclicitySize(n);
+        if (result == CyclicityResult::HasCycle) {
+            buffer << "This graph has cycles of size " << n <<":" << std::endl;
+            std::vector<std::vector<int>> cycles = cycle.TakeSizeCycle();
+            int sizeCycle_size = cycles.size();
 
-        for (int i=0; i<sizeCycle_size; ++i) {
-            buffer << "Cycle "<< i+1 <<" = {";
-            int cur = cycles[i].size();
-            for (int j=0; j<cur; ++j) {
-                if (j != cur-1) {
-                    buffer << m_to_names.at(cycles[i][j]) << ", ";
-                } else {
-                    buffer << m_to_names.at(cycles[i][j]) << "}.";
+            for (int i = 0; i < sizeCycle_size; ++i) {
+                buffer << i + 1 << ": ";
+                int cur = cycles[i].size();
+                for (int j = 0; j < cur; ++j) {
+                    if (j != cur - 1) {
+                        buffer << m_to_names.at(cycles[i][j]) << ", ";
+                    } else {
+                        buffer << m_to_names.at(cycles[i][j]) ;
+                    }
                 }
+                buffer << std::endl;
             }
-            buffer << std::endl;
+        } else if (result == CyclicityResult::NoneCycle) {
+            buffer << "This graph has no cycles of size " << n << ":"<< std::endl;
+        } else if (result == CyclicityResult::TimeLimit) {
+            buffer << "it is impossible to find cycles of size " << n << " Time limit!" << std::endl;
         }
-    } else if(result == CyclicityResult::NoneCycle){
-        buffer << "This graph has no cycles of size " << n << std::endl;
-    } else if (result == CyclicityResult::TimeLimit) {
-        buffer << "Sorry, it takes a lot of time to find the cycles of size " << n << std::endl;
+    }else{
+        if (m_adjacency_matrix.size()<3){
+            buffer << "There can be no cycles in a graph with " << m_adjacency_matrix.size() <<" vertices." << std::endl;
+        }else if(m_adjacency_matrix.size()==3){
+            buffer << "A cycles in a graph with 3 vertices can only have length 3." << std::endl;
+        }else {
+            buffer << "Cycles in a graph with " << m_adjacency_matrix.size() << " vertices can have a length from 3 to "
+                   << m_adjacency_matrix.size() << "." << std::endl;
+        }
     }
     return buffer.str();
 }

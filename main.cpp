@@ -2,31 +2,21 @@
 #include <iostream>
 
 int main() {
-    Graph<int>a(MatrixType::ADJACENCY,{
-                        {0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1},
-                        {1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1},
-                        {1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1},
-                        {1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1},
-                        {1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1},
-                        {0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1},
-                        {1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1},
-                        {1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1},
-                        {1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1},
-                        {1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1},
-                        {1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1},
-                        {1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1},
-                        {0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1},
-                        {1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1},
-                        {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0},
-                        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0}
-
+    const Graph<std::string>a(MatrixType::ADJACENCY,{
+                        {0,0,1,1,1},
+                        {1,0,0,0,1},
+                        {1,1,1,0,0},
+                        {1,0,1,0,1},
+                        {0,0,1,0,1}
                 },
-                {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16});
-//    std::cout << a.IsUndirected() << a.EdgesNumber() << a.PrintSets() << a.Distance(4,9);
-//    std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
-//    std::cout << a.PrintAdjacencyList() << a.PrintVertexDegree(4);
-//    std::cout << a.StrongConnectivityComponents() << a.WeakConnectivityComponents();
-//    std::cout << a.MaxClique();
-      std::cout << a.CyclicityParameter(5);
+                {"a","b","c","d","e"});
+
+    std::cout << a.IsUndirected() << a.EdgesNumber() << a.PrintSets() << a.Distance("a","d");
+    std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
+    std::cout << a.PrintAdjacencyList() << a.PrintVertexDegree("e");
+    std::cout << a.StrongConnectivityComponents() << a.WeakConnectivityComponents();
+    std::cout << a.MaxClique() << a.SizeClique(3);
+    std::cout << a.FindCycles() << a.FindCyclesSize(3);
+
     return 0;
 }
