@@ -16,7 +16,7 @@ private:
     double eps = 0.0001;
 
 public:
-    Timer();
+    void StartTimer();
 
     double elapsed() const;
 

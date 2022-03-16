@@ -3,8 +3,7 @@
 
 CliqueControl GreedMaxClique::FindClique(std::list<int> &clique)
 {
-    Timer time;
-
+    this -> StartTimer();
     size_t size = m_adjacency_matrix.size(), maxcliq = 0;
     std::list<int> maxclique;
 
@@ -16,7 +15,7 @@ CliqueControl GreedMaxClique::FindClique(std::list<int> &clique)
         {
             if (VertexInClique(i, clique))
             {
-                if (time.check())
+                if (this -> check())
                 {
                     return CliqueControl::TimeLimit;
                 }
@@ -29,7 +28,7 @@ CliqueControl GreedMaxClique::FindClique(std::list<int> &clique)
             {
                 if (m_adjacency_matrix[i][*iter])
                 {
-                    if (time.check())
+                    if (this -> check())
                     {
                         return CliqueControl::TimeLimit;
                     }
@@ -45,7 +44,7 @@ CliqueControl GreedMaxClique::FindClique(std::list<int> &clique)
                 clique.push_back(i);
             }
 
-            if (time.check())
+            if (this -> check())
             {
                 return CliqueControl::TimeLimit;
             }

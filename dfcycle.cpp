@@ -56,12 +56,12 @@ void GreedMaxClique::Check(const std::vector<int> &gap, std::vector<std::vector<
     cycleparam.push_back(gap);
 }
 
-void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap, const class Timer &time, std::vector<std::vector<int>> &copymain)
+void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap, std::vector<std::vector<int>> &copymain)
 {
     marked[vert] = true;
     gap.push_back(vert);
 
-    if (time.check())
+    if (this -> check())
     {
         return;
     }
@@ -85,10 +85,10 @@ void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int s
     {
         if (!marked[i] && m_adjacency_matrix[vert][i])
         {
-            DFS(marked, n - 1, i, start, gap, time, copymain);
+            DFS(marked, n - 1, i, start, gap, copymain);
         }
 
-        if (time.check())
+        if (this -> check())
         {
             return;
         }
@@ -97,7 +97,7 @@ void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int s
     marked[vert] = false;
     gap.erase(gap.end()-1);
 
-    if (time.check())
+    if (this -> check())
     {
         return;
     }
@@ -105,7 +105,7 @@ void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int s
 
 CyclicityResult GreedMaxClique::CyclicitySize(const int n)
 {
-    Timer time;
+    this -> StartTimer();
 
     size_t size = m_adjacency_matrix.size();
     bool marked[size];
@@ -114,11 +114,11 @@ CyclicityResult GreedMaxClique::CyclicitySize(const int n)
     std::vector<std::vector<int>> copymain;
 
     for (int i = 0; i < size - (n - 1); i++) {
-        DFS(marked, n - 1, i, i, gap, time, copymain);
+        DFS(marked, n - 1, i, i, gap, copymain);
         marked[i] = true;
         gap.clear();
 
-        if (time.check())
+        if (this -> check())
         {
             return CyclicityResult::TimeLimit;
         }

@@ -29,7 +29,7 @@ std::vector<int> GreedMaxClique::ConvertToVector(int n)
 
 }
 
-CliqueControl GreedMaxClique::FindCliques2(const int i, const int l, const int s, size_t size, std::vector<std::vector<int>> &cliques, Timer &time)
+CliqueControl GreedMaxClique::FindCliques2(const int i, const int l, const int s, size_t size, std::vector<std::vector<int>> &cliques)
 {
     for (int j = i + 1; j <= size - (s - l); j++)
     {
@@ -41,12 +41,12 @@ CliqueControl GreedMaxClique::FindCliques2(const int i, const int l, const int s
             {
                 if (l < s)
                 {
-                    if (time.check())
+                    if (this -> check())
                     {
                         return CliqueControl::TimeLimit;
                     }
 
-                    FindCliques2(j, l + 1, s, size, cliques, time);
+                    FindCliques2(j, l + 1, s, size, cliques);
                 }
 
                 else
@@ -56,7 +56,7 @@ CliqueControl GreedMaxClique::FindCliques2(const int i, const int l, const int s
             }
         }
 
-        if (time.check())
+        if (this -> check())
         {
             return CliqueControl::TimeLimit;
         }
@@ -83,8 +83,8 @@ CliqueControl GreedMaxClique::CliqueWithSize(int k)
 
     std::vector<std::vector<int>> cliques;
 
-    Timer time;
-    auto position = FindCliques2(-1, 1, k, sizemat - 1, cliques, time);
+    this -> StartTimer();
+    auto position = FindCliques2(-1, 1, k, sizemat - 1, cliques);
 
     if (position == CliqueControl::IsFind)
     {

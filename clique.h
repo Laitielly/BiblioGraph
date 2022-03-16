@@ -27,7 +27,8 @@ enum class CyclicityResult {
     TimeLimit
 };
 
-class GreedMaxClique {
+class GreedMaxClique : public Timer
+        {
 private:
     std::vector<std::vector<int>> m_adjacency_matrix;
     std::vector<std::pair<int,int>> edges;
@@ -44,8 +45,6 @@ private:
 public:
     GreedMaxClique(std::vector<std::vector<int>> adjacency_matrix, std::vector<std::pair<int,int>> edg, std::vector<std::vector<int>> adjacency_list);
 
-    friend class Timer;
-
     CliqueControl Start(const CliqueMethod method, const int k);
 
     CliqueControl FindClique(std::list<int> &clique);
@@ -58,7 +57,7 @@ public:
 
     std::vector<int> ConvertToVector(const int n);
 
-    CliqueControl FindCliques2(const int i, const int l, const int s, size_t size, std::vector<std::vector<int>> &cliques, Timer &time);
+    CliqueControl FindCliques2(const int i, const int l, const int s, size_t size, std::vector<std::vector<int>> &cliques);
 
     std::list<int> TakeMaxClique();
 
@@ -70,7 +69,7 @@ public:
 
     CyclicityResult CyclicitySize(const int n);
 
-    void DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap, const class Timer &time, std::vector<std::vector<int>> &copymain);
+    void DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap, std::vector<std::vector<int>> &copymain);
 
     void Check(const std::vector<int> &gap, std::vector<std::vector<int>> &copymain);
 
