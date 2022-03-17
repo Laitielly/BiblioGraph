@@ -59,7 +59,7 @@ public:
     std::string SizeClique(const int size) const;
     std::string FindCycles() const;
     std::string FindCyclesSize (const int n) const;
-    std::string Excentricity(const Type &name) const;
+    std::string Eccentricity(const Type &name) const;
 
 };
 
@@ -67,5 +67,5 @@ public:
 #include "algorithms.inl"
 #include "bfs.inl"
 #include "dfs.inl"
-#include "ecceniticity.inl"
+#include "eccenticity.inl"
 #endif //GRAPH_GRAPH_H

@@ -1,5 +1,5 @@
-#ifndef GRAPH_ECCENTICITY_INL
-#define GRAPH_ECCENTICITY_INL
+#ifndef GRAPH_ECCENTRICITY_INL
+#define GRAPH_ECCENTRICITY_INL
 #include "graph.h"
 
 template<typename Type>
@@ -32,7 +32,7 @@ int Graph<Type>::Eccentricity_(int name) const
 }
 
 template<typename Type>
-std::string Graph<Type>::Excentricity(const Type &name) const
+std::string Graph<Type>::Eccentricity(const Type &name) const
 {
     if(m_to_numbers.find(name)!=m_to_numbers.end()){
         std::cout << "The eccentricity of the vertex " << name << " is equal to " << Eccentricity_(m_to_numbers.at(name));
@@ -42,4 +42,4 @@ std::string Graph<Type>::Excentricity(const Type &name) const
     }
 }
 
-#endif
+#endif //GRAPH_ECCENTRICITY_INL
