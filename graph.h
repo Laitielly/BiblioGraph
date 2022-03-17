@@ -60,7 +60,8 @@ public:
     std::string FindCycles() const;
     std::string FindCyclesSize (const int n) const;
     std::string Eccentricity(const Type &name) const;
-
+    std::string FindDiameter() const;
+    std::string FindRadius() const;
 };
 
 #include "graph.inl"

@@ -221,7 +221,7 @@ std::string Graph<Type>::FindCyclesSize(const int n) const {
         } else if (result == CyclicityResult::NoneCycle) {
             buffer << "This graph has no cycles of size " << n << ":"<< std::endl;
         } else if (result == CyclicityResult::TimeLimit) {
-            buffer << "it is impossible to find cycles of size " << n << " Time limit!" << std::endl;
+            buffer << "It is impossible to find cycles of size " << n << ". Time limit!" << std::endl;
         }
     }else{
         if (m_adjacency_matrix.size()<3){
@@ -235,5 +235,6 @@ std::string Graph<Type>::FindCyclesSize(const int n) const {
     }
     return buffer.str();
 }
+
 
 #endif //GRAPH_ALGORITHMS_INL
