@@ -36,6 +36,7 @@ private:
     std::list<int> Distance_(int start, int end) const;
     std::vector<std::vector<int>>WeakConnectivityComponents_() const;
     std::vector<std::vector<int>>StrongConnectivityComponents_() const;
+    int Eccentricity_(int name) const;
 public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
@@ -58,6 +59,7 @@ public:
     std::string SizeClique(const int size) const;
     std::string FindCycles() const;
     std::string FindCyclesSize (const int n) const;
+    std::string Excentricity(const Type &name) const;
 
 };
 
@@ -65,4 +67,5 @@ public:
 #include "algorithms.inl"
 #include "bfs.inl"
 #include "dfs.inl"
+#include "ecceniticity.inl"
 #endif //GRAPH_GRAPH_H
