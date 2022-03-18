@@ -62,7 +62,7 @@ std::string Graph<Type>::FindDiameter() const {
         }
     }
 
-    buffer << "The diameter of the graph is equal to " << exx << ".";
+    buffer << "The diameter of the graph is equal to " << exx << "." << std::endl;
     return buffer.str();
 }
 
@@ -72,17 +72,17 @@ std::string Graph<Type>::FindRadius() const {
 
     std::pair<int, std::vector<int>> exx = FindRadius_();
 
-    buffer << "The radius of the graph is equal to " << exx.first << ".";
+    buffer << "The radius of the graph is equal to " << exx.first << "." << std::endl;
     return buffer.str();
 }
 
 template<typename Type>
-std::string Graph<Type>::GiveCentralVerticles() const {
+std::string Graph<Type>::FindCentralVertices() const {
     std::stringstream buffer;
     std::pair<int, std::vector<int>> exx = FindRadius_();
     size_t size = exx.second.size();
 
-    buffer << "The central vertices of the graph: {";
+    buffer << "The central vertices of the graph: ";
     std::list<int> add;
 
     for(int i = 0; i < size; ++i)
@@ -107,7 +107,7 @@ std::string Graph<Type>::GiveCentralVerticles() const {
         ++i;
     }
 
-    buffer << "}" << std::endl;
+    buffer << std::endl;
 
     return buffer.str();
 }

@@ -63,7 +63,7 @@ public:
     std::string Eccentricity(const Type &name) const;
     std::string FindDiameter() const;
     std::string FindRadius() const;
-    std::string GiveCentralVerticles() const;
+    std::string FindCentralVertices() const;
 };
 
 #include "graph.inl"

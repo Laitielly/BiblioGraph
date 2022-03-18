@@ -18,7 +18,10 @@ int main() {
 //    std::cout << a.StrongConnectivityComponents() << a.WeakConnectivityComponents();
 //    std::cout << a.MaxClique() << a.SizeClique(3);
 //    std::cout << a.FindCycles() << a.FindCyclesSize(3);
-    std::cout << a.GiveCentralVerticles();
+    std::cout << a.FindCentralVertices();
+    std::cout << a.FindDiameter();
+    std::cout << a.FindRadius();
+    std::cout << a.Eccentricity("f");
     
     return 0;
 }
