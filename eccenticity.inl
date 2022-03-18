@@ -40,7 +40,7 @@ std::string Graph<Type>::Eccentricity(const Type &name) const
         buffer << "The eccentricity of the vertex " << name << " is equal to " << Eccentricity_(m_to_numbers.at(name)) << ".";
     }
     else{
-        buffer << "There is no vertex with name " << name << std::endl;
+        buffer << "There is no vertex with name " << name << "!" << std::endl;
     }
 
     return buffer.str();
