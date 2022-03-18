@@ -21,7 +21,7 @@ int main() {
     std::cout << a.FindCentralVertices();
     std::cout << a.FindDiameter();
     std::cout << a.FindRadius();
-    std::cout << a.Eccentricity("f");
+    std::cout << a.PrintVertexDegree("g");
     
     return 0;
 }
