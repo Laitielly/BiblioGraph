@@ -70,12 +70,58 @@ template<typename Type>
 std::string Graph<Type>::FindRadius() const {
     std::stringstream buffer;
 
+    std::pair<int, std::vector<int>> exx = FindRadius_();
+
+    buffer << "The radius of the graph is equal to " << exx.first << ".";
+    return buffer.str();
+}
+
+template<typename Type>
+std::string Graph<Type>::GiveCentralVerticles() const {
+    std::stringstream buffer;
+    std::pair<int, std::vector<int>> exx = FindRadius_();
+    size_t size = exx.second.size();
+
+    buffer << "The central vertices of the graph: {";
+    std::list<int> add;
+
+    for(int i = 0; i < size; ++i)
+    {
+        if (exx.second[i] == exx.first)
+        {
+            add.push_back(i);
+        }
+    }
+
+    int i = 0;
+    size = add.size();
+    for(auto &item : add)
+    {
+        buffer << m_to_names.at(item);
+
+        if (i != size - 1)
+        {
+            buffer << ", ";
+        }
+
+        ++i;
+    }
+
+    buffer << "}" << std::endl;
+
+    return buffer.str();
+}
+
+template<typename Type>
+std::pair<int, std::vector<int>> Graph<Type>::FindRadius_() const {
     size_t size = m_adjacency_matrix.size();
+    std::vector<int> ecc;
     int exx = 0, parameter = 0;
 
     exx = Eccentricity_(0);
     for (int i = 1; i < size; ++i){
         parameter = Eccentricity_(i);
+        ecc.push_back(parameter);
 
         if (parameter < exx)
         {
@@ -83,8 +129,7 @@ std::string Graph<Type>::FindRadius() const {
         }
     }
 
-    buffer << "The radius of the graph is equal to " << exx << ".";
-    return buffer.str();
+    return std::pair<int, std::vector<int>>(exx, ecc);
 }
 
 #endif //GRAPH_ECCENTRICITY_INL

@@ -37,6 +37,7 @@ private:
     std::vector<std::vector<int>>WeakConnectivityComponents_() const;
     std::vector<std::vector<int>>StrongConnectivityComponents_() const;
     int Eccentricity_(int name) const;
+    std::pair<int, std::vector<int>> FindRadius_() const;
 public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
@@ -62,6 +63,7 @@ public:
     std::string Eccentricity(const Type &name) const;
     std::string FindDiameter() const;
     std::string FindRadius() const;
+    std::string GiveCentralVerticles() const;
 };
 
 #include "graph.inl"
