@@ -7,7 +7,7 @@ CyclicityResult GreedMaxClique::dfs(const int vertex, bool used[], const int par
     {
         if (!used[neighbor])
             return dfs(neighbor, used,vertex);
-        else if(neighbor != parent)
+        else if(neighbor != parent && parent != -1)
         {
             return CyclicityResult::HasCycle;
         }

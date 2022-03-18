@@ -19,6 +19,11 @@ enum class AdjacencyList {
     LIST,
 };
 
+enum class Tree {
+    IsTree,
+    NotTree
+};
+
 template <typename Type>
 class Graph{
 private:
@@ -38,6 +43,7 @@ private:
     std::vector<std::vector<int>>StrongConnectivityComponents_() const;
     int Eccentricity_(int name) const;
     std::pair<int, std::vector<int>> FindRadius_() const;
+    Tree CheckOnTrees_() const;
 public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
@@ -64,6 +70,7 @@ public:
     std::string FindDiameter() const;
     std::string FindRadius() const;
     std::string FindCentralVertices() const;
+    std::string CheckOnTrees() const;
 };
 
 #include "graph.inl"
@@ -71,4 +78,5 @@ public:
 #include "bfs.inl"
 #include "dfs.inl"
 #include "eccenticity.inl"
+#include "tree.inl"
 #endif //GRAPH_GRAPH_H

@@ -107,7 +107,7 @@ std::string Graph<Type>::FindCentralVertices() const {
         ++i;
     }
 
-    buffer << std::endl;
+    buffer << "." << std::endl;
 
     return buffer.str();
 }
