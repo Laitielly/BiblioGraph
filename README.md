@@ -90,3 +90,4 @@ Graph<std::string>a(AdjacencyList::LIST,
 - `FindDiameter` - находит диаметр графа
 - `FindRadius` - находит радиус графа
 - `FindCentralVertices` - находит центральные вершины графа
+- `IsTree` - проверяет является ли граф деревом

@@ -2,12 +2,12 @@
 #include <iostream>
 
 int main() {
-    const Graph<int>a(MatrixType::ADJACENCY,{
-            {0, 1, 1, 1},
-            {1, 0, 1, 1},
-            {1, 1, 0, 1},
-            {1, 1, 1, 0}
-                }, {1,2,3,4});
+    const Graph<char>a(AdjacencyList::LIST,{
+                    {'a',{'b','c'}},
+                    {'b',{'a'}},
+                    {'c',{'a','d'}},
+                    {'d',{'c'}}
+                });
 
 //    std::cout << a.IsUndirected() << a.EdgesNumber() << a.PrintSets() << a.Distance("a","d");
 //    std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
@@ -19,7 +19,7 @@ int main() {
 //    std::cout << a.FindDiameter();
 //    std::cout << a.FindRadius();
 //    std::cout << a.Eccentricity("e");
-      std::cout << a.CheckOnTrees();
+      std::cout << a.IsTree();
     
     return 0;
 }

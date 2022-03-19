@@ -43,7 +43,7 @@ private:
     std::vector<std::vector<int>>StrongConnectivityComponents_() const;
     int Eccentricity_(int name) const;
     std::pair<int, std::vector<int>> FindRadius_() const;
-    Tree CheckOnTrees_() const;
+    Tree IsTree_() const;
 public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
@@ -70,7 +70,7 @@ public:
     std::string FindDiameter() const;
     std::string FindRadius() const;
     std::string FindCentralVertices() const;
-    std::string CheckOnTrees() const;
+    std::string IsTree() const;
 };
 
 #include "graph.inl"
