@@ -3,6 +3,47 @@
 #include "graph.h"
 
 template<typename Type>
+std::vector<int> Graph<Type>::OptimalColoring_() const {
+    size_t size = m_adjacency_matrix.size();
+    std::vector<int> result(size,-1);
+    std::vector<bool> available(size, false);
+    int j = 0;
+
+    result[0]  = 0;
+    for (int i = 1; i < size; i++)
+    {
+        for (auto l : m_adjacency_list[i])
+        {
+            if (result[l] != -1)
+            {
+                available[result[l]] = true;
+            }
+        }
+
+        for (j = 0; j < size; j++)
+        {
+            if (!available[j])
+            {
+                break;
+            }
+        }
+
+        result[i] = j;
+        j = 0;
+
+        for (auto l : m_adjacency_list[i])
+        {
+            if (result[l] != -1)
+            {
+                available[result[l]] = false;
+            }
+        }
+    }
+
+    return result;
+}
+
+template<typename Type>
 bool Graph<Type>::IsBipartite_() const {
     size_t size = m_adjacency_matrix.size();
     std::vector<int> color(size, -1);
@@ -52,6 +93,57 @@ std::string Graph<Type>::IsBipartite() const {
         buffer << "This graph is bipartite!" << std::endl;
     } else {
         buffer << "This graph is not bipartite!" << std::endl;
+    }
+
+    return buffer.str();
+}
+
+template<typename Type>
+std::string Graph<Type>::OptimalColoring() const {
+    std::stringstream buffer;
+
+    if (IsBipartite_())
+    {
+        buffer << "This graph is bipartite, so it has optimal color equal to 2." << std::endl;
+    } else {
+        auto result = OptimalColoring_();
+        size_t size = result.size(), sizel = 0;
+        std::vector<std::vector<int>> res;
+        std::vector<int> vec;
+        std::vector<bool> used(size, false);
+
+        for (auto i : result)
+        {
+            if (used[i])
+            {
+                continue;
+            }
+            for(int j = 0; j < size; ++j)
+            {
+
+                if(result[j] == i)
+                {
+                    vec.push_back(j);
+                }
+            }
+
+            res.push_back(vec);
+            vec.clear();
+            used[i] = true;
+        }
+
+        size = res.size();
+        buffer << "Total colors turned out " << size << "." << std::endl;
+        for(int i = 0; i < size; ++i)
+        {
+            sizel = res[i].size();
+            buffer << "You can color this vertices using one colour(" << i << "): " << res[i][0];
+            for(int j = 1; j < sizel; ++j)
+            {
+                buffer << ", " << res[i][j];
+            }
+            buffer << "." << std::endl;
+        }
     }
 
     return buffer.str();

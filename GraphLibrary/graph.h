@@ -45,6 +45,7 @@ private:
     std::pair<int, std::vector<int>> FindRadius_() const;
     Tree IsTree_() const;
     bool IsBipartite_() const;
+    std::vector<int> OptimalColoring_() const;
 public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
@@ -75,6 +76,7 @@ public:
     std::string MaxIndependentSet() const;
     std::string IndependentSetSize (const int n) const;
     std::string IsBipartite() const;
+    std::string OptimalColoring() const;
 };
 
 #include "graph.inl"
