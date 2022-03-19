@@ -43,7 +43,7 @@ int main() {
 //    std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
 //    std::cout << a.PrintAdjacencyList() << a.PrintVertexDegree(Point(1,1));
 //    std::cout << a.StrongConnectivityComponents() << a.WeakConnectivityComponents();
-    std::cout << a.MaxClique() << a.SizeClique(2);
+      std::cout << a.MaxClique() << a.SizeClique(2);
 //    std::cout << a.FindCycles() << a.FindCyclesSize(3);
 //    std::cout << a.FindCentralVertices();
 //    std::cout << a.FindDiameter();

@@ -26,7 +26,7 @@ CliqueControl GreedMaxClique::FindClique(std::list<int> &clique)
             bool isNext = true;
             for (auto iter = clique.begin(); iter != clique.end(); iter++)
             {
-                if (m_adjacency_matrix[i][*iter])
+                if (m_adjacency_matrix[i][*iter] && m_adjacency_matrix[*iter][i])
                 {
                     if (this -> check())
                     {
@@ -63,7 +63,7 @@ CliqueControl GreedMaxClique::FindClique(std::list<int> &clique)
     maxclique.sort();
     clique = maxclique;
 
-    if (clique.size() <= 1)
+    if (clique.size() <= 3)
     {
         return CliqueControl::CannotFind;
     }
@@ -99,11 +99,7 @@ CliqueControl GreedMaxClique::Start(const CliqueMethod method, const int k)
         return status;
     }
 
-    else if (method == CliqueMethod::CliqueWithKey)
-    {
-        return CliqueWithSize(k);
-    }
-
+    return CliqueWithSize(k);
 }
 
 GreedMaxClique::GreedMaxClique(std::vector<std::vector<int>> adjacency_matrix, std::vector<std::pair<int, int>> edg, std::vector<std::vector<int>> adjacency_list) {
