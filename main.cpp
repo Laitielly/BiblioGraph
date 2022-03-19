@@ -34,16 +34,17 @@ int main() {
 //    std::cout << a.IndependentSetSize(9);
 
     const Graph<char> a(MatrixType::ADJACENCY, {
-            {0, 0, 0},
-            {0, 0, 0},
-            {0, 1, 0}
+                                {0, 1, 0, 1},
+                                {1, 0, 1, 0},
+                                {0, 1, 0, 1},
+                                {1, 0, 1, 0}
     },
-                         {'a','b','c'});
+                         {'a','b','c','d'});
 //    std::cout << a.IsUndirected() << a.EdgesNumber() << a.PrintSets() << a.Distance(Point(1,1),Point(3,4));
 //    std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
 //    std::cout << a.PrintAdjacencyList() << a.PrintVertexDegree(Point(1,1));
 //    std::cout << a.StrongConnectivityComponents() << a.WeakConnectivityComponents();
-      std::cout << a.MaxClique() << a.SizeClique(2);
+//      std::cout << a.MaxClique() << a.SizeClique(2);
 //    std::cout << a.FindCycles() << a.FindCyclesSize(3);
 //    std::cout << a.FindCentralVertices();
 //    std::cout << a.FindDiameter();
@@ -57,5 +58,6 @@ int main() {
 //    std::cout << a.IndependentSetSize(3);
 //    std::cout << a.IndependentSetSize(4);
 //    std::cout << a.IndependentSetSize(9);
+std::cout << a.IsBipartite();
     return 0;
 }

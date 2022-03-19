@@ -74,6 +74,7 @@ public:
     std::string IsTree() const;
     std::string MaxIndependentSet() const;
     std::string IndependentSetSize (const int n) const;
+    std::string IsBipartite() const;
 };
 
 #include "graph.inl"
