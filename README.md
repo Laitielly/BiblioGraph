@@ -91,3 +91,5 @@ Graph<std::string>a(AdjacencyList::LIST,
 - `FindRadius` - находит радиус графа
 - `FindCentralVertices` - находит центральные вершины графа
 - `IsTree` - проверяет является ли граф деревом
+- `MaxIndependentSet` - находит максимальное независимое множество в графе
+- `IndependentSetSize` - находит все независимые множества размера, переданного параметром

@@ -177,7 +177,7 @@ std::string Graph<Type>::SizeClique(const int size) const {
         } else if (result == CliqueControl::TimeLimit) {
             buffer << "it is impossible to find the maximum clique! Time limit!" << std::endl;
         } else if (result == CliqueControl::CannotFind) {
-            buffer << "Clique to size " << size << " doesn't exist!" << std::endl;
+            buffer << "Clique with size " << size << " doesn't exist!" << std::endl;
         }
     } else{
         buffer << "Clique with size " << size << " it cannot be in a graph with " << m_vertices.size() << " vertices!" << std::endl;
@@ -219,7 +219,7 @@ std::string Graph<Type>::FindCyclesSize(const int n) const {
                 buffer << std::endl;
             }
         } else if (result == CyclicityResult::NoneCycle) {
-            buffer << "This graph has no cycles of size " << n << ":"<< std::endl;
+            buffer << "This graph has no cycles of size " << n << "."<< std::endl;
         } else if (result == CyclicityResult::TimeLimit) {
             buffer << "It is impossible to find cycles of size " << n << ". Time limit!" << std::endl;
         }

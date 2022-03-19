@@ -71,6 +71,8 @@ public:
     std::string FindRadius() const;
     std::string FindCentralVertices() const;
     std::string IsTree() const;
+    std::string MaxIndependentSet() const;
+    std::string IndependentSetSize (const int n) const;
 };
 
 #include "graph.inl"
@@ -79,4 +81,5 @@ public:
 #include "dfs.inl"
 #include "eccenticity.inl"
 #include "tree.inl"
+#include "independence.inl"
 #endif //GRAPH_GRAPH_H

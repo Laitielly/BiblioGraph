@@ -37,7 +37,7 @@ std::string Graph<Type>::Eccentricity(const Type &name) const
     std::stringstream buffer;
 
     if(m_to_numbers.find(name)!=m_to_numbers.end()){
-        buffer << "The eccentricity of the vertex " << name << " is equal to " << Eccentricity_(m_to_numbers.at(name)) << ".";
+        buffer << "The eccentricity of the vertex " << name << " is equal to " << Eccentricity_(m_to_numbers.at(name)) << "." << std::endl;
     }
     else{
         buffer << "There is no vertex with name " << name << "!" << std::endl;
@@ -131,5 +131,6 @@ std::pair<int, std::vector<int>> Graph<Type>::FindRadius_() const {
 
     return std::pair<int, std::vector<int>>(exx, ecc);
 }
+
 
 #endif //GRAPH_ECCENTRICITY_INL
