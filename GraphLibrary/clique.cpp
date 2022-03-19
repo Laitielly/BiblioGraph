@@ -63,11 +63,6 @@ CliqueControl GreedMaxClique::FindClique(std::list<int> &clique)
     maxclique.sort();
     clique = maxclique;
 
-    if (clique.size() <= 3)
-    {
-        return CliqueControl::CannotFind;
-    }
-
     return  CliqueControl::IsFind;
 }
 
