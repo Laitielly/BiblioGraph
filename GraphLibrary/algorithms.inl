@@ -149,7 +149,7 @@ std::string Graph<Type>::MaxClique() const {
     }else if(result == CliqueControl::TimeLimit){
         buffer << "It is impossible to find the maximum clique! Time limit!" << std::endl;
     }
-    
+
     return buffer.str();
 }
 

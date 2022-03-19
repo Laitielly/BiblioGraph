@@ -132,5 +132,4 @@ std::pair<int, std::vector<int>> Graph<Type>::FindRadius_() const {
     return std::pair<int, std::vector<int>>(exx, ecc);
 }
 
-
 #endif //GRAPH_ECCENTRICITY_INL

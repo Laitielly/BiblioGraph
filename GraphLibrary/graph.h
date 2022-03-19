@@ -44,6 +44,7 @@ private:
     int Eccentricity_(int name) const;
     std::pair<int, std::vector<int>> FindRadius_() const;
     Tree IsTree_() const;
+    bool IsBipartite_() const;
 public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
@@ -82,4 +83,5 @@ public:
 #include "eccenticity.inl"
 #include "tree.inl"
 #include "independence.inl"
+#include "coloring.inl"
 #endif //GRAPH_GRAPH_H
