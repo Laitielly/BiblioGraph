@@ -13,17 +13,17 @@ int main() {
                     {'g',{'e','h','d'}}
                 });
 
-//    std::cout << a.IsUndirected() << a.EdgesNumber() << a.PrintSets() << a.Distance('a','b');
-//    std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
-//    std::cout << a.PrintAdjacencyList() << a.PrintVertexDegree('c');
-//    std::cout << a.StrongConnectivityComponents() << a.WeakConnectivityComponents();
-//    std::cout << a.MaxClique() << a.SizeClique(3);
-//    std::cout << a.FindCycles() << a.FindCyclesSize(3);
-//    std::cout << a.FindCentralVertices();
-//    std::cout << a.FindDiameter();
-//    std::cout << a.FindRadius();
-//    std::cout << a.Eccentricity('b');
-//    std::cout << a.IsTree();
+    std::cout << a.IsUndirected() << a.EdgesNumber() << a.PrintSets() << a.Distance('a','b');
+    std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
+    std::cout << a.PrintAdjacencyList() << a.PrintVertexDegree('c');
+    std::cout << a.StrongConnectivityComponents() << a.WeakConnectivityComponents();
+    std::cout << a.MaxClique() << a.SizeClique(3);
+    std::cout << a.FindCycles() << a.FindCyclesSize(3);
+    std::cout << a.FindCentralVertices();
+    std::cout << a.FindDiameter();
+    std::cout << a.FindRadius();
+    std::cout << a.Eccentricity('b');
+    std::cout << a.IsTree();
     std::cout << a.MaxIndependentSet();
     std::cout << a.IndependentSetSize(0);
     std::cout << a.IndependentSetSize(1);
