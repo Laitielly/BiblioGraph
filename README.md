@@ -5,7 +5,7 @@
 add_subdirectory(GraphLibrary)
 target_link_libraries(ProjectName GraphLibrary)
 ```
-- Подключите файл **graph.h** в тот файл, где вы собираетесь использовать библиотеку. Пример:
+- Подключите файл **graph.h** к тому файлу, в котором вы собираетесь использовать библиотеку. Пример:
 ```C++
 #include "graph.h"
 ```
