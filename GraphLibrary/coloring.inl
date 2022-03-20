@@ -44,9 +44,8 @@ std::vector<int> Graph<Type>::OptimalColoring_() const {
 }
 
 template<typename Type>
-bool Graph<Type>::IsBipartite_() const {
+bool Graph<Type>::IsBipartite_(std::vector<int> &color) const {
     size_t size = m_adjacency_matrix.size();
-    std::vector<int> color(size, -1);
 
     std::queue<std::pair<int, int>> q;
 
@@ -87,10 +86,39 @@ bool Graph<Type>::IsBipartite_() const {
 template<typename Type>
 std::string Graph<Type>::IsBipartite() const {
     std::stringstream buffer;
+    size_t size = m_adjacency_matrix.size();
+    std::vector<int> color(size,-1);
 
-    if (IsBipartite_())
+    if (IsBipartite_(color))
     {
-        buffer << "This graph is bipartite!" << std::endl;
+        buffer << "This graph is bipartite! It divides into 2 parts:" << std::endl << "1. ";
+
+        std::pair<std::vector<int>, std::vector<int>> bipar;
+        for(int i = 0; i < size; ++i)
+        {
+            if(!color[i])
+            {
+                bipar.first.push_back(i);
+                continue;
+            }
+
+            bipar.second.push_back(i);
+        }
+
+        size = bipar.first.size();
+        buffer << bipar.first[0];
+        for(int i = 1; i < size; ++i)
+        {
+            buffer << ", " << bipar.first[i];
+        }
+        buffer << "." << std::endl << "2. " << bipar.second[0];
+
+        size = bipar.second.size();
+        for(int i = 1; i < size; ++i)
+        {
+            buffer << ", " << bipar.second[i];
+        }
+        buffer << "." << std::endl;
     } else {
         buffer << "This graph is not bipartite!" << std::endl;
     }
@@ -101,8 +129,10 @@ std::string Graph<Type>::IsBipartite() const {
 template<typename Type>
 std::string Graph<Type>::OptimalColoring() const {
     std::stringstream buffer;
+    size_t size = m_adjacency_matrix.size();
+    std::vector<int> color(size,-1);
 
-    if (IsBipartite_())
+    if (IsBipartite_(color))
     {
         buffer << "This graph is bipartite, so it has optimal color equal to 2." << std::endl;
     } else {

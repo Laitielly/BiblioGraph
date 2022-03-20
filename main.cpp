@@ -3,17 +3,17 @@
 #include <iostream>
 
 int main() {
-    const Graph<int>a(AdjacencyList::LIST,{
-                    {1,{2,5}},
-                    {2,{1,3,4,5}},
-                    {3,{2,4,6,8}},
-                    {4,{2,3,5,6,7}},
-                    {5,{1,2,4,7}},
-                    {6,{3,4,7,8,9}},
-                    {7,{4,5,6,9}},
-                    {8,{3,6,9}},
-                    {9,{6,7,8}}
-                });
+//    const Graph<int>a(AdjacencyList::LIST,{
+//                    {1,{2,5}},
+//                    {2,{1,3,4,5}},
+//                    {3,{2,4,6,8}},
+//                    {4,{2,3,5,6,7}},
+//                    {5,{1,2,4,7}},
+//                    {6,{3,4,7,8,9}},
+//                    {7,{4,5,6,9}},
+//                    {8,{3,6,9}},
+//                    {9,{6,7,8}}
+//                });
 //
 //    std::cout << a.IsUndirected() << a.EdgesNumber() << a.PrintSets() << a.Distance('a','b');
 //    std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
@@ -34,13 +34,13 @@ int main() {
 //    std::cout << a.IndependentSetSize(4);
 //    std::cout << a.IndependentSetSize(9);
 //
-//    const Graph<char> a(MatrixType::ADJACENCY, {
-//                                {0, 1, 0, 1},
-//                                {1, 0, 1, 0},
-//                                {0, 1, 0, 1},
-//                                {1, 0, 1, 0}
-//    },
-//                         {'a','b','c','d'});
+    const Graph<char> a(MatrixType::ADJACENCY, {
+                                {0, 1, 0, 1},
+                                {1, 0, 1, 0},
+                                {0, 1, 0, 1},
+                                {1, 0, 1, 0}
+    },
+                         {'a','b','c','d'});
 //    std::cout << a.IsUndirected() << a.EdgesNumber() << a.PrintSets() << a.Distance(Point(1,1),Point(3,4));
 //    std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
 //    std::cout << a.PrintAdjacencyList() << a.PrintVertexDegree(Point(1,1));
@@ -59,7 +59,7 @@ int main() {
 //    std::cout << a.IndependentSetSize(3);
 //    std::cout << a.IndependentSetSize(4);
 //    std::cout << a.IndependentSetSize(9);
-std::cout << a.OptimalColoring();
+std::cout << a.IsBipartite();
 
     return 0;
 }

@@ -44,7 +44,7 @@ private:
     int Eccentricity_(int name) const;
     std::pair<int, std::vector<int>> FindRadius_() const;
     Tree IsTree_() const;
-    bool IsBipartite_() const;
+    bool IsBipartite_(std::vector<int> &color) const;
     std::vector<int> OptimalColoring_() const;
 public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
