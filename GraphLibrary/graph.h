@@ -77,6 +77,7 @@ public:
     std::string IndependentSetSize (const int n) const;
     std::string IsBipartite() const;
     std::string OptimalColoring() const;
+    std::string IsEulerGraph() const;
 };
 
 #include "graph.inl"
@@ -87,4 +88,5 @@ public:
 #include "tree.inl"
 #include "independence.inl"
 #include "coloring.inl"
+#include "euler.inl"
 #endif //GRAPH_GRAPH_H

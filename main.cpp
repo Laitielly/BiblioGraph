@@ -45,7 +45,7 @@ int main() {
     std::cout << a.VerticesNumber() << a.CheckLoops() << a.PrintAdjacencyMatrix() << a.PrintIncidenceMatrix();
     std::cout << a.PrintAdjacencyList();
     std::cout << a.StrongConnectivityComponents() << a.WeakConnectivityComponents();
-      std::cout << a.MaxClique() << a.SizeClique(2);
+    std::cout << a.MaxClique() << a.SizeClique(2);
     std::cout << a.FindCycles() << a.FindCyclesSize(3);
     std::cout << a.FindCentralVertices();
     std::cout << a.FindDiameter();
@@ -59,6 +59,7 @@ int main() {
     std::cout << a.IndependentSetSize(4);
     std::cout << a.IndependentSetSize(9);
     std::cout << a.IsBipartite() << a.OptimalColoring();
+    std::cout << a.IsEulerGraph();
 
     return 0;
 }

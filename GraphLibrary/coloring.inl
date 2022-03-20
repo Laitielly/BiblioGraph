@@ -111,14 +111,14 @@ std::string Graph<Type>::IsBipartite() const {
         {
             buffer << ", " << m_to_names.at(bipar.first[i]);
         }
-        buffer << "." << std::endl << "2. " << m_to_names.at(bipar.second[0]);
+        buffer  << std::endl << "2. " << m_to_names.at(bipar.second[0]);
 
         size = bipar.second.size();
         for(int i = 1; i < size; ++i)
         {
             buffer << ", " << m_to_names.at(bipar.second[i]);
         }
-        buffer << "." << std::endl;
+        buffer  << std::endl;
     } else {
         buffer << "This graph is not bipartite!" << std::endl;
     }
@@ -154,14 +154,14 @@ std::string Graph<Type>::OptimalColoring() const {
         {
             buffer << ", " << m_to_names.at(bipar.first[i]);
         }
-        buffer << "." << std::endl << "2. " << m_to_names.at(bipar.second[0]);
+        buffer  << std::endl << "2. " << m_to_names.at(bipar.second[0]);
 
         size = bipar.second.size();
         for(int i = 1; i < size; ++i)
         {
             buffer << ", " << m_to_names.at(bipar.second[i]);
         }
-        buffer << "." << std::endl;
+        buffer  << std::endl;
     } else {
         auto result = OptimalColoring_();
         size_t size = result.size(), sizel = 0;
@@ -199,7 +199,7 @@ std::string Graph<Type>::OptimalColoring() const {
             {
                 buffer << ", " << m_to_names.at(res[i][j]);
             }
-            buffer << "." << std::endl;
+            buffer << std::endl;
         }
     }
 
