@@ -5,7 +5,7 @@
 template<typename Type>
 std::string Graph<Type>::IsEulerGraph() const {
     std::stringstream buffer;
-
+    
     return buffer.str();
 }
 
