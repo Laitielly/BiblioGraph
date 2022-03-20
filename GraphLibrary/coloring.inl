@@ -106,17 +106,17 @@ std::string Graph<Type>::IsBipartite() const {
         }
 
         size = bipar.first.size();
-        buffer << bipar.first[0];
+        buffer << m_to_names.at(bipar.first[0]);
         for(int i = 1; i < size; ++i)
         {
-            buffer << ", " << bipar.first[i];
+            buffer << ", " << m_to_names.at(bipar.first[i]);
         }
-        buffer << "." << std::endl << "2. " << bipar.second[0];
+        buffer << "." << std::endl << "2. " << m_to_names.at(bipar.second[0]);
 
         size = bipar.second.size();
         for(int i = 1; i < size; ++i)
         {
-            buffer << ", " << bipar.second[i];
+            buffer << ", " << m_to_names.at(bipar.second[i]);
         }
         buffer << "." << std::endl;
     } else {
@@ -134,7 +134,34 @@ std::string Graph<Type>::OptimalColoring() const {
 
     if (IsBipartite_(color))
     {
-        buffer << "This graph is bipartite, so it has optimal color equal to 2." << std::endl;
+        buffer << "This graph is bipartite, so it has optimal color equal to 2:" << std::endl << "1. ";
+
+        std::pair<std::vector<int>, std::vector<int>> bipar;
+        for(int i = 0; i < size; ++i)
+        {
+            if(!color[i])
+            {
+                bipar.first.push_back(i);
+                continue;
+            }
+
+            bipar.second.push_back(i);
+        }
+
+        size = bipar.first.size();
+        buffer << m_to_names.at(bipar.first[0]);
+        for(int i = 1; i < size; ++i)
+        {
+            buffer << ", " << m_to_names.at(bipar.first[i]);
+        }
+        buffer << "." << std::endl << "2. " << m_to_names.at(bipar.second[0]);
+
+        size = bipar.second.size();
+        for(int i = 1; i < size; ++i)
+        {
+            buffer << ", " << m_to_names.at(bipar.second[i]);
+        }
+        buffer << "." << std::endl;
     } else {
         auto result = OptimalColoring_();
         size_t size = result.size(), sizel = 0;
@@ -167,10 +194,10 @@ std::string Graph<Type>::OptimalColoring() const {
         for(int i = 0; i < size; ++i)
         {
             sizel = res[i].size();
-            buffer << "You can color this vertices using one colour(" << i << "): " << res[i][0];
+            buffer << "You can color this vertices using one colour(" << i << "): " << m_to_names.at(res[i][0]);
             for(int j = 1; j < sizel; ++j)
             {
-                buffer << ", " << res[i][j];
+                buffer << ", " << m_to_names.at(res[i][j]);
             }
             buffer << "." << std::endl;
         }
