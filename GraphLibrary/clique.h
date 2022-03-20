@@ -67,7 +67,7 @@ public:
 
     CyclicityResult CyclicitySize(const int n);
 
-    void DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap, std::vector<std::vector<int>> &copymain);
+    void DFS(std::vector<bool> &marked, const int n, const int vert, const int start, std::vector<int> &gap, std::vector<std::vector<int>> &copymain);
 
     void Check(const std::vector<int> &gap, std::vector<std::vector<int>> &copymain);
 
