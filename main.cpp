@@ -59,7 +59,7 @@ int main() {
 //    std::cout << a.IndependentSetSize(3);
 //    std::cout << a.IndependentSetSize(4);
 //    std::cout << a.IndependentSetSize(9);
-std::cout << a.IsBipartite();
+    std::cout << a.IsBipartite();
 
     return 0;
 }
