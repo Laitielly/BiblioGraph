@@ -56,7 +56,7 @@ void GreedMaxClique::Check(const std::vector<int> &gap, std::vector<std::vector<
     cycleparam.push_back(gap);
 }
 
-void GreedMaxClique::DFS(bool marked[], const int n, const int vert, const int start, std::vector<int> &gap, std::vector<std::vector<int>> &copymain)
+void GreedMaxClique::DFS(std::vector<bool> &marked, const int n, const int vert, const int start, std::vector<int> &gap, std::vector<std::vector<int>> &copymain)
 {
     marked[vert] = true;
     gap.push_back(vert);
@@ -108,8 +108,7 @@ CyclicityResult GreedMaxClique::CyclicitySize(const int n)
     this -> StartTimer();
 
     size_t size = m_adjacency_matrix.size();
-    bool marked[size];
-    memset(marked, 0, sizeof(marked));
+    std::vector<bool> marked(size, false);
     std::vector<int> gap;
     std::vector<std::vector<int>> copymain;
 

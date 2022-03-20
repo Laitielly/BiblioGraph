@@ -59,6 +59,7 @@ int main() {
     std::cout << a.IndependentSetSize(4);
     std::cout << a.IndependentSetSize(9);
     std::cout << a.IsBipartite() << a.OptimalColoring();
+    std::cout << a.Eccentricity(Point(1,1));
 
     return 0;
 }
