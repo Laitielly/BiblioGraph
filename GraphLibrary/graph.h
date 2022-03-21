@@ -48,12 +48,8 @@ private:
     std::vector<int> OptimalColoring_() const;
     bool IsEulerGraph_() const;
     void DfsForEuler(int i, std::vector<bool> &visited, const size_t size) const;
-//    std::vector<int> IsGamilgton_() const;
-//    void SwapHamilton(int i, std::vector<int> &q) const;
-//    void ChangeVectorToTop(std::vector<int> &q) const;
     bool IsSafe(int v, std::vector<int> &path, int pos) const;
-    bool hamCycle_() const;
-    bool hamCycleUtil(std::vector<int> &path, int pos) const;
+    bool HamCycleUtil(std::vector<int> &path, int pos) const;
 public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
@@ -86,9 +82,7 @@ public:
     std::string IsBipartite() const;
     std::string OptimalColoring() const;
     std::string IsEulerGraph() const;
-    std::string IsGamilgton() const;
-    //void printSolution(int path[]);
-    std::string hamCycle () const;
+    std::string HamCycle () const;
 };
 
 #include "graph.inl"
