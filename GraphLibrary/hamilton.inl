@@ -36,17 +36,17 @@ bool Graph<Type>::HamiltonGraph_(std::vector<int> &path, int pos) const
 }
 
 template<typename Type>
-std::string Graph<Type>::HamiltonGraph() const{
+std::string Graph<Type>::IsHamiltonGraph() const{
     size_t size = m_adjacency_matrix.size();
     std::vector<int> path(size, -1);
     path[0] = 0;
 
     std::stringstream buffer;
     if(HamiltonGraph_(path, 1)){
-        buffer << "There is Hamilton cycle!";
+        buffer << "This graph has a Hamilton cycle.";
     }
     else {
-        buffer << "There is no Hamilton cycle." << std::endl;
+        buffer << "This graph has not a Hamilton cycle!" << std::endl;
     }
     return buffer.str();
 }

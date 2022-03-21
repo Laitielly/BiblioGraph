@@ -35,13 +35,13 @@ bool Graph<Type>::EulerGraph_() const {
 }
 
 template<typename Type>
-std::string Graph<Type>::EulerGraph() const {
+std::string Graph<Type>::IsEulerGraph() const {
     std::stringstream buffer;
     if (EulerGraph_()){
         buffer << "This graph has an Euler cycle." << std::endl;
     }
     else {
-        buffer << "There is no Euler cycle." << std::endl;
+        buffer << "This graph has not an Euler cycle!" << std::endl;
     }
     return buffer.str();
 }

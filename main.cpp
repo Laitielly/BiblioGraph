@@ -35,10 +35,10 @@ int main() {
 //    std::cout << a.IndependentSetSize(9);
 //
     const Graph<std::string> a(MatrixType::ADJACENCY, {
-                                {0, 1, 1, 1},
-                                {1, 0, 1, 0},
-                                {0, 1, 0, 1},
-                                {1, 1, 1, 0}
+                                {0, 0, 0, 0},
+                                {0, 0, 0, 0},
+                                {0, 0, 0, 0},
+                                {0, 0, 0, 0}
     },
                          {"a","b","c","d"}
     );
@@ -67,9 +67,8 @@ int main() {
 //    std::cout << a.IndependentSetSize(4);
 //    std::cout << a.IndependentSetSize(9);
 //    std::cout << a.IsBipartite() << a.OptimalColoring();
- //   std::cout << a.IsEulerGraph();
-//    std::cout << a.IsGamilgton();
-std::cout << a.HamiltonGraph();
+    std::cout << a.IsEulerGraph();
+    std::cout << a.IsHamiltonGraph();
 
     return 0;
 }

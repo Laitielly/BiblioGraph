@@ -54,6 +54,7 @@ public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
     Graph(const AdjacencyList &type, const std::vector<std::pair<Type,std::vector<Type>>> &adjacencyList);
+    Graph(){};
     std::string PrintAdjacencyMatrix() const;
     std::string PrintIncidenceMatrix() const;
     std::string PrintSets() const;
@@ -81,8 +82,8 @@ public:
     std::string IndependentSetSize (const int n) const;
     std::string IsBipartite() const;
     std::string OptimalColoring() const;
-    std::string EulerGraph() const;
-    std::string HamiltonGraph () const;
+    std::string IsEulerGraph() const;
+    std::string IsHamiltonGraph() const;
 };
 
 #include "graph.inl"
