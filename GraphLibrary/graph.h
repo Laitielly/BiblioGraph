@@ -46,10 +46,10 @@ private:
     Tree IsTree_() const;
     bool IsBipartite_(std::vector<int> &color) const;
     std::vector<int> OptimalColoring_() const;
-    bool IsEulerGraph_() const;
+    bool EulerGraph_() const;
     void DfsForEuler(int i, std::vector<bool> &visited, const size_t size) const;
     bool IsSafe(int v, std::vector<int> &path, int pos) const;
-    bool HamCycleUtil(std::vector<int> &path, int pos) const;
+    bool HamiltonGraph_(std::vector<int> &path, int pos) const;
 public:
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
@@ -81,8 +81,8 @@ public:
     std::string IndependentSetSize (const int n) const;
     std::string IsBipartite() const;
     std::string OptimalColoring() const;
-    std::string IsEulerGraph() const;
-    std::string HamCycle () const;
+    std::string EulerGraph() const;
+    std::string HamiltonGraph () const;
 };
 
 #include "graph.inl"
@@ -94,4 +94,5 @@ public:
 #include "independence.inl"
 #include "coloring.inl"
 #include "euler.inl"
+#include "hamilton.inl"
 #endif //GRAPH_GRAPH_H

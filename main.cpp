@@ -69,7 +69,7 @@ int main() {
 //    std::cout << a.IsBipartite() << a.OptimalColoring();
  //   std::cout << a.IsEulerGraph();
 //    std::cout << a.IsGamilgton();
-std::cout << a.HamCycle();
+std::cout << a.HamiltonGraph();
 
     return 0;
 }
