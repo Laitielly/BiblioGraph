@@ -54,6 +54,7 @@ set(PROJECT_SOURCES
         Datafile.h
 )
 
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(GraphsManager
         ${PROJECT_SOURCES}
@@ -70,4 +71,5 @@ else()
     endif()
 endif()
 
+add_subdirectory(GraphLibrary)
 target_link_libraries(GraphsManager PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)

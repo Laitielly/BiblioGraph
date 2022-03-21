@@ -1,6 +1,6 @@
 #include "multrepreswindow.h"
 #include "ui_multrepreswindow.h"
-
+//#include "GraphLibrary/graph.h"
 #include "datafile.h"
 
 MultRepresWindow::MultRepresWindow(QWidget *parent) :
@@ -102,6 +102,24 @@ void MultRepresWindow::on_btn_cont_clicked()
         }
     }
 
+    //Вызов функции передачи данных для преобразования их в вектор и вызыва конструктора Graph:
+    Where=WhereAreFrom::SETS;
+    matrix.clear();
+    vertices.clear();
+    edges.clear();
+    adjacencyList.clear();
+    //download from matrix to vector (for adjacency matrix)
+    vertices.resize(count_names);
+    for(int i=0; i<count_names; ++i){
+        vertices[i]=Data_names[i];
+    }
+    edges.resize(ROW_matrix);
+    for(int i=0; i<ROW_matrix; ++i){
+        edges[i].first=Data_matrix_str[i][0];
+        edges[i].second=Data_matrix_str[i][1];
+    }
+//            Graph<std::string> a(vertices, edges);
+//            qDebug()<<QString::fromStdString(a.PrintSets());
 
     pr_win->show();
     this->close();

@@ -1,6 +1,7 @@
 #include "matrixwindow.h"
 #include "ui_matrixwindow.h"
 #include "datafile.h"
+//#include "GraphLibrary/graph.h"
 
 MatrixWindow::MatrixWindow(QWidget *parent) :
     QWidget(parent),
@@ -104,6 +105,30 @@ void MatrixWindow::on_check_table_clicked()
     }
 
     //Вызов функции передачи данных для преобразования их в вектор и вызыва конструктора Graph:
+
+    //clear
+    Where=WhereAreFrom::ADJANCENCY_MATRIX;
+    matrix.clear();
+    vertices.clear();
+    edges.clear();
+    adjacencyList.clear();
+    //download from matrix to vector (for adjacency matrix)
+    matrix.resize(count_names);
+    for(int i=0; i<count_names; ++i){
+        matrix[i].resize(count_names);
+        for(int j=0; j<count_names; ++j){
+            matrix[i][j]=Data_matrix[i][j];
+        }
+    }
+
+    //download from matrix to vector (for names of verticies)
+    vertices.resize(count_names);
+    for(int i=0; i<count_names; ++i){
+        vertices[i]=Data_names[i];
+    }
+
+//    Graph<std::string> a(MatrixType::ADJACENCY,matrix,vertices);
+//    qDebug()<<QString::fromStdString(a.PrintAdjacencyMatrix());
 
 
     pr_win->show();

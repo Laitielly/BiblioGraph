@@ -6,7 +6,7 @@
 #include <QMessageBox>
 #include <string>
 
-#include "datafile.h"
+//#include "datafile.h"
 
 namespace Ui {
 class Propertieswindow;
@@ -17,6 +17,7 @@ class Propertieswindow : public QWidget
     Q_OBJECT
 
 public:
+
     explicit Propertieswindow(QWidget *parent = nullptr);
     ~Propertieswindow();
 

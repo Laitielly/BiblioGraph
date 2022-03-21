@@ -1,6 +1,6 @@
 #include "adj_listwindow.h"
 #include "ui_adj_listwindow.h"
-
+//#include "GraphLibrary/graph.h"
 #include "datafile.h"
 
 Adj_listWindow::Adj_listWindow( QWidget *parent) :
@@ -125,6 +125,27 @@ void Adj_listWindow::on_adj_lst_cont_clicked()
             qDebug()<< item->text();
         }
     }
+
+
+    //Вызов функции передачи данных для преобразования их в вектор и вызыва конструктора Graph:
+    Where=WhereAreFrom::ADJACENCY_LIST;
+    matrix.clear();
+    vertices.clear();
+    edges.clear();
+    adjacencyList.clear();
+    //download from matrix to vector (for adjacency matrix)
+    adjacencyList.resize(count_names);
+    for(int i=0; i<count_names; ++i){
+        adjacencyList[i].first = Data_names[i];
+        for(int j=0; j<COL_matrix; ++j){
+            if(Data_matrix_str[i][j]!=""){
+                adjacencyList[i].second.push_back(Data_matrix_str[i][j]);
+            }
+        }
+    }
+
+//        Graph<std::string> a(AdjacencyList::LIST,adjacencyList);
+//        qDebug()<<QString::fromStdString(a.PrintAdjacencyList());
 
     //открытие окна свойств
     this->close();

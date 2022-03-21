@@ -1,11 +1,16 @@
 #include "propertieswindow.h"
 #include "ui_propertieswindow.h"
+#include "GraphLibrary/graph.h"
+#include "datafile.h"
+
+Graph<std::string> a;
 
 Propertieswindow::Propertieswindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Propertieswindow)
 {
     ui->setupUi(this);
+
 
 
 
@@ -19,6 +24,19 @@ Propertieswindow::~Propertieswindow()
 //заполнение spinbox-ов данными
 void Propertieswindow::on_get_data_names()
 {
+    if(Where==WhereAreFrom::ADJANCENCY_MATRIX){
+        Graph<std::string> b(MatrixType::ADJACENCY, matrix, vertices);
+        a=b;
+    }else if(Where==WhereAreFrom::INCIDENCE_MATRIX){
+        Graph<std::string> b(MatrixType::INCIDENCE, matrix, vertices);
+        a=b;
+    }else if(Where==WhereAreFrom::ADJACENCY_LIST){
+        Graph<std::string> b(AdjacencyList::LIST, adjacencyList);
+        a=b;
+    }else if(Where==WhereAreFrom::SETS){
+        Graph<std::string> b(vertices, edges);
+        a=b;
+    }
 
 
      qDebug()<<  count_names;
@@ -42,11 +60,11 @@ void Propertieswindow::on_get_data_names()
 void Propertieswindow::on_btn_Rename_clicked()
 {
     //проверка поля нового имени
-    if(ui->lineEdit_rename->text()==NULL)
-    {
-        QMessageBox::warning(this,"Внимание", "Поле имени пустое!");
-        return;
-    }
+//    if(ui->lineEdit_rename->text()==NULL)
+//    {
+//        QMessageBox::warning(this,"Внимание", "Поле имени пустое!");
+//        return;
+//    }
 
 
     //параметры для функции RENAME
@@ -83,7 +101,7 @@ void Propertieswindow::on_btn_Rename_clicked()
     qDebug()<<  QString::fromStdString(second_parametr);
 
     //тут вызов функции Rename:
-    //Rename(first_parametr, second_parametr);
+    a.Rename(first_parametr, second_parametr);
     ui->plainTextEdit->clear();
     ui->plainTextEdit->insertPlainText("Вершина успешно переименована!");
 
@@ -106,7 +124,7 @@ void Propertieswindow::on_btn_Distance_clicked()
 
     //тут вызов функции Distance:
     ui->plainTextEdit->clear();
-    //ui->plainTextEdit->insertPlainText(Distance());
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.Distance(first_parametr, second_parametr)));
 }
 
 //выводит степень передаваемой вершины
@@ -122,7 +140,7 @@ void Propertieswindow::on_btn_PrintVertexDegree_clicked()
 
       //тут вызов функции PrintVertexDegree:
      ui->plainTextEdit->clear();
-     //ui->plainTextEdit->insertPlainText(PrintVertexDegree());
+     ui->plainTextEdit->insertPlainText(QString::fromStdString(a.PrintVertexDegree(first_parametr)));
 }
 
 //выводит матрицу смежности графа
@@ -130,7 +148,7 @@ void Propertieswindow::on_btn_PrintAdjacencyMatrix_clicked()
 {
     //тут вызов функции PrintAdjacencyMatrix
     ui->plainTextEdit->clear();
-    //ui->plainTextEdit->insertPlainText(PrintAdjacencyMatrix());
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.PrintAdjacencyMatrix()));
 }
 
 //выводит матрицу инцидентности графа
@@ -138,7 +156,7 @@ void Propertieswindow::on_btn_PrintIncidenceMatrix_clicked()
 {
     //тут вызов функции PrintIncidenceMatrix
      ui->plainTextEdit->clear();
-    //ui->plainTextEdit->insertPlainText(PrintIncidenceMatrix());
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.PrintIncidenceMatrix()));
 }
 
 //выводит множество вершин и ребер графа
@@ -146,7 +164,7 @@ void Propertieswindow::on_btn_PrintSets_clicked()
 {
      //тут вызов функции PrintSets
       ui->plainTextEdit->clear();
-     //ui->plainTextEdit->insertPlainText(PrintSets());
+     ui->plainTextEdit->insertPlainText(QString::fromStdString(a.PrintSets()));
 }
 
 //выводит список смежности
@@ -154,7 +172,7 @@ void Propertieswindow::on_btn_PrintAdjacencyList_clicked()
 {
     //тут вызов функции PrintAdjacencyList
     ui->plainTextEdit->clear();
-    //ui->plainTextEdit->insertPlainText(PrintAdjacencyList());
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.PrintAdjacencyList()));
 }
 
 //проверка графа на неориентированность
@@ -162,7 +180,7 @@ void Propertieswindow::on_btn_IsUndirected_clicked()
 {
      //тут вызов функции IsUndirected
      ui->plainTextEdit->clear();
-     //ui->plainTextEdit->insertPlainText(IsUndirected());
+     ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IsUndirected()));
 }
 
 // проверка графа на наличие петель
@@ -170,7 +188,7 @@ void Propertieswindow::on_btn_CheckLoops_clicked()
 {
     //тут вызов функции CheckLoops
     ui->plainTextEdit->clear();
-    //ui->plainTextEdit->insertPlainText(CheckLoops());
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.CheckLoops()));
 }
 
 //выводит информацию о количестве вершин
@@ -178,7 +196,7 @@ void Propertieswindow::on_btn_VerticesNumber_clicked()
 {
     //тут вызов функции VerticesNumber
     ui->plainTextEdit->clear();
-    //ui->plainTextEdit->insertPlainText(VerticesNumber());
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.VerticesNumber()));
 }
 
 //выводит информацию о количество ребер
@@ -186,7 +204,7 @@ void Propertieswindow::on_btn_EdgesNumber_clicked()
 {
     //тут вызов функции EdgesNumber
     ui->plainTextEdit->clear();
-    //ui->plainTextEdit->insertPlainText(EdgesNumber());
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.EdgesNumber()));
 }
 
 //выводит компоненты слабой связности графа
@@ -194,7 +212,7 @@ void Propertieswindow::on_btn_WeakConnectivityComponents_clicked()
 {
     //тут вызов функции WeakConnectivityComponents
     ui->plainTextEdit->clear();
-    //ui->plainTextEdit->insertPlainText(WeakConnectivityComponents());
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.WeakConnectivityComponents()));
 }
 
 //выводит компоненты сильной связности графа
@@ -202,7 +220,7 @@ void Propertieswindow::on_btn_StrongConnectivityComponents_clicked()
 {
     //тут вызов функции trongConnectivityComponents
     ui->plainTextEdit->clear();
-    //ui->plainTextEdit->insertPlainText(trongConnectivityComponents());
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.StrongConnectivityComponents()));
 }
 
 void Propertieswindow::on_btn_back_clicked()

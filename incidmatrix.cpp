@@ -1,6 +1,6 @@
 #include "incidmatrix.h"
 #include "ui_incidmatrix.h"
-
+//#include "GraphLibrary/graph.h"
 #include "datafile.h"
 
 
@@ -175,6 +175,28 @@ void IncidMatrix::on_incid_cont_clicked()
         }
     }
     //Вызов функции передачи данных для преобразования их в вектор и вызыва конструктора Graph:
+    Where=WhereAreFrom::INCIDENCE_MATRIX;
+    matrix.clear();
+    vertices.clear();
+    edges.clear();
+    adjacencyList.clear();
+    //download from matrix to vector (for adjacency matrix)
+    matrix.resize(count_names);
+    for(int i=0; i<count_names; ++i){
+        matrix[i].resize(COL_matrix);
+        for(int j=0; j<COL_matrix; ++j){
+            matrix[i][j]=Data_matrix[i][j];
+        }
+    }
+
+    //download from matrix to vector (for names of verticies)
+    vertices.resize(count_names);
+    for(int i=0; i<count_names; ++i){
+        vertices[i]=Data_names[i];
+    }
+//    Graph<std::string> a(MatrixType::INCIDENCE,matrix,vertices);
+//    qDebug()<<QString::fromStdString(a.PrintIncidenceMatrix());
+//    qDebug()<<QString::fromStdString(a.PrintSets());
 
 
 
