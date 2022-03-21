@@ -75,7 +75,6 @@ public:
 
     std::vector<std::vector<int>> TakeSizeCycle();
 
-
 };
 
 #endif //PROJECT_C___GRAPH_CLIQUE_H

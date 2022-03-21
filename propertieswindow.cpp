@@ -239,29 +239,29 @@ void Propertieswindow::on_btn_StrongConnectivityComponents_clicked()
 
 void Propertieswindow::on_btn_MaxClique_clicked()
 {
-//    ui->plainTextEdit->clear();
-//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.MaxClique()));
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.MaxClique()));
 }
 
 
 void Propertieswindow::on_btn_SizeClique_clicked()
 {
-//    ui->plainTextEdit->clear();
-//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.SizeClique(ui->spinBox_SizeClique->value())));
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.SizeClique(ui->spinBox_SizeClique->value())));
 }
 
 
 void Propertieswindow::on_btn_FindCycles_clicked()
 {
-//    ui->plainTextEdit->clear();
-//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.FindCycles()));
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.FindCycles()));
 }
 
 
 void Propertieswindow::on_btn_FindCyclesSize_clicked()
 {
-//    ui->plainTextEdit->clear();
-//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.FindCyclesSize(ui->spinBox_FindCyclesSize->value())));
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.FindCyclesSize(ui->spinBox_FindCyclesSize->value())));
 }
 
 
@@ -295,22 +295,22 @@ void Propertieswindow::on_btn_FindCentralVertices_clicked()
 
 void Propertieswindow::on_btn_IsTree_clicked()
 {
-//    ui->plainTextEdit->clear();
-//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IsTree()));
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IsTree()));
 }
 
 
 void Propertieswindow::on_btn_MaxIndependentSet_clicked()
 {
-//    ui->plainTextEdit->clear();
-//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.MaxIndependentSet()));
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.MaxIndependentSet()));
 }
 
 
 void Propertieswindow::on_btn_IndependentSetSize_clicked()
 {
-//    ui->plainTextEdit->clear();
-//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IndependentSetSize(ui->spinBox_IndependentSetSize->value())));
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IndependentSetSize(ui->spinBox_IndependentSetSize->value())));
 }
 
 
@@ -330,15 +330,15 @@ void Propertieswindow::on_btn_OptimalColoring_clicked()
 
 void Propertieswindow::on_btn_IsEulerGraph_clicked()
 {
-//    ui->plainTextEdit->clear();
-//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IsEulerGraph()));
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IsEulerGraph()));
 }
 
 
 void Propertieswindow::on_pushButton_16_clicked()
 {
-//    ui->plainTextEdit->clear();
-//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.MaxIndependentSet()));
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IsHamiltonGraph()));
 }
 
 void Propertieswindow::on_btn_back_clicked()
