@@ -56,6 +56,36 @@ private slots:
 
     void on_btn_back_clicked();
 
+    void on_btn_MaxClique_clicked();
+
+    void on_btn_SizeClique_clicked();
+
+    void on_btn_FindCycles_clicked();
+
+    void on_btn_FindCyclesSize_clicked();
+
+    void on_btn_Eccentricity_clicked();
+
+    void on_btn_FindDiameter_clicked();
+
+    void on_btn_FindRadius_clicked();
+
+    void on_btn_FindCentralVertices_clicked();
+
+    void on_btn_IsTree_clicked();
+
+    void on_btn_MaxIndependentSet_clicked();
+
+    void on_btn_IndependentSetSize_clicked();
+
+    void on_btn_IsBipartite_clicked();
+
+    void on_btn_OptimalColoring_clicked();
+
+    void on_btn_IsEulerGraph_clicked();
+
+    void on_pushButton_16_clicked();
+
 private:
     Ui::Propertieswindow *ui;
 };

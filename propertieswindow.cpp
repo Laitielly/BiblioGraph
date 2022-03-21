@@ -3,6 +3,7 @@
 #include "GraphLibrary/graph.h"
 #include "datafile.h"
 
+
 Graph<std::string> a;
 
 Propertieswindow::Propertieswindow(QWidget *parent) :
@@ -48,8 +49,18 @@ void Propertieswindow::on_get_data_names()
             ui->comboBox_distance_1->addItem( QString::fromStdString(Data_names[i]));
             ui->comboBox_distance_2->addItem( QString::fromStdString(Data_names[i]));
             ui->comboBox_vertexdegree->addItem( QString::fromStdString(Data_names[i]));
+            ui->comboBox_Eccentricity->addItem( QString::fromStdString(Data_names[i]));
 
     }
+
+    ui->spinBox_SizeClique->setMinimum(1);
+    ui->spinBox_SizeClique->setMaximum(count_names);
+
+    ui->spinBox_FindCyclesSize->setMinimum(1);
+    ui->spinBox_FindCyclesSize->setMaximum(count_names);
+
+    ui->spinBox_IndependentSetSize->setMinimum(1);
+    ui->spinBox_IndependentSetSize->setMaximum(count_names);
 }
 
 //нажатия кнопок проверки свойств
@@ -83,6 +94,7 @@ void Propertieswindow::on_btn_Rename_clicked()
             ui->comboBox_distance_1->clear();
             ui->comboBox_distance_2->clear();
             ui->comboBox_vertexdegree->clear();
+            ui->comboBox_Eccentricity->clear();
             ui->lineEdit_rename->clear();
             for(int i=0;i<count_names;i++)
             {
@@ -90,6 +102,7 @@ void Propertieswindow::on_btn_Rename_clicked()
                 ui->comboBox_distance_1->addItem( QString::fromStdString(Data_names[i]));
                 ui->comboBox_distance_2->addItem( QString::fromStdString(Data_names[i]));
                 ui->comboBox_vertexdegree->addItem( QString::fromStdString(Data_names[i]));
+                ui->comboBox_Eccentricity->addItem( QString::fromStdString(Data_names[i]));
             }
         }
     }
@@ -221,6 +234,111 @@ void Propertieswindow::on_btn_StrongConnectivityComponents_clicked()
     //тут вызов функции trongConnectivityComponents
     ui->plainTextEdit->clear();
     ui->plainTextEdit->insertPlainText(QString::fromStdString(a.StrongConnectivityComponents()));
+}
+
+
+void Propertieswindow::on_btn_MaxClique_clicked()
+{
+//    ui->plainTextEdit->clear();
+//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.MaxClique()));
+}
+
+
+void Propertieswindow::on_btn_SizeClique_clicked()
+{
+//    ui->plainTextEdit->clear();
+//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.SizeClique(ui->spinBox_SizeClique->value())));
+}
+
+
+void Propertieswindow::on_btn_FindCycles_clicked()
+{
+//    ui->plainTextEdit->clear();
+//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.FindCycles()));
+}
+
+
+void Propertieswindow::on_btn_FindCyclesSize_clicked()
+{
+//    ui->plainTextEdit->clear();
+//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.FindCyclesSize(ui->spinBox_FindCyclesSize->value())));
+}
+
+
+void Propertieswindow::on_btn_Eccentricity_clicked()
+{
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.Eccentricity(ui->comboBox_Eccentricity->currentText().toStdString())));
+}
+
+
+void Propertieswindow::on_btn_FindDiameter_clicked()
+{
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.FindDiameter()));
+}
+
+
+void Propertieswindow::on_btn_FindRadius_clicked()
+{
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.FindRadius()));
+}
+
+
+void Propertieswindow::on_btn_FindCentralVertices_clicked()
+{
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.FindCentralVertices()));
+}
+
+
+void Propertieswindow::on_btn_IsTree_clicked()
+{
+//    ui->plainTextEdit->clear();
+//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IsTree()));
+}
+
+
+void Propertieswindow::on_btn_MaxIndependentSet_clicked()
+{
+//    ui->plainTextEdit->clear();
+//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.MaxIndependentSet()));
+}
+
+
+void Propertieswindow::on_btn_IndependentSetSize_clicked()
+{
+//    ui->plainTextEdit->clear();
+//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IndependentSetSize(ui->spinBox_IndependentSetSize->value())));
+}
+
+
+void Propertieswindow::on_btn_IsBipartite_clicked()
+{
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IsBipartite()));
+}
+
+
+void Propertieswindow::on_btn_OptimalColoring_clicked()
+{
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.OptimalColoring()));
+}
+
+
+void Propertieswindow::on_btn_IsEulerGraph_clicked()
+{
+//    ui->plainTextEdit->clear();
+//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IsEulerGraph()));
+}
+
+
+void Propertieswindow::on_pushButton_16_clicked()
+{
+//    ui->plainTextEdit->clear();
+//    ui->plainTextEdit->insertPlainText(QString::fromStdString(a.MaxIndependentSet()));
 }
 
 void Propertieswindow::on_btn_back_clicked()

@@ -70,6 +70,12 @@ void MatrixWindow::on_check_table_clicked()
         {
             item = ui->tableWidget->item(i,j);
            //qDebug()<< item->text();
+            if(item->text().toInt()!=0 && item->text().toInt()!=1 && item!=NULL)
+            {
+                qDebug() << "ERROR_INPUT_DATA";
+                QMessageBox::warning(this, "Внимание","Неверный ввод!\n Используйте только 0 и 1");
+                return;
+            }
            if(item==NULL)
            {
 
@@ -93,8 +99,9 @@ void MatrixWindow::on_check_table_clicked()
         item = ui->Table_names->item(i,0);
         if(item==NULL)
         {
-            //data_names[i]=" ";
-            Data_names[i]= " " ;
+            qDebug() << "ERROR_INPUT_NAMES";
+            QMessageBox::warning(this, "Внимание","Неверный ввод!\n Пустая строка вершины");
+            return;
         }
         else
         {

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>714</width>
-    <height>391</height>
+    <width>778</width>
+    <height>467</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,7 +26,7 @@
    <item row="0" column="1">
     <widget class="QPlainTextEdit" name="plainTextEdit">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+      <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -62,23 +62,169 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
-        <width>415</width>
-        <height>542</height>
+        <y>-1134</y>
+        <width>474</width>
+        <height>1532</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_2">
-         <item row="6" column="0">
-          <widget class="QPushButton" name="btn_IsUndirected">
+         <item row="27" column="0">
+          <widget class="QPushButton" name="btn_FindRadius">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Проверка на неориентированность</string>
+            <string>Найти радиус графа</string>
+           </property>
+          </widget>
+         </item>
+         <item row="23" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QSpinBox" name="spinBox_FindCyclesSize">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item row="19" column="0">
+          <widget class="QPushButton" name="btn_SizeClique">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Найти клику с размером</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="0">
+          <widget class="QPushButton" name="btn_PrintVertexDegree">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Вывести степень вершины</string>
+           </property>
+          </widget>
+         </item>
+         <item row="20" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QSpinBox" name="spinBox_SizeClique">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item row="8" column="0">
+          <widget class="QPushButton" name="btn_VerticesNumber">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Вывести количество вершин графа</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QPushButton" name="btn_CheckLoops">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Проверка графа на наличие петель</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="btn_PrintIncidenceMatrix">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Вывести матрицу инцидентности графа</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QPushButton" name="btn_EdgesNumber">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Вывести количетво ребер графа</string>
+           </property>
+          </widget>
+         </item>
+         <item row="36" column="0">
+          <widget class="QPushButton" name="pushButton_16">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Проверить граф на гамильтоновость</string>
            </property>
           </widget>
          </item>
@@ -117,27 +263,27 @@
            </item>
           </layout>
          </item>
-         <item row="17" column="0">
-          <widget class="QPushButton" name="btn_StrongConnectivityComponents">
+         <item row="24" column="0">
+          <widget class="QPushButton" name="btn_Eccentricity">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Вывод комп. сильной связности графа</string>
+            <string>Найти эксцентрисистет вершины</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
-          <widget class="QPushButton" name="btn_PrintAdjacencyList">
+         <item row="35" column="0">
+          <widget class="QPushButton" name="btn_IsEulerGraph">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>выводит список смежности</string>
+            <string>Проверить граф на эйлеровость</string>
            </property>
           </widget>
          </item>
@@ -149,41 +295,7 @@
             </font>
            </property>
            <property name="text">
-            <string>выводит множество вершин и ребер графа</string>
-           </property>
-          </widget>
-         </item>
-         <item row="15" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QComboBox" name="comboBox_distance_1">
-             <property name="font">
-              <font>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="comboBox_distance_2">
-             <property name="font">
-              <font>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="9" column="0">
-          <widget class="QPushButton" name="btn_EdgesNumber">
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Количество ребер</string>
+            <string>Вывести множество вершин и ребер графа</string>
            </property>
           </widget>
          </item>
@@ -195,19 +307,79 @@
             </font>
            </property>
            <property name="text">
-            <string>min растояние между вершинами</string>
+            <string>Минимальное расстояние между вершинами</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
-          <widget class="QPushButton" name="btn_Rename">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btn_PrintAdjacencyMatrix">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Замена названия вершины</string>
+            <string>Вывести матрицу смежности графа</string>
+           </property>
+          </widget>
+         </item>
+         <item row="29" column="0">
+          <widget class="QPushButton" name="btn_IsTree">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Проверка графа на дерево</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QPushButton" name="btn_PrintAdjacencyList">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Вывести список смежности графа</string>
+           </property>
+          </widget>
+         </item>
+         <item row="16" column="0">
+          <widget class="QPushButton" name="btn_WeakConnectivityComponents">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Вывести компоненты слабой связности графа</string>
+           </property>
+          </widget>
+         </item>
+         <item row="30" column="0">
+          <widget class="QPushButton" name="btn_MaxIndependentSet">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Найти максимальное независимое множество</string>
+           </property>
+          </widget>
+         </item>
+         <item row="31" column="0">
+          <widget class="QPushButton" name="btn_IndependentSetSize">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Найти независимое множество размера </string>
            </property>
           </widget>
          </item>
@@ -239,75 +411,207 @@
            </item>
           </layout>
          </item>
-         <item row="7" column="0">
-          <widget class="QPushButton" name="btn_CheckLoops">
+         <item row="32" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QSpinBox" name="spinBox_IndependentSetSize">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_5">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item row="21" column="0">
+          <widget class="QPushButton" name="btn_FindCycles">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Проверка на наличие петель</string>
+            <string>Проверить граф на наличие циклов</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="btn_PrintIncidenceMatrix">
+         <item row="4" column="0">
+          <widget class="QPushButton" name="btn_Rename">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
-            <string> выводит матрицу инцидентности графа</string>
+            <string>Заменить название вершины</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="0">
-          <widget class="QPushButton" name="btn_PrintAdjacencyMatrix">
+         <item row="15" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QComboBox" name="comboBox_distance_1">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBox_distance_2">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="26" column="0">
+          <widget class="QPushButton" name="btn_FindDiameter">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>выводит матрицу смежности графа</string>
+            <string>Найти диаметр графа</string>
            </property>
           </widget>
          </item>
-         <item row="8" column="0">
-          <widget class="QPushButton" name="btn_VerticesNumber">
+         <item row="28" column="0">
+          <widget class="QPushButton" name="btn_FindCentralVertices">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Количество вершин</string>
+            <string>Найти центральные вершины графа</string>
            </property>
           </widget>
          </item>
-         <item row="16" column="0">
-          <widget class="QPushButton" name="btn_WeakConnectivityComponents">
+         <item row="17" column="0">
+          <widget class="QPushButton" name="btn_StrongConnectivityComponents">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Вывод комп. слабой связности графа</string>
+            <string>Вывести компоненты сильной связности графа</string>
            </property>
           </widget>
          </item>
-         <item row="10" column="0">
-          <widget class="QPushButton" name="btn_PrintVertexDegree">
+         <item row="6" column="0">
+          <widget class="QPushButton" name="btn_IsUndirected">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Степень вершины</string>
+            <string>Проверка графа на неориентированность</string>
+           </property>
+          </widget>
+         </item>
+         <item row="33" column="0">
+          <widget class="QPushButton" name="btn_IsBipartite">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Проверить граф на двудольность</string>
+           </property>
+          </widget>
+         </item>
+         <item row="25" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <item>
+            <widget class="QComboBox" name="comboBox_Eccentricity">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item row="22" column="0">
+          <widget class="QPushButton" name="btn_FindCyclesSize">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Поиск цикла с размером</string>
+           </property>
+          </widget>
+         </item>
+         <item row="34" column="0">
+          <widget class="QPushButton" name="btn_OptimalColoring">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Натйи оптимальную раскраску графа</string>
+           </property>
+          </widget>
+         </item>
+         <item row="18" column="0">
+          <widget class="QPushButton" name="btn_MaxClique">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Найти максимальную клику в графе</string>
            </property>
           </widget>
          </item>

@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 #include <QDebug>
+#include <QMessageBox>
 #include "dataclass.h"
 
 #include "propertieswindow.h"

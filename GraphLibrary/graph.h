@@ -47,10 +47,10 @@ private:
     bool IsBipartite_(std::vector<int> &color) const;
     std::vector<int> OptimalColoring_() const;
 public:
-    Graph(){}
     Graph(const MatrixType &type, const std::vector<std::vector<int>> &matrix, const std::vector<Type> &vertices);
     Graph(const std::vector<Type> &vertices, const std::vector<std::pair<Type,Type>> &edges);
     Graph(const AdjacencyList &type, const std::vector<std::pair<Type,std::vector<Type>>> &adjacencyList);
+    Graph(){};
     std::string PrintAdjacencyMatrix() const;
     std::string PrintIncidenceMatrix() const;
     std::string PrintSets() const;
