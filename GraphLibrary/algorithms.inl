@@ -238,4 +238,6 @@ std::string Graph<Type>::FindCyclesSize(const int n) const {
 }
 
 
+
+
 #endif //GRAPH_ALGORITHMS_INL
