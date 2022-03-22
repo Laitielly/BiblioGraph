@@ -62,7 +62,7 @@ std::string Graph<Type>::StrongConnectivityComponents() const {
     std::stringstream buffer;
     std::vector<std::vector<int>> components = StrongConnectivityComponents_();
     int componentsCounter = components.size();
-    buffer << "The graph has " << componentsCounter <<" strong connectivity components:"<< std::endl;
+    buffer << "В графе " << componentsCounter <<" компонент сильной связности:"<< std::endl;
     for(int i=0; i<componentsCounter; ++i){
         int CurrentComponentCounter = components[i].size();
         buffer << i+1 <<": ";

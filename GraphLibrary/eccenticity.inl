@@ -37,10 +37,10 @@ std::string Graph<Type>::Eccentricity(const Type &name) const
     std::stringstream buffer;
 
     if(m_to_numbers.find(name)!=m_to_numbers.end()){
-        buffer << "The eccentricity of the vertex " << name << " is equal to " << Eccentricity_(m_to_numbers.at(name)) << "." << std::endl;
+        buffer << "Эксцентриситет вершины " << name << " равен " << Eccentricity_(m_to_numbers.at(name)) << "." << std::endl;
     }
     else{
-        buffer << "There is no vertex with name " << name << "!" << std::endl;
+        buffer << "Нет вершины с именем " << name << "." << std::endl;
     }
 
     return buffer.str();
@@ -62,7 +62,7 @@ std::string Graph<Type>::FindDiameter() const {
         }
     }
 
-    buffer << "The diameter of the graph is equal to " << exx << "." << std::endl;
+    buffer << "Диаметр графа равен " << exx << "." << std::endl;
     return buffer.str();
 }
 
@@ -72,7 +72,7 @@ std::string Graph<Type>::FindRadius() const {
 
     std::pair<int, std::vector<int>> exx = FindRadius_();
 
-    buffer << "The radius of the graph is equal to " << exx.first << "." << std::endl;
+    buffer << "Радиус графа равен " << exx.first << "." << std::endl;
     return buffer.str();
 }
 
@@ -82,7 +82,7 @@ std::string Graph<Type>::FindCentralVertices() const {
     std::pair<int, std::vector<int>> exx = FindRadius_();
     size_t size = exx.second.size();
 
-    buffer << "The central vertices of the graph: ";
+    buffer << "Центральные вершины графа: ";
     std::list<int> add;
 
     for(int i = 0; i < size; ++i)

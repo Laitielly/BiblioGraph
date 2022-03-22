@@ -218,7 +218,7 @@ template<typename Type>
 std::string Graph<Type>::Graph::PrintAdjacencyMatrix() const{
     std::stringstream buffer;
     int size = m_adjacency_matrix.size();
-    buffer << "Graph adjacency matrix:"<<std::endl;
+    buffer << "Матрица смежности графа:"<<std::endl;
     for (int i=0; i<size; ++i){
         for(int j=0; j<size; ++j){
             buffer <<" "<<m_adjacency_matrix[i][j] << " ";
@@ -232,7 +232,7 @@ template<typename Type>
 std::string Graph<Type>::Graph::PrintIncidenceMatrix() const{
     std::stringstream buffer;
     int size = m_adjacency_matrix.size();
-    buffer << "Graph incidence matrix:" << std::endl;
+    buffer << "Матрица инцидентности графа:" << std::endl;
     for (int i=0; i<size; ++i){
         for(int j=0; j<size; ++j){
             for (int k=j; k<size; ++k){
@@ -284,7 +284,7 @@ template<typename Type>
 std::string Graph<Type>::Graph::PrintSets() const{
     std::stringstream buffer;
     int verticesCounter = m_vertices.size(), edgesCounter = m_edges.size();
-    buffer << "Graph set of "<<verticesCounter <<" vertices and " << edgesCounter <<" edges: "<< std::endl;
+    buffer << "Граф состоит из "<<verticesCounter <<" вершин и " << edgesCounter <<" ребер: "<< std::endl;
     buffer << "V = {";
     for(int i=0; i<verticesCounter; ++i){
         if (i==verticesCounter-1) {
@@ -323,7 +323,7 @@ void Graph<Type>::Graph::MakeListRepresentation() {
 template<typename Type>
 std::string Graph<Type>::Graph::PrintAdjacencyList() const{
     std::stringstream buffer;
-    buffer<<"Graph adjacency list: "<<std::endl;
+    buffer<<"Список смежности графа: "<<std::endl;
     int verticesCounter = m_adjacency_matrix.size();
     for(int i=0; i<verticesCounter; ++i){
         buffer << m_to_names.at(i) << ": ";
@@ -344,7 +344,7 @@ template<typename Type>
 const Graph<Type> &Graph<Type>::Graph::Rename(const Type &name, const Type &rename){
     if(m_to_numbers.find(name)!=m_to_numbers.end()){
         if(m_to_numbers.find(rename)!=m_to_numbers.end()){
-            std::cout << "There is already a vertex with name " << rename << std::endl;
+            std::cout << "В графе уже есть вершина с именем " << rename << std::endl;
         }
         else{
             int number = m_to_numbers[name];
@@ -354,7 +354,7 @@ const Graph<Type> &Graph<Type>::Graph::Rename(const Type &name, const Type &rena
         }
     }
     else{
-        std::cout << "There is no vertex with name " << name << std::endl;
+        std::cout << "В графе нет вершины с именем " << name << std::endl;
     }
     return *this;
 }

@@ -26,7 +26,7 @@ std::string Graph<Type>::MaxIndependentSet() const {
     if(result == CliqueControl::IsFind){
         std::list<int> maxClique = clique.TakeMaxClique();
         int size = maxClique.size();
-        buffer << "Maximum independent set has size is equal to " << size <<"."<<std::endl;
+        buffer << "Максимальное незавиисимое множество имеет размер: " << size <<"."<<std::endl;
         buffer << "MaximumIndependentSet = {";
         int j=0;
         for (auto iter : maxClique)
@@ -40,7 +40,7 @@ std::string Graph<Type>::MaxIndependentSet() const {
         }
         buffer << std::endl;
     }else if(result == CliqueControl::TimeLimit){
-        buffer << "It is impossible to find the maximum independent set! Time limit!" << std::endl;
+        buffer << "Невозможно найти максимальное независимое множество. Превышено время выполнения." << std::endl;
     }
     return buffer.str();
 }
@@ -71,7 +71,7 @@ std::string Graph<Type>::IndependentSetSize(const int n) const {
         if (result == CliqueControl::IsFind) {
             std::vector<std::vector<int>> sizeClique = clique.TakeSizeClique();
             int sizeClique_size = sizeClique.size();
-            buffer << "Independent sets with size " << n << ":" <<std::endl;
+            buffer << "Независимые множества размера " << n << ":" <<std::endl;
             for (int i=0; i<sizeClique_size; ++i) {
                 buffer << i+1 <<": ";
                 int cur = sizeClique[i].size();
@@ -85,12 +85,12 @@ std::string Graph<Type>::IndependentSetSize(const int n) const {
                 buffer << std::endl;
             }
         } else if (result == CliqueControl::TimeLimit) {
-            buffer << "It is impossible to find the maximum independent set! Time limit!" << std::endl;
+            buffer << "Невозможно найти независимые множества. Превышено время выполнения." << std::endl;
         } else if (result == CliqueControl::CannotFind) {
-            buffer << "Independent set with size " << n << " doesn't exist!" << std::endl;
+            buffer << "Независимое множество размера " << n << " не существует." << std::endl;
         }
     } else{
-        buffer << "Independent set with size " << n << " it cannot be in a graph with " << m_vertices.size() << " vertices!" << std::endl;
+        buffer << "Независимое множество размера " << n << " не может быть в графе с " << m_vertices.size() << " вершинами." << std::endl;
     }
     return buffer.str();
 }

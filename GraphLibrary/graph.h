@@ -9,6 +9,7 @@
 #include <queue>
 #include <list>
 #include "clique.h"
+#include <windows.h>
 
 enum class MatrixType {
     INCIDENCE,

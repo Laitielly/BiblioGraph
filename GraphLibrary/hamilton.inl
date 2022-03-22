@@ -43,10 +43,10 @@ std::string Graph<Type>::IsHamiltonGraph() const{
 
     std::stringstream buffer;
     if(HamiltonGraph_(path, 1)){
-        buffer << "This graph has a Hamilton cycle.";
+        buffer << "В графе есть гамильтонов цикл.";
     }
     else {
-        buffer << "This graph has not a Hamilton cycle!" << std::endl;
+        buffer << "В графе нет гамильтонова цикла." << std::endl;
     }
     return buffer.str();
 }

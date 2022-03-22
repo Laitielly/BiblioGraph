@@ -46,8 +46,8 @@ std::string Graph<Type>::Distance(const Type &start, const Type &end) const {
     if(m_to_numbers.find(start)!=m_to_numbers.end() and m_to_numbers.find(end)!=m_to_numbers.end()){
         std::list<int> path = Distance_(m_to_numbers.at(start), m_to_numbers.at(end));
         if(path.front()!=-1){
-            buffer << "Distance from "<< start <<" to " << end <<" is equal to "<< path.size()-1 << "." << std::endl;
-            buffer << "Path from "<< start <<" to "<< end <<":" << std::endl;
+            buffer << "Расстояние от "<< start <<" до " << end <<" равно "<< path.size()-1 << "." << std::endl;
+            buffer << "Путь от "<< start <<" до "<< end <<":" << std::endl;
             int pathSize=path.size(), counter = 0;
             for(auto i: path){
                 ++counter;
@@ -59,11 +59,11 @@ std::string Graph<Type>::Distance(const Type &start, const Type &end) const {
             }
             buffer << std::endl;
         }else{
-            buffer << "There is no way to get from "<< start << " to " << end << "." << std::endl;
+            buffer << "Нет пути от "<< start << " до " << end << "." << std::endl;
         }
     }
     else{
-        buffer << "A nonexistent vertex was passed to the function Distance!" << std::endl;
+        buffer << "Передана несуществующая вершина." << std::endl;
     }
     return buffer.str();
 }
@@ -103,7 +103,7 @@ std::string Graph<Type>::WeakConnectivityComponents() const{
     std::stringstream buffer;
     std::vector<std::vector<int>> components = WeakConnectivityComponents_();
     int componentsCounter = components.size();
-    buffer << "The graph has " << componentsCounter <<" weak connectivity components:"<< std::endl;
+    buffer << "В графе " << componentsCounter <<" компонент слабой связности:"<< std::endl;
     for(int i=0; i<componentsCounter; ++i){
         int CurrentComponentCounter = components[i].size();
         buffer << i+1 <<": ";
