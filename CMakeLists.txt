@@ -52,6 +52,7 @@ set(PROJECT_SOURCES
         Bigtestdata.h
         Datafile.cpp
         Datafile.h
+        resources.qrc
         GraphLibrary/clique.cpp GraphLibrary/clique.h GraphLibrary/cliquepar.cpp GraphLibrary/timer.cpp GraphLibrary/timer.h GraphLibrary/dfcycle.cpp
 )
 

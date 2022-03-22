@@ -78,22 +78,19 @@ void IncidMatrix::on_incid_cont_clicked()
                Data_matrix[i][j]=0;
                qDebug() << Data_matrix[i][j];
            }
-           else if(item->text().toInt()==(-1) ||
-                   item->text().toInt()==(1)  ||
-                   item->text().toInt()==(2)  ||
-                   item->text().toInt()==(0)    )
+           else
            {
                //data_matrix[i][j]= (item->text().toInt());
                Data_matrix[i][j]= (item->text().toInt());
                qDebug() <<Data_matrix[i][j];
            }
            //Тут потом bool запрет на клик "Продолжить"
-           else
-           {
-            qDebug() << "ERROR_1";
-            QMessageBox::warning(this, "Внимание","Неверный ввод!\nИспользуйте только 1 -1 0 2.");
-            return;
-           }
+//           else
+//           {
+//            qDebug() << "ERROR_1";
+//            QMessageBox::warning(this, "Внимание","Неверный ввод!\nИспользуйте только 1 -1 0 2.");
+//            return;
+//           }
 
         }
     }
@@ -101,73 +98,75 @@ void IncidMatrix::on_incid_cont_clicked()
     std::string * Columns = new std::string[COL_matrix];
 
 
-    bool cont_yes = true;
+//    bool cont_yes = true;
     for (int i=0;i<COL_matrix;i++ )
     {
-        cont_yes = false;
-        int count_0=0;
-        int count_1=0;
-        int count_minus_1=0;
-        int count_2=0;
+//        cont_yes = false;
+//        int count_0=0;
+//        int count_1=0;
+//        int count_minus_1=0;
+//        int count_2=0;
         for (int j=0;j<ROW_matrix;j++ )
         {
-            if(Data_matrix[j][i]==0) count_0++;
-            if(Data_matrix[j][i]==1) count_1++;
-            if(Data_matrix[j][i]==-1) count_minus_1++;
-            if(Data_matrix[j][i]==2) count_2++;
+//            if(Data_matrix[j][i]==0) count_0++;
+//            if(Data_matrix[j][i]==1) count_1++;
+//            if(Data_matrix[j][i]==-1) count_minus_1++;
+//            if(Data_matrix[j][i]==2) count_2++;
             Columns[i]+=std::to_string(Data_matrix[j][i]);
 
         }
-        qDebug() << QString::fromStdString(Columns[i]);
-        // 1 and -1
-        if(count_0==ROW_matrix-2 &&
-           count_1==1     &&
-           count_minus_1==1)
-        {
-            cont_yes=true;
-        }
-        // 1 and 1
-        else if(count_0==ROW_matrix-2 &&
-           count_1==2)
-        {
-            cont_yes=true;
-        }
-        else if(count_0==ROW_matrix-1 &&
-                count_2==1)
-        {
-             cont_yes=true;
-        }
+//        qDebug() << QString::fromStdString(Columns[i]);
+//        // 1 and -1
+//        if(count_0==ROW_matrix-2 &&
+//           count_1==1     &&
+//           count_minus_1==1)
+//        {
+//            cont_yes=true;
+//        }
+//        // 1 and 1
+//        else if(count_0==ROW_matrix-2 &&
+//           count_1==2)
+//        {
+//            cont_yes=true;
+//        }
+//        else if(count_0==ROW_matrix-1 &&
+//                count_2==1)
+//        {
+//             cont_yes=true;
+//        }
 
-        //Тут потом bool запрет на клик "Продолжить"
-        if(cont_yes==false)
-        {
-            qDebug() <<"ERROR_2";
-            QMessageBox::warning(this, "Внимание","Неверный ввод!\nИсправьте столбцы.");
-            return;
-        }
+//        //Тут потом bool запрет на клик "Продолжить"
+//        if(cont_yes==false)
+//        {
+//            qDebug() <<"ERROR_2";
+//            QMessageBox::warning(this, "Внимание","Неверный ввод!\nИсправьте столбцы.");
+//            return;
+//        }
     }
 
-     cont_yes = true;
-    for (int i=0;i<COL_matrix;i++ )
-    {
-        for (int j=0;j<COL_matrix;j++ )
-        {
-            if(Columns[i]==Columns[j] && i!=j) cont_yes=false;
-        }
-    }
-    if(cont_yes==false)
-    {
-        qDebug() <<"ERROR_3";
-        QMessageBox::warning(this, "Внимание","Неверный ввод!\nОдинаковые столбцы.");
-        return;
-    }
+//     cont_yes = true;
+//    for (int i=0;i<COL_matrix;i++ )
+//    {
+//        for (int j=0;j<COL_matrix;j++ )
+//        {
+//            if(Columns[i]==Columns[j] && i!=j) cont_yes=false;
+//        }
+//    }
+//    if(cont_yes==false)
+//    {
+//        qDebug() <<"ERROR_3";
+//        QMessageBox::warning(this, "Внимание","Неверный ввод!\nОдинаковые столбцы.");
+//        return;
+//    }
     delete [] Columns;
     count_names=ROW_matrix;
     Data_names = new std::string[count_names];
     for(int i=0;i<count_names;i++)
     {
         item = ui->table_names->item(i,0);
-        if(item==NULL) Data_names[i]=" ";
+        if(item==NULL) {
+            Data_names[i]="";
+        }
         else
         {
             Data_names[i]=(item->text().toStdString());
@@ -194,6 +193,96 @@ void IncidMatrix::on_incid_cont_clicked()
     for(int i=0; i<count_names; ++i){
         vertices[i]=Data_names[i];
     }
+    //Парсер проверки ввода
+    //Проверка названий вершин
+    int verticesCounter = matrix.size();
+        if(vertices.size()==0){
+            QMessageBox::warning(this, "Внимание","Не возможно создать граф без вершин.\n");
+            return;
+        }
+        if (verticesCounter!=vertices.size()){
+            QMessageBox::warning(this, "Внимание","Недостаточное количество вершин передано в функцию.\n");
+            return;
+        }
+        for(int i=0; i<verticesCounter; ++i){
+            if(vertices[i]==""){
+                QMessageBox::warning(this, "Внимание","Вы не ввели названия вершинам.\n");
+                return;
+            }
+            for(int j=0; j<verticesCounter; ++j){
+                if (i!=j and vertices[i]==vertices[j]){
+                    QMessageBox::warning(this, "Внимание","Названия некоторых вершин дублируются.\n");
+                    return;
+                }
+            }
+        }
+
+        //то что ведет к исключениям
+        int edgesCounter = matrix[0].size();
+        std::vector<std::vector<int>> m_adjacency_matrix;
+                for(int i=0; i < verticesCounter; ++i){
+                    for(int j=0; j < edgesCounter; ++j){
+                        if (!(matrix[i][j] == 0 or matrix[i][j] == 1 or matrix[i][j] == -1 or matrix[i][j]==2)){
+                            QMessageBox::warning(this, "Внимание","Матрица инцидентности может содержать только числа -1, 0, 1, 2.\n");
+                            return;
+                        }
+                    }
+                }
+                m_adjacency_matrix.resize(verticesCounter);
+                for(int i=0; i < verticesCounter; ++i){
+                    m_adjacency_matrix[i].resize(verticesCounter);
+                }
+                for(int j=0; j < edgesCounter; ++j){
+                    int counterMinus1=0,counter1=0, counter2=0;
+                    std::pair<int,int> index;
+                    bool find=false;
+                    for (int i=0; i < verticesCounter; ++i){
+                        if (matrix[i][j]==1){
+                            ++counter1;
+                            if (!find){
+                                index.first=i;
+                                find = true;
+                            }else {
+                                index.second=i;
+                            }
+                        }
+                        if (matrix[i][j]==-1){
+                            ++counterMinus1;
+                            index.second=i;
+                        }
+                        if (matrix[i][j]==2){
+                            ++counter2;
+                            index.first=i;
+                            index.second=i;
+                        }
+                    }
+                    bool loop = (counter2==1) and (!counterMinus1) and (!counter1);
+                    bool oriented = (!counter2) and (counter1==1) and (counterMinus1==1);
+                    bool undirected = (!counter2) and (!counterMinus1) and (counter1==2);
+                    if (loop and !oriented and !undirected){
+                        m_adjacency_matrix[index.first][index.first]=1;
+                    }else if(!loop and oriented and !undirected){
+                        if (m_adjacency_matrix[index.first][index.second] or m_adjacency_matrix[index.second][index.first]){
+//                            throw std::runtime_error("A double edge assignment in the incidence matrix is found.");
+                            QMessageBox::warning(this, "Внимание","Дублируется объявление ребра.\n");
+                            return;
+                        }
+                        m_adjacency_matrix[index.first][index.second]=1;
+                    }else if(!loop and !oriented and undirected){
+                        if (m_adjacency_matrix[index.first][index.second] or m_adjacency_matrix[index.second][index.first]){
+//                            throw std::runtime_error("A double edge assignment in the incidence matrix is found.");
+                            QMessageBox::warning(this, "Внимание","Дублируется объявление ребра.\n");
+                            return;
+                        }
+                        m_adjacency_matrix[index.first][index.second]=1;
+                        m_adjacency_matrix[index.second][index.first]=1;
+                    }else{
+//                        throw std::runtime_error("The incidence matrix is incorrectly set.");
+                        QMessageBox::warning(this, "Внимание","Матрица инцидентности задана некорректно.\n");
+                        return;
+                    }
+                }
+
 //    Graph<std::string> a(MatrixType::INCIDENCE,matrix,vertices);
 //    qDebug()<<QString::fromStdString(a.PrintIncidenceMatrix());
 //    qDebug()<<QString::fromStdString(a.PrintSets());

@@ -16,7 +16,7 @@ Adj_listWindow::Adj_listWindow( QWidget *parent) :
     COL_matrix=0;
     count_names=0;
 
-    ui->table_Widget->horizontalHeader()->setDefaultSectionSize(30);
+    ui->table_Widget->horizontalHeader()->setDefaultSectionSize(115);
     ui->table_Widget->verticalHeader()->setDefaultSectionSize(30);
 
     ui->table_names->setColumnCount(1);
@@ -118,7 +118,9 @@ void Adj_listWindow::on_adj_lst_cont_clicked()
     for(int i=0;i<count_names;i++)
     {
         item = ui->table_names->item(i,0);
-        if(item==NULL) Data_names[i]=" ";
+        if(item==NULL) {
+            Data_names[i]="";
+        }
         else
         {
             Data_names[i]=(item->text().toStdString());
@@ -143,6 +145,53 @@ void Adj_listWindow::on_adj_lst_cont_clicked()
             }
         }
     }
+
+        //Проверка ввода
+    if(adjacencyList.size()==0){
+        QMessageBox::warning(this, "Внимание","Не возможно создать граф без вершин.\n");
+        return;
+    }
+        int verticesCounter = adjacencyList.size();
+    for(int i=0; i<verticesCounter; ++i){
+        if(adjacencyList[i].first==""){
+            QMessageBox::warning(this, "Внимание","Вы не ввели названия вершинам.\n");
+            return;
+        }
+    }
+        for(int i=0; i<verticesCounter; ++i){
+            for(int j=0; j<verticesCounter; ++j){
+                if (i!=j and adjacencyList[i].first==adjacencyList[j].first){
+//                    throw std::runtime_error("Some vertex is duplicated!");
+                    QMessageBox::warning(this, "Внимание","Некоторые вершины дублируются.\n");
+                    return;
+                }
+            }
+        }
+        for(int i=0; i<verticesCounter; ++i){
+            int adjacentVertices=adjacencyList[i].second.size();
+            for(int j=0; j<adjacentVertices; ++j){
+                bool find = false;
+                for(int k=0; k<verticesCounter; ++k){
+                    if(adjacencyList[i].second[j] == adjacencyList[k].first){
+                        find = true;
+                    }
+                }
+                if (!find){
+//                    throw std::runtime_error("There is a nonexistent vertex in the adjacency list!");
+                    QMessageBox::warning(this, "Внимание","Несуществующая вершина передана смежной.\n");
+                    return;
+                }
+            }
+            for(int j=0; j<adjacentVertices; ++j){
+                for(int k=0; k<adjacentVertices; ++k){
+                    if(j!=k and adjacencyList[i].second[j]==adjacencyList[i].second[k]){
+//                        throw std::runtime_error("Adjacent vertices are duplicated!");
+                        QMessageBox::warning(this, "Внимание","Смежные вершины дублируются.");
+                        return;
+                    }
+                }
+            }
+        }
 
 //        Graph<std::string> a(AdjacencyList::LIST,adjacencyList);
 //        qDebug()<<QString::fromStdString(a.PrintAdjacencyList());

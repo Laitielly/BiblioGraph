@@ -71,11 +71,11 @@ void Propertieswindow::on_get_data_names()
 void Propertieswindow::on_btn_Rename_clicked()
 {
     //проверка поля нового имени
-//    if(ui->lineEdit_rename->text()==NULL)
-//    {
-//        QMessageBox::warning(this,"Внимание", "Поле имени пустое!");
-//        return;
-//    }
+    if(ui->lineEdit_rename->text()=="")
+    {
+        QMessageBox::warning(this,"Внимание", "Поле имени пустое!");
+        return;
+    }
 
 
     //параметры для функции RENAME
@@ -84,6 +84,15 @@ void Propertieswindow::on_btn_Rename_clicked()
     first_parametr= ui->comboBox_rename->currentText().toStdString();
     second_parametr= ui->lineEdit_rename->text().toStdString();
 
+    bool allowRename = true;
+
+    for(int i=0; i<count_names; ++i){
+        if(Data_names[i]==second_parametr){
+            allowRename = false;
+        }
+    }
+
+    if(allowRename){
     for(int i=0;i<count_names;i++)
     {
         if(Data_names[i]==first_parametr)
@@ -113,10 +122,15 @@ void Propertieswindow::on_btn_Rename_clicked()
     qDebug()<< "Вывод второго параметра: ";
     qDebug()<<  QString::fromStdString(second_parametr);
 
-    //тут вызов функции Rename:
-    a.Rename(first_parametr, second_parametr);
-    ui->plainTextEdit->clear();
-    ui->plainTextEdit->insertPlainText("Вершина успешно переименована!");
+
+        //тут вызов функции Rename:
+        a.Rename(first_parametr, second_parametr);
+        ui->plainTextEdit->clear();
+        ui->plainTextEdit->insertPlainText("Вершина успешно переименована.");
+    }else{
+        ui->plainTextEdit->clear();
+        ui->plainTextEdit->insertPlainText("Вершина с таким названием уже существует!");
+    }
 
 }
 
@@ -335,7 +349,7 @@ void Propertieswindow::on_btn_IsEulerGraph_clicked()
 }
 
 
-void Propertieswindow::on_pushButton_16_clicked()
+void Propertieswindow::on_pushButton_20_clicked()
 {
     ui->plainTextEdit->clear();
     ui->plainTextEdit->insertPlainText(QString::fromStdString(a.IsHamiltonGraph()));
@@ -353,4 +367,9 @@ void Propertieswindow::on_btn_back_clicked()
     this->close();
     emit firstwindow();
     emit inputwindow();
+}
+
+void Propertieswindow::on_pushButton_2_clicked()
+{
+    this->close();
 }

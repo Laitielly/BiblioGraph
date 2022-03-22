@@ -38,10 +38,10 @@ template<typename Type>
 std::string Graph<Type>::IsEulerGraph() const {
     std::stringstream buffer;
     if (EulerGraph_()){
-        buffer << "This graph has an Euler cycle." << std::endl;
+        buffer << "В графе есть эйлеров цикл." << std::endl;
     }
     else {
-        buffer << "This graph has not an Euler cycle!" << std::endl;
+        buffer << "В графе нет эйлерова цикла." << std::endl;
     }
     return buffer.str();
 }

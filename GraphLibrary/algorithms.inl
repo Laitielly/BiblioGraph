@@ -19,10 +19,10 @@ template<typename Type>
 std::string Graph<Type>::IsUndirected() const {
     std::stringstream buffer;
     if(IsUndirected_()){
-        buffer << "The graph is undirected." << std::endl;
+        buffer << "Граф неориентированный." << std::endl;
         return buffer.str();
     }else{
-        buffer << "The graph is directed." << std::endl;
+        buffer << "Граф ориентированный." << std::endl;
         return buffer.str();
     }
 }
@@ -42,10 +42,10 @@ template<typename Type>
 std::string Graph<Type>::CheckLoops() const {
     std::stringstream buffer;
     if(CheckLoops_()){
-        buffer << "The graph has loops." << std::endl;
+        buffer << "В графе есть петли." << std::endl;
         return buffer.str();
     }else{
-        buffer << "The graph has no loop." << std::endl;
+        buffer << "В графе нет петель." << std::endl;
         return buffer.str();
     }
 }
@@ -72,7 +72,7 @@ std::string Graph<Type>::EdgesNumber() const {
             }
         }
     }
-    buffer << "The graph has "<<directed<<" directed edges, "<< undirected <<" undirected edges and "<<loop<<" loops."<<std::endl;
+    buffer << "В графе "<<directed<<" ориентированных ребер, "<< undirected <<" неориентированных ребер и "<<loop<<" петель."<<std::endl;
     return buffer.str();
 }
 
@@ -110,9 +110,9 @@ template<typename Type>
 std::string Graph<Type>::PrintVertexDegree(const Type &name) const {
     std::stringstream buffer;
     if(PrintVertexDegree_(name)!=-1){
-        buffer << "The degree of vertex " << name << " is equal to " << PrintVertexDegree_(name) << "." << std::endl;
+        buffer << "Степень вершины " << name << " равна " << PrintVertexDegree_(name) << "." << std::endl;
     }else{
-        buffer << "Vertex " << name << " does not exist!" << std::endl;
+        buffer << "Вершины " << name << " нет в графе." << std::endl;
     }
     return buffer.str();
 }
@@ -121,7 +121,7 @@ std::string Graph<Type>::PrintVertexDegree(const Type &name) const {
 template<typename Type>
 std::string Graph<Type>::VerticesNumber() const {
     std::stringstream buffer;
-    buffer << "The graph has " << m_vertices.size() <<" vertices."<<std::endl;
+    buffer << "В графе " << m_vertices.size() <<" вершин."<<std::endl;
     return buffer.str();
 }
 
@@ -133,7 +133,7 @@ std::string Graph<Type>::MaxClique() const {
     if(result == CliqueControl::IsFind){
         std::list<int> maxClique = clique.TakeMaxClique();
         int size = maxClique.size();
-        buffer << "Maximum clique has size is equal to " << size <<"."<<std::endl;
+        buffer << "Размер максимальной клики равен " << size <<"."<<std::endl;
         buffer << "MaxClique = {";
         int j=0;
         for (auto iter : maxClique)
@@ -147,7 +147,7 @@ std::string Graph<Type>::MaxClique() const {
         }
        buffer << std::endl;
     }else if(result == CliqueControl::TimeLimit){
-        buffer << "It is impossible to find the maximum clique! Time limit!" << std::endl;
+        buffer << "Невозможно найти максимальную клику. Превышено время ожидания." << std::endl;
     }
 
     return buffer.str();
@@ -162,7 +162,7 @@ std::string Graph<Type>::SizeClique(const int size) const {
         if (result == CliqueControl::IsFind) {
             std::vector<std::vector<int>> sizeClique = clique.TakeSizeClique();
             int sizeClique_size = sizeClique.size();
-            buffer << "Cliques with size " << size << ":" <<std::endl;
+            buffer << "Клики размера " << size << ":" <<std::endl;
             for (int i=0; i<sizeClique_size; ++i) {
                 buffer << i+1 <<": ";
                 int cur = sizeClique[i].size();
@@ -176,12 +176,12 @@ std::string Graph<Type>::SizeClique(const int size) const {
                 buffer << std::endl;
             }
         } else if (result == CliqueControl::TimeLimit) {
-            buffer << "it is impossible to find the maximum clique! Time limit!" << std::endl;
+            buffer << "Не возможно найти клики. Превышено время ожидания." << std::endl;
         } else if (result == CliqueControl::CannotFind) {
-            buffer << "Clique with size " << size << " doesn't exist!" << std::endl;
+            buffer << "Клики размера " << size << " не существуют." << std::endl;
         }
     } else{
-        buffer << "Clique with size " << size << " it cannot be in a graph with " << m_vertices.size() << " vertices!" << std::endl;
+        buffer << "Клика размера " << size << " не может быть в графе с " << m_vertices.size() << " вершинами." << std::endl;
     }
     return buffer.str();
 }
@@ -192,9 +192,9 @@ std::string Graph<Type>::FindCycles() const {
     GreedMaxClique cycle(m_adjacency_matrix, m_edges, m_adjacency_list);
     CyclicityResult result = cycle.Cyclicity();
     if(result == CyclicityResult::HasCycle){
-        buffer << "This graph has cycles." <<std::endl;
+        buffer << "В графе есть циклы." <<std::endl;
     }else if(result == CyclicityResult::NoneCycle){
-        buffer << "This graph hasn't cycles!" << std::endl;
+        buffer << "В графе нет циклов." << std::endl;
     }
     return buffer.str();
 }
@@ -206,7 +206,7 @@ std::string Graph<Type>::FindCyclesSize(const int n) const {
         GreedMaxClique cycle(m_adjacency_matrix, m_edges, m_adjacency_list);
         CyclicityResult result = cycle.CyclicitySize(n);
         if (result == CyclicityResult::HasCycle) {
-            buffer << "This graph has cycles of size " << n <<":" << std::endl;
+            buffer << "Циклы размера " << n <<":" << std::endl;
             std::vector<std::vector<int>> cycles = cycle.TakeSizeCycle();
             int sizeCycle_size = cycles.size();
 
@@ -220,17 +220,17 @@ std::string Graph<Type>::FindCyclesSize(const int n) const {
                 buffer << std::endl;
             }
         } else if (result == CyclicityResult::NoneCycle) {
-            buffer << "This graph has no cycles of size " << n << "."<< std::endl;
+            buffer << "В этом графе нет циклов размера " << n << "."<< std::endl;
         } else if (result == CyclicityResult::TimeLimit) {
-            buffer << "It is impossible to find cycles of size " << n << ". Time limit!" << std::endl;
+            buffer << "Не возможно найти циклы размера " << n << ". Превышено время ожидания." << std::endl;
         }
     }else{
         if (m_adjacency_matrix.size()<3){
-            buffer << "There can be no cycles in a graph with " << m_adjacency_matrix.size() <<" vertices." << std::endl;
+            buffer << "Не может быть циклов в графе с " << m_adjacency_matrix.size() <<" вершинами." << std::endl;
         }else if(m_adjacency_matrix.size()==3){
-            buffer << "A cycles in a graph with 3 vertices can only have length 3." << std::endl;
+            buffer << "Циклы в графе на 3 вершины могут иметь только длину 3." << std::endl;
         }else {
-            buffer << "Cycles in a graph with " << m_adjacency_matrix.size() << " vertices can have a length from 3 to "
+            buffer << "Циклы в графе с " << m_adjacency_matrix.size() << " вершинами могут иметь длину от 3 до "
                    << m_adjacency_matrix.size() << "." << std::endl;
         }
     }

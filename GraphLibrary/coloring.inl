@@ -80,6 +80,19 @@ bool Graph<Type>::IsBipartite_(std::vector<int> &color) const {
         }
     }
 
+    int count = 0;
+    for (int i = 0; i < size; ++i)
+    {
+        if (!color[i]) {
+            ++count;
+        }
+    }
+
+    if (count == size)
+    {
+        return false;
+    }
+
     return true;
 }
 
@@ -91,7 +104,7 @@ std::string Graph<Type>::IsBipartite() const {
 
     if (IsBipartite_(color))
     {
-        buffer << "This graph is bipartite! It divides into 2 parts:" << std::endl << "1. ";
+        buffer << "Это граф двудольный. Он делится на 2 части:" << std::endl << "1. ";
 
         std::pair<std::vector<int>, std::vector<int>> bipar;
         for(int i = 0; i < size; ++i)
@@ -120,7 +133,7 @@ std::string Graph<Type>::IsBipartite() const {
         }
         buffer  << std::endl;
     } else {
-        buffer << "This graph is not bipartite!" << std::endl;
+        buffer << "Этот граф не двудольный." << std::endl;
     }
 
     return buffer.str();
@@ -134,7 +147,7 @@ std::string Graph<Type>::OptimalColoring() const {
 
     if (IsBipartite_(color))
     {
-        buffer << "This graph is bipartite, so it has optimal color equal to 2:" << std::endl << "1. ";
+        buffer << "Этот граф двудольный. Его оптимальная раскраска содержит 2 цвета:" << std::endl << "1. ";
 
         std::pair<std::vector<int>, std::vector<int>> bipar;
         for(int i = 0; i < size; ++i)
@@ -190,11 +203,11 @@ std::string Graph<Type>::OptimalColoring() const {
         }
 
         size = res.size();
-        buffer << "Total colors turned out " << size << "." << std::endl;
+        buffer << "Всего цветов раскраски: " << size << "." << std::endl;
         for(int i = 0; i < size; ++i)
         {
             sizel = res[i].size();
-            buffer << "You can color this vertices using one colour(" << i << "): " << m_to_names.at(res[i][0]);
+            buffer << "Вы можете расскрасить следующие вершины, используя один цвет (" << i << "): " << m_to_names.at(res[i][0]);
             for(int j = 1; j < sizel; ++j)
             {
                 buffer << ", " << m_to_names.at(res[i][j]);

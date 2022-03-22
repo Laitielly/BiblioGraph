@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     //auto& datas=DataClass::instance();
+    //ui->btn_list_adjacency->setStyleSheet ("text-align: left;");
 
 
     matrixwindow = new MatrixWindow();

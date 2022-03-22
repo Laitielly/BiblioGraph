@@ -71,9 +71,10 @@ void MultRepresWindow::on_btn_cont_clicked()
             item = ui->table_Widget->item(i,j);
            if(item==NULL)
            {
-               qDebug() << "ERROR_1";
-               QMessageBox::warning(this, "Внимание","Неверный ввод!\nПустых полей не должно быть");
-               return;
+//               qDebug() << "ERROR_1";
+//               QMessageBox::warning(this, "Внимание","Неверный ввод!\nПустых полей не должно быть");
+//               return;
+               Data_matrix_str[i][j]="";
            }
            //тут неоходима полноценная проверка пар
            else
@@ -91,9 +92,10 @@ void MultRepresWindow::on_btn_cont_clicked()
         item = ui->table_names->item(i,0);
         if(item==NULL)
         {
-            qDebug() << "ERROR_1";
-            QMessageBox::warning(this, "Внимание","Неверный ввод!\nПустых полей не должно быть");
-            return;
+//            qDebug() << "ERROR_1";
+//            QMessageBox::warning(this, "Внимание","Неверный ввод!\nПустых полей не должно быть");
+//            return;
+            Data_names[i]="";
         }
         else
         {
@@ -120,6 +122,57 @@ void MultRepresWindow::on_btn_cont_clicked()
     }
 //            Graph<std::string> a(vertices, edges);
 //            qDebug()<<QString::fromStdString(a.PrintSets());
+    //Проверка корректности ввода
+    int edgesCounter = edges.size(), verticesCounter=vertices.size();
+    if(vertices.size()==0){
+        QMessageBox::warning(this, "Внимание","Не возможно создать граф без вершин.\n");
+        return;
+    }
+    for(int i=0; i<verticesCounter; ++i){
+       if(vertices[i]==""){
+           QMessageBox::warning(this, "Внимание","Не всем вершинам присвоены названия.\n");
+           return;
+       }
+    }
+    for(int i=0; i<edgesCounter; ++i){
+        if(edges[i].first=="" or edges[i].second==""){
+            QMessageBox::warning(this, "Внимание","Не у всех ребер определены вершины их образующие.\n");
+            return;
+        }
+    }
+        for(int i=0; i<verticesCounter; ++i){
+            for(int j=0; j<verticesCounter; ++j){
+                if (i!=j and vertices[i]==vertices[j]){
+//                    throw std::runtime_error("Some vertex is duplicated!");
+                    QMessageBox::warning(this, "Внимание","Некоторые вершины дублируются.\n");
+                    return;
+                }
+            }
+        }
+
+        for(int i=0; i<edgesCounter; ++i){
+            std::pair<bool,bool> check;
+            for(int j=0; j<verticesCounter; ++j){
+                if (vertices[j]==edges[i].first){
+                    check.first=true;
+                }
+                if (vertices[j]==edges[i].second){
+                    check.second=true;
+                }
+            }
+            if(!check.first or !check.second){
+//                throw std::runtime_error("Some edge contains a non-existent vertex!");
+                QMessageBox::warning(this, "Внимание","Некоторые ребра содержат несуществующие вершины.\n");
+                return;
+            }
+            for(int j=0; j<edgesCounter; ++j){
+                if (i!=j and edges[i]==edges[j]){
+//                    throw std::runtime_error("Some edge is duplicated!");
+                    QMessageBox::warning(this, "Внимание","Некоторые ребра дублируются.\n");
+                    return;
+                }
+            }
+        }
 
     pr_win->show();
     this->close();

@@ -23,9 +23,9 @@ std::string Graph<Type>::IsTree() const {
 
     if (result == Tree::IsTree)
     {
-        buffer << "This graph is a tree." << std::endl;
+        buffer << "Этот граф является деревом." << std::endl;
     } else {
-        buffer << "This graph is not a tree!" << std::endl;
+        buffer << "Этот граф не является деревом." << std::endl;
     }
 
     return buffer.str();

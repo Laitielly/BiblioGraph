@@ -74,19 +74,19 @@ void MatrixWindow::on_check_table_clicked()
             {
                  Data_matrix[i][j]=0;
             }
-            else if(item->text().toInt()==0 || item->text().toInt()==1)
+            else
             {
                 //data_matrix[i][j]= (item->text().toInt());
                 Data_matrix[i][j]= (item->text().toInt());
 
             }
-            else
-            {
-                qDebug() << "ERROR_INPUT_DATA";
-                QMessageBox::warning(this, "Внимание","Неверный ввод!\n Используйте только 0 и 1");
-                return;
-            }
-            qDebug() <<Data_matrix[i][j];
+//            else
+//            {
+//                qDebug() << "ERROR_INPUT_DATA";
+//                QMessageBox::warning(this, "Внимание","Неверный ввод!\n Используйте только 0 и 1");
+//                return;
+//            }
+//            qDebug() <<Data_matrix[i][j];
         }
     }
 
@@ -97,9 +97,10 @@ void MatrixWindow::on_check_table_clicked()
         item = ui->Table_names->item(i,0);
         if(item==NULL)
         {
-            qDebug() << "ERROR_INPUT_NAMES";
-            QMessageBox::warning(this, "Внимание","Неверный ввод!\n Пустая строка вершины");
-            return;
+//            qDebug() << "ERROR_INPUT_NAMES";
+//            QMessageBox::warning(this, "Внимание","Неверный ввод!\n Пустая строка вершины");
+//            return;
+            Data_names[i]="";
         }
         else
         {
@@ -131,6 +132,39 @@ void MatrixWindow::on_check_table_clicked()
     for(int i=0; i<count_names; ++i){
         vertices[i]=Data_names[i];
     }
+
+    //Парсер проверки ввода
+    //Проверка названий вершин
+    int verticesCounter = matrix.size();
+    if(vertices.size()==0){
+        QMessageBox::warning(this, "Внимание","Не возможно создать граф без вершин.\n");
+        return;
+    }
+        if (verticesCounter!=vertices.size()){
+            QMessageBox::warning(this, "Внимание","Недостаточное количество вершин передано в функцию.\n");
+            return;
+        }
+        for(int i=0; i<verticesCounter; ++i){
+            if(vertices[i]==""){
+                QMessageBox::warning(this, "Внимание","Вы не ввели названия вершинам.\n");
+                return;
+            }
+            for(int j=0; j<verticesCounter; ++j){
+                if (i!=j and vertices[i]==vertices[j]){
+                    QMessageBox::warning(this, "Внимание","Названия некоторых вершин дублируются.\n");
+                    return;
+                }
+            }
+        }
+        for (int i=0; i < verticesCounter; ++i){
+                    for(int j=0; j < verticesCounter; ++j){
+                        if (!(matrix[i][j] == 0 or matrix[i][j] == 1)){
+                            QMessageBox::warning(this, "Внимание","Матрица смежности может содержать только числа 0 и 1.\n");
+                            return;
+                        }
+                    }
+                }
+
 
 //    Graph<std::string> a(MatrixType::ADJACENCY,matrix,vertices);
 //    qDebug()<<QString::fromStdString(a.PrintAdjacencyMatrix());
