@@ -62,13 +62,13 @@ void Adj_listWindow::on_adj_lst_spin_valueChanged(int arg1)
 
 void Adj_listWindow::on_adj_lst_cont_clicked()
 {
-    //массив тута
-    Data_matrix_str= new std::string*[ROW_matrix];
-    for(int i=0;i<ROW_matrix;i++)
-    {
-        Data_matrix_str[i]=new std::string[COL_matrix];
-    }
 
+    Data_matrix_str.clear();
+    Data_matrix_str.resize(ROW_matrix);
+    for(int i=0;i<ROW_matrix;i++)
+        {
+            Data_matrix_str[i].resize(COL_matrix);
+        }
 
     QTableWidgetItem *item;
     //заполнение массива тута
@@ -78,43 +78,22 @@ void Adj_listWindow::on_adj_lst_cont_clicked()
         {
 
             item = ui->table_Widget->item(i,j);
-           //qDebug()<< item->text();
 
            if(item==NULL)
            {
                Data_matrix_str[i][j]="";//вот тута
-               //qDebug() <<Data_matrix[i][j];
            }
            else
            {
                 Data_matrix_str[i][j]= (item->text().toStdString());
-                //qDebug() <<Data_matrix[i][j];
            }
-           /*
-           //проверка с прошлого файла(страницы)
-           else if(item->text().toInt()==(-1) ||
-                   item->text().toInt()==(1)  ||
-                   item->text().toInt()==(2)  ||
-                   item->text().toInt()==(0)    )
-           {
-
-               Data_matrix[i][j]= (item->text().toInt());//и вот тута
-               qDebug() <<Data_matrix[i][j];
-           }
-           //Тут потом bool запрет на клик "Продолжить"
-           else
-           {
-            qDebug() << "ERROR_1";
-            QMessageBox::warning(this, "Внимание","Неверный ввод!\nИспользуйте только 1 -1 0 2.");
-            return;
-           }
-            */
 
         }
     }
     //вот тута запись названий поинтов
     count_names=ROW_matrix;
-    Data_names = new std::string[count_names];
+    Data_names.clear();
+    Data_names.resize(count_names);
     for(int i=0;i<count_names;i++)
     {
         item = ui->table_names->item(i,0);
@@ -127,8 +106,6 @@ void Adj_listWindow::on_adj_lst_cont_clicked()
             qDebug()<< item->text();
         }
     }
-
-
     //Вызов функции передачи данных для преобразования их в вектор и вызыва конструктора Graph:
     Where=WhereAreFrom::ADJACENCY_LIST;
     matrix.clear();
@@ -145,8 +122,6 @@ void Adj_listWindow::on_adj_lst_cont_clicked()
             }
         }
     }
-
-        //Проверка ввода
     if(adjacencyList.size()==0){
         QMessageBox::warning(this, "Внимание","Не возможно создать граф без вершин.\n");
         return;
@@ -161,7 +136,6 @@ void Adj_listWindow::on_adj_lst_cont_clicked()
         for(int i=0; i<verticesCounter; ++i){
             for(int j=0; j<verticesCounter; ++j){
                 if (i!=j and adjacencyList[i].first==adjacencyList[j].first){
-//                    throw std::runtime_error("Some vertex is duplicated!");
                     QMessageBox::warning(this, "Внимание","Некоторые вершины дублируются.\n");
                     return;
                 }
@@ -177,7 +151,6 @@ void Adj_listWindow::on_adj_lst_cont_clicked()
                     }
                 }
                 if (!find){
-//                    throw std::runtime_error("There is a nonexistent vertex in the adjacency list!");
                     QMessageBox::warning(this, "Внимание","Несуществующая вершина передана смежной.\n");
                     return;
                 }
@@ -185,7 +158,6 @@ void Adj_listWindow::on_adj_lst_cont_clicked()
             for(int j=0; j<adjacentVertices; ++j){
                 for(int k=0; k<adjacentVertices; ++k){
                     if(j!=k and adjacencyList[i].second[j]==adjacencyList[i].second[k]){
-//                        throw std::runtime_error("Adjacent vertices are duplicated!");
                         QMessageBox::warning(this, "Внимание","Смежные вершины дублируются.");
                         return;
                     }
@@ -193,8 +165,6 @@ void Adj_listWindow::on_adj_lst_cont_clicked()
             }
         }
 
-//        Graph<std::string> a(AdjacencyList::LIST,adjacencyList);
-//        qDebug()<<QString::fromStdString(a.PrintAdjacencyList());
 
     //открытие окна свойств
     this->close();

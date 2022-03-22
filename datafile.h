@@ -3,13 +3,12 @@
 
 #include <string>
 #include <vector>
-//#include "GraphLibrary/graph.h"
 
-extern std::string *Data_names;//массив имен вершин
+extern std::vector<std::string> Data_names;
 extern int count_names;//количество  вершин
 
-extern int **Data_matrix;//матрица ребер
-extern std::string **Data_matrix_str;
+extern std::vector<std::vector<int>> Data_matrix;
+extern std::vector<std::vector<std::string>> Data_matrix_str;
 extern int ROW_matrix;//кол-во строк
 extern int COL_matrix;//кол-во столбцов
 

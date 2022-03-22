@@ -56,10 +56,11 @@ void MultRepresWindow::on_edges_spin_valueChanged(int arg1)
 
 void MultRepresWindow::on_btn_cont_clicked()
 {
-    Data_matrix_str= new std::string*[ROW_matrix];
+    Data_matrix_str.clear();
+    Data_matrix_str.resize(ROW_matrix);
     for(int i=0;i<ROW_matrix;i++)
     {
-        Data_matrix_str[i]=new std::string[2];
+        Data_matrix_str[i].resize(2);
     }
 
     QTableWidgetItem *item;
@@ -71,9 +72,7 @@ void MultRepresWindow::on_btn_cont_clicked()
             item = ui->table_Widget->item(i,j);
            if(item==NULL)
            {
-//               qDebug() << "ERROR_1";
-//               QMessageBox::warning(this, "Внимание","Неверный ввод!\nПустых полей не должно быть");
-//               return;
+
                Data_matrix_str[i][j]="";
            }
            //тут неоходима полноценная проверка пар
@@ -85,16 +84,13 @@ void MultRepresWindow::on_btn_cont_clicked()
 
         }
     }
-
-    Data_names = new std::string[count_names];
+    Data_names.clear();
+    Data_names.resize(count_names);
     for(int i=0;i<count_names;i++)
     {
         item = ui->table_names->item(i,0);
         if(item==NULL)
         {
-//            qDebug() << "ERROR_1";
-//            QMessageBox::warning(this, "Внимание","Неверный ввод!\nПустых полей не должно быть");
-//            return;
             Data_names[i]="";
         }
         else
@@ -120,8 +116,6 @@ void MultRepresWindow::on_btn_cont_clicked()
         edges[i].first=Data_matrix_str[i][0];
         edges[i].second=Data_matrix_str[i][1];
     }
-//            Graph<std::string> a(vertices, edges);
-//            qDebug()<<QString::fromStdString(a.PrintSets());
     //Проверка корректности ввода
     int edgesCounter = edges.size(), verticesCounter=vertices.size();
     if(vertices.size()==0){
@@ -143,7 +137,6 @@ void MultRepresWindow::on_btn_cont_clicked()
         for(int i=0; i<verticesCounter; ++i){
             for(int j=0; j<verticesCounter; ++j){
                 if (i!=j and vertices[i]==vertices[j]){
-//                    throw std::runtime_error("Some vertex is duplicated!");
                     QMessageBox::warning(this, "Внимание","Некоторые вершины дублируются.\n");
                     return;
                 }
@@ -161,13 +154,11 @@ void MultRepresWindow::on_btn_cont_clicked()
                 }
             }
             if(!check.first or !check.second){
-//                throw std::runtime_error("Some edge contains a non-existent vertex!");
                 QMessageBox::warning(this, "Внимание","Некоторые ребра содержат несуществующие вершины.\n");
                 return;
             }
             for(int j=0; j<edgesCounter; ++j){
                 if (i!=j and edges[i]==edges[j]){
-//                    throw std::runtime_error("Some edge is duplicated!");
                     QMessageBox::warning(this, "Внимание","Некоторые ребра дублируются.\n");
                     return;
                 }

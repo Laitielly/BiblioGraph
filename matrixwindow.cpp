@@ -49,20 +49,16 @@ void MatrixWindow::on_enter_clicked()
 
 void MatrixWindow::on_check_table_clicked()
 {
-    //int ROW = ui->tableWidget->rowCount();
     ROW_matrix=ui->tableWidget->rowCount();
     count_names=ROW_matrix;
-    //int COLUMN = ui->tableWidget->columnCount();
     COL_matrix=ui->tableWidget->columnCount();
-    Data_matrix= new int*[ROW_matrix];
+    Data_matrix.clear();
+    Data_matrix.resize(ROW_matrix);
     //data_matrix= new int*[ROW];
     for(int i=0;i<ROW_matrix;i++)
     {
-        //data_matrix[i]=new int[ROW];
-        Data_matrix[i]=new int[COL_matrix];
+        Data_matrix[i].resize(COL_matrix);
     }
-
-    //qDebug() << ROW_matrix<< '\n';
     QTableWidgetItem *item;
     for(int i=0;i<ROW_matrix;i++)
     {
@@ -76,35 +72,22 @@ void MatrixWindow::on_check_table_clicked()
             }
             else
             {
-                //data_matrix[i][j]= (item->text().toInt());
                 Data_matrix[i][j]= (item->text().toInt());
 
             }
-//            else
-//            {
-//                qDebug() << "ERROR_INPUT_DATA";
-//                QMessageBox::warning(this, "Внимание","Неверный ввод!\n Используйте только 0 и 1");
-//                return;
-//            }
-//            qDebug() <<Data_matrix[i][j];
         }
     }
-
-    //data_names = new std::string[COLUMN];
-    Data_names = new std::string[count_names];
+    Data_names.clear();
+    Data_names.resize(count_names);
     for(int i=0;i<count_names;i++)
     {
         item = ui->Table_names->item(i,0);
         if(item==NULL)
         {
-//            qDebug() << "ERROR_INPUT_NAMES";
-//            QMessageBox::warning(this, "Внимание","Неверный ввод!\n Пустая строка вершины");
-//            return;
             Data_names[i]="";
         }
         else
         {
-            //data_names[i]=(item->text().toStdString());
             Data_names[i]=item->text().toStdString();
             qDebug()<< item->text();
         }
@@ -164,11 +147,6 @@ void MatrixWindow::on_check_table_clicked()
                         }
                     }
                 }
-
-
-//    Graph<std::string> a(MatrixType::ADJACENCY,matrix,vertices);
-//    qDebug()<<QString::fromStdString(a.PrintAdjacencyMatrix());
-
 
     pr_win->show();
     this->close();
