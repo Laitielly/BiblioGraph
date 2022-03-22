@@ -37,6 +37,8 @@ private slots:
 
     void on_check_table_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MatrixWindow *ui;
     Propertieswindow *pr_win;

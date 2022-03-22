@@ -28,6 +28,8 @@ private slots:
 
    void on_incid_cont_clicked();
 
+   void on_pushButton_clicked();
+
 signals:
     void firstWindow();
     //void secondWindow();

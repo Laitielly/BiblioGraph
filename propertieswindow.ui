@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>680</width>
-    <height>390</height>
+    <width>720</width>
+    <height>420</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -51,8 +51,8 @@
      <item>
       <widget class="QScrollArea" name="scrollArea">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>40</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
@@ -72,8 +72,8 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-720</y>
-          <width>381</width>
+          <y>-641</y>
+          <width>374</width>
           <height>1014</height>
          </rect>
         </property>
@@ -600,8 +600,8 @@
      <item>
       <widget class="QPlainTextEdit" name="plainTextEdit">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-         <horstretch>0</horstretch>
+        <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+         <horstretch>31</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
@@ -632,7 +632,7 @@
       <widget class="QPushButton" name="btn_back">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>23</horstretch>
+         <horstretch>10</horstretch>
          <verstretch>10</verstretch>
         </sizepolicy>
        </property>

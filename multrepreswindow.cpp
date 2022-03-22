@@ -36,6 +36,17 @@ MultRepresWindow::~MultRepresWindow()
 
 void MultRepresWindow::on_btn_back_clicked()
 {
+    ui->edges_spin->clear();
+    ui->vertex_spin->clear();
+    ui->table_names->clear();
+    ui->table_Widget->clear();
+    ui->table_Widget->setColumnCount(2);
+    ui->table_names->setColumnCount(1);
+    ui->table_names->setHorizontalHeaderLabels(QStringList("Названия вершин: "));
+    ui->table_Widget->setRowCount(1);
+    ui->table_names->setRowCount(1);
+
+
     this->close();      // Закрываем окно
     emit firstWindow(); // И вызываем сигнал на открытие главного окна
 }
@@ -168,4 +179,9 @@ void MultRepresWindow::on_btn_cont_clicked()
     pr_win->show();
     this->close();
     emit send_data_names();
+}
+
+void MultRepresWindow::on_pushButton_clicked()
+{
+    QMessageBox::warning(this, "Справка","Для того, чтобы задать граф:\n-укажите названия всем вершинам\n-в матрице смежности поставьте в i строке j столбце:\n 1, если из i-й вершины в j-ю вершину есть ребро\n0, иначе");
 }

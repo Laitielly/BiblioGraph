@@ -30,6 +30,8 @@ private slots:
 
     void on_adj_lst_cont_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Adj_listWindow *ui;
     Propertieswindow *pr_win;

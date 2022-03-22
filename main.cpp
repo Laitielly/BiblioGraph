@@ -8,7 +8,8 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
-    QFile styleSheetFile("C:/Users/a222i/Desktop/BiblioGraph-graphics/Darkeum.qss");
+    //QFile styleSheetFile("..styles/Darkeum.qss");
+    QFile styleSheetFile(a.applicationDirPath() + "/style.qss");
     styleSheetFile.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String( styleSheetFile.readAll());
     a.setStyleSheet(styleSheet);

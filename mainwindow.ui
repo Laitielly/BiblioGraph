@@ -88,7 +88,7 @@
       <item>
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_3">
          <attribute name="title">
@@ -99,6 +99,15 @@
            <widget class="QPlainTextEdit" name="plainTextEdit">
             <property name="readOnly">
              <bool>true</bool>
+            </property>
+            <property name="plainText">
+             <string>Программа GraphManager предназначена для проверки свойств графа. Поддерживаемый класс графов - ориентированные графы без весов с петлями. 
+
+Для удобства пользователя было сделано множество возможностей задания графа: матрицей и списком смежности, матрицей инцидентности, представлением графа множеством вершин и ребер.
+
+ Действительный функционал программы позволяет делать переходы от одного представления графа в другой, проверять комбинаторные, метрические свойства графа.
+
+почта проекта: vovanbotan22@gmail.com</string>
             </property>
            </widget>
           </item>
@@ -317,37 +326,6 @@
           <property name="icon">
            <iconset resource="resources.qrc">
             <normaloff>:/resourses/trinity.png</normaloff>:/resourses/trinity.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_properties">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>10</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
-          </property>
-          <property name="text">
-           <string>                     Свойства                           </string>
-          </property>
-          <property name="icon">
-           <iconset resource="resources.qrc">
-            <normaloff>:/resourses/matrix.png</normaloff>:/resourses/matrix.png</iconset>
           </property>
           <property name="iconSize">
            <size>

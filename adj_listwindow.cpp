@@ -35,6 +35,14 @@ Adj_listWindow::~Adj_listWindow()
 
 void Adj_listWindow::on_adj_lst_back_clicked()
 {
+    ui->adj_lst_spin->clear();
+    ui->table_names->clear();
+    ui->table_Widget->clear();
+    ui->table_Widget->setRowCount(0);
+    ui->table_names->setRowCount(0);
+    ui->table_Widget->setColumnCount(0);
+    ui->table_names->setColumnCount(1);
+    ui->table_names->setHorizontalHeaderLabels(QStringList("Названия вершин: "));
     this->close();      // Закрываем окно
     emit firstWindow(); // И вызываем сигнал на открытие главного окна
 }
@@ -170,4 +178,9 @@ void Adj_listWindow::on_adj_lst_cont_clicked()
     this->close();
     pr_win->show();
     emit send_data_names();
+}
+
+void Adj_listWindow::on_pushButton_clicked()
+{
+    QMessageBox::warning(this, "Справка","Для того, чтобы задать граф:\n-укажите названия всем вершинам\n-напротив каждый вершины укажите все вершины, смежные ей\n-дублирование смежных вершин запрещается");
 }

@@ -33,6 +33,12 @@ MatrixWindow::~MatrixWindow()
 
 void MatrixWindow::on_matrix_step_botom_clicked()
 {
+    ui->Table_names->clear();
+    ui->tableWidget->clear();
+    ui->tableWidget->setRowCount(1);
+    ui->tableWidget->setColumnCount(1);
+    ui->Table_names->setRowCount(1);
+    ui->Table_names->setColumnCount(1);
     this->close();      // Закрываем окно
     emit firstWindow(); // И вызываем сигнал на открытие главного окна
 }
@@ -151,4 +157,9 @@ void MatrixWindow::on_check_table_clicked()
     pr_win->show();
     this->close();
     emit send_data_names();
+}
+
+void MatrixWindow::on_pushButton_clicked()
+{
+    QMessageBox::warning(this,"Справка", "Для того, чтобы задать граф:\n-укажите названия всем вершинам\n-в матрице смежности поставьте в i строке j столбце:\n 1, если из i-й вершины в j-ю вершину есть ребро\n0, иначе");
 }
