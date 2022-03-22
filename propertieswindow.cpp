@@ -227,7 +227,7 @@ void Propertieswindow::on_btn_VerticesNumber_clicked()
 }
 
 //выводит информацию о количество ребер
-void Propertieswindow::on_btn_EdgesNumber_clicked()
+void Propertieswindow::on_btn_EdgesNumber_5_clicked()
 {
     //тут вызов функции EdgesNumber
     ui->plainTextEdit->clear();

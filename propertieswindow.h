@@ -48,7 +48,7 @@ private slots:
 
     void on_btn_VerticesNumber_clicked();
 
-    void on_btn_EdgesNumber_clicked();
+    void on_btn_EdgesNumber_5_clicked();
 
     void on_btn_WeakConnectivityComponents_clicked();
 
