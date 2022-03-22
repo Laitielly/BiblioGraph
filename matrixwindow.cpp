@@ -69,26 +69,24 @@ void MatrixWindow::on_check_table_clicked()
         for(int j=0;j<COL_matrix;j++)
         {
             item = ui->tableWidget->item(i,j);
-           //qDebug()<< item->text();
-            if(item->text().toInt()!=0 && item->text().toInt()!=1 && item!=NULL)
+
+            if(item==NULL)
+            {
+                 Data_matrix[i][j]=0;
+            }
+            else if(item->text().toInt()==0 || item->text().toInt()==1)
+            {
+                //data_matrix[i][j]= (item->text().toInt());
+                Data_matrix[i][j]= (item->text().toInt());
+
+            }
+            else
             {
                 qDebug() << "ERROR_INPUT_DATA";
                 QMessageBox::warning(this, "Внимание","Неверный ввод!\n Используйте только 0 и 1");
                 return;
             }
-           if(item==NULL)
-           {
-
-               //data_matrix[i][j]=0;
-               Data_matrix[i][j]=0;
-           }
-           else
-           {
-
-               //data_matrix[i][j]= (item->text().toInt());
-               Data_matrix[i][j]= (item->text().toInt());
-           }
-           //qDebug() <<data_matrix[i][j];
+            qDebug() <<Data_matrix[i][j];
         }
     }
 
