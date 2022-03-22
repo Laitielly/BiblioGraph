@@ -80,6 +80,19 @@ bool Graph<Type>::IsBipartite_(std::vector<int> &color) const {
         }
     }
 
+    int count = 0;
+    for (int i = 0; i < size; ++i)
+    {
+        if (!color[i]) {
+            ++count;
+        }
+    }
+
+    if (count == size)
+    {
+        return false;
+    }
+
     return true;
 }
 
