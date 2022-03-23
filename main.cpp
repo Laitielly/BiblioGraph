@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
+    QCoreApplication::addLibraryPath("./");
     //QFile styleSheetFile("..styles/Darkeum.qss");
     QFile styleSheetFile(a.applicationDirPath() + "/style.qss");
     styleSheetFile.open(QFile::ReadOnly);

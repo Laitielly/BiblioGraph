@@ -26,6 +26,8 @@ Adj_listWindow::Adj_listWindow( QWidget *parent) :
     pr_win= new Propertieswindow;
     connect(pr_win,&Propertieswindow::inputwindow,this,&Propertieswindow::show);
     connect(this,&Adj_listWindow::send_data_names,pr_win,&Propertieswindow::on_get_data_names);
+
+     ui->pushButton->setStyleSheet("QPushButton{background: transparent;}");
 }
 
 Adj_listWindow::~Adj_listWindow()
@@ -182,5 +184,6 @@ void Adj_listWindow::on_adj_lst_cont_clicked()
 
 void Adj_listWindow::on_pushButton_clicked()
 {
+    //в adj_listwindow.cpp:
     QMessageBox::warning(this, "Справка","Для того, чтобы задать граф:\n-укажите названия всем вершинам\n-напротив каждый вершины укажите все вершины, смежные ей\n-дублирование смежных вершин запрещается");
 }

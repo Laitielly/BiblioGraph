@@ -2,6 +2,7 @@
 #define DATAFILE_H
 
 #include <string>
+#include <QString>
 #include <vector>
 
 extern std::vector<std::string> Data_names;
@@ -27,5 +28,7 @@ enum class WhereAreFrom{
 
 extern WhereAreFrom Where;
 //extern Graph<std::string> a;
+
+//extern QString str_matrix = ""
 
 #endif // DATAFILE_H

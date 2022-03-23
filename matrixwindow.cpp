@@ -20,6 +20,9 @@ MatrixWindow::MatrixWindow(QWidget *parent) :
     ui->Table_names->horizontalHeader()->setDefaultSectionSize(142);
     ui->Table_names->verticalHeader()->setDefaultSectionSize(30);
 
+    //ui->pushButton->setStyleSheet("QPushButton{border: 5px solid black;}");
+    ui->pushButton->setStyleSheet("QPushButton{background: transparent;}");
+
     pr_win = new Propertieswindow;
     connect(pr_win,&Propertieswindow::inputwindow,this,&Propertieswindow::show);
 
@@ -161,5 +164,6 @@ void MatrixWindow::on_check_table_clicked()
 
 void MatrixWindow::on_pushButton_clicked()
 {
-    QMessageBox::warning(this,"Справка", "Для того, чтобы задать граф:\n-укажите названия всем вершинам\n-в матрице смежности поставьте в i строке j столбце:\n 1, если из i-й вершины в j-ю вершину есть ребро\n0, иначе");
+    //в matrixwindow.cpp:
+    QMessageBox::warning(this,"Справка", "Для того, чтобы задать граф:\n-укажите названия всем вершинам\n-в матрице смежности поставьте в i строке j столбце:\n    -1, если из i-й вершины в j-ю вершину есть ребро\n    -0, иначе");
 }

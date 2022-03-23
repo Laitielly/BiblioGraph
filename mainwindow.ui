@@ -88,7 +88,7 @@
       <item>
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_3">
          <attribute name="title">
@@ -107,7 +107,7 @@
 
  Действительный функционал программы позволяет делать переходы от одного представления графа в другой, проверять комбинаторные, метрические свойства графа.
 
-почта проекта: vovanbotan22@gmail.com</string>
+Почта проекта: vovanbotan22@gmail.com</string>
             </property>
            </widget>
           </item>
@@ -127,8 +127,7 @@
              <bool>true</bool>
             </property>
             <property name="plainText">
-             <string>
-Анна Сидорова (github: Laitielly) - тимлид, написание алгоритмов, тостер, имеет сертификат отчисления.
+             <string>Анна Сидорова (github: Laitielly) - тимлид, написание алгоритмов, тостер, имеет сертификат отчисления.
 
 Илья Антонов (github: antonov1lya) - технический директор, написание алгоритмов и структуры программы, соединение дочерних файлов, объединение графики с библиотекой и девятирукий бандит.
 

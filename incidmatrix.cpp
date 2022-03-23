@@ -26,6 +26,8 @@ IncidMatrix::IncidMatrix(QWidget *parent) :
     pr_win=new Propertieswindow;
     connect(pr_win,&Propertieswindow::inputwindow,this,&Propertieswindow::show);
     connect(this,&IncidMatrix::send_data_names,pr_win,&Propertieswindow::on_get_data_names);
+
+     ui->pushButton->setStyleSheet("QPushButton{background: transparent;}");
 }
 
 IncidMatrix::~IncidMatrix()
@@ -226,5 +228,6 @@ void IncidMatrix::on_incid_cont_clicked()
 
 void IncidMatrix::on_pushButton_clicked()
 {
-    QMessageBox::warning(this, "Справка","Для того, чтобы задать граф:\n-укажите названия всем вершинам\n-каждый столбец матрицы инцидентности определяет ребро по правилам:\n если между i-ой и j-ой вершинами есть неориентированное ребро, поставьте в i-й и j-й строке 1\n если из i-ой вершины в  j-ю вершинами есть ориентированное ребро, поставьте в i-й строке 1, в j-й строке -1\n если у i-й вершины есть петля, поставьте в i-й строке 2\n остальные строки в столбце заполните 0\n-дублирование ребер запрещается");
+    //в incidmatrix.cpp:
+    QMessageBox::warning(this, "Справка","Для того, чтобы задать граф:\n-укажите названия всем вершинам\n-каждый столбец матрицы инцидентности определяет ребро по правилам:\n    -если между i-ой и j-ой вершинами есть неориентированное ребро,\n         поставьте в i-й и j-й строке 1\n    -если из i-ой вершины в  j-ю вершинами есть ориентированное ребро,\n         поставьте в i-й строке 1, в j-й строке -1\n    -если у i-й вершины есть петля, поставьте в i-й строке 2\n    -остальные строки в столбце заполните 0\n-дублирование ребер запрещается");
 }

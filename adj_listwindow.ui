@@ -93,6 +93,19 @@
       </widget>
      </item>
      <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
       <widget class="QPushButton" name="pushButton">
        <property name="enabled">
         <bool>true</bool>
@@ -111,7 +124,7 @@
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/resourses/faq_question_support_icon_153995.png</normaloff>:/resourses/faq_question_support_icon_153995.png</iconset>
+         <normaloff>:/resourses/what.png</normaloff>:/resourses/what.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -123,19 +136,6 @@
         <bool>true</bool>
        </property>
       </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
      </item>
     </layout>
    </item>

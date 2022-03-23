@@ -27,6 +27,8 @@ MultRepresWindow::MultRepresWindow(QWidget *parent) :
     pr_win = new Propertieswindow;
     connect(pr_win,&Propertieswindow::inputwindow,this,&Propertieswindow::show);
     connect(this,&MultRepresWindow::send_data_names,pr_win,&Propertieswindow::on_get_data_names);
+
+     ui->pushButton->setStyleSheet("QPushButton{background: transparent;}");
 }
 
 MultRepresWindow::~MultRepresWindow()
@@ -183,5 +185,6 @@ void MultRepresWindow::on_btn_cont_clicked()
 
 void MultRepresWindow::on_pushButton_clicked()
 {
-    QMessageBox::warning(this, "Справка","Для того, чтобы задать граф:\n-укажите названия всем вершинам\n-в матрице смежности поставьте в i строке j столбце:\n 1, если из i-й вершины в j-ю вершину есть ребро\n0, иначе");
+    //в multirepreswindow.cpp:
+    QMessageBox::warning(this, "Справка","Для того, чтобы задать граф:\n-укажите названия всем вершинам\n-используя заданные вершины, укажите ребра графа");
 }
